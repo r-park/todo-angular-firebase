@@ -1,0 +1,50 @@
+@import
+"../../../../../node_modules/minx/src/settings",
+"../../../../../node_modules/minx/src/functions",
+"../../../../../node_modules/minx/src/mixins";
+
+//===================================================================
+//  TASK-FILTERS
+//===================================================================
+
+.task-filters {
+  @include clearfix;
+  margin-bottom: 55px;
+  padding-left: 1px;
+  font-size: rem(16px);
+  line-height: 24px;
+  list-style-type: none;
+
+  li {
+    float: left;
+
+    &:not(:first-child) {
+      margin-left: 12px;
+    }
+
+    &:not(:first-child):before {
+      padding-right: 12px;
+      content: '/';
+      font-weight: 300;
+    }
+  }
+
+  a {
+    color: #999;
+    text-decoration: none;
+
+    &.active {
+      color: #fff;
+    }
+  }
+}
+
+
+//===================================================================
+//  TASK-LIST
+//===================================================================
+
+.task-list {
+  border-top: 1px dotted #666;
+}
+

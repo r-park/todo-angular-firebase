@@ -1,0 +1,33 @@
+{
+  "version": "v4",
+  "repo": "borisyankov/DefinitelyTyped",
+  "ref": "master",
+  "path": "typings/tsd",
+  "bundle": "typings/tsd/tsd.d.ts",
+  "installed": {
+    "es6-promise/es6-promise.d.ts": {
+      "commit": "386e1708b9e5cb0d798c63ac43b5d0fc8d0f9bfd"
+    },
+    "angular2/angular2.d.ts": {
+      "commit": "386e1708b9e5cb0d798c63ac43b5d0fc8d0f9bfd"
+    },
+    "rx/rx.d.ts": {
+      "commit": "386e1708b9e5cb0d798c63ac43b5d0fc8d0f9bfd"
+    },
+    "angular2/http.d.ts": {
+      "commit": "386e1708b9e5cb0d798c63ac43b5d0fc8d0f9bfd"
+    },
+    "firebase/firebase.d.ts": {
+      "commit": "386e1708b9e5cb0d798c63ac43b5d0fc8d0f9bfd"
+    },
+    "jasmine/jasmine.d.ts": {
+      "commit": "386e1708b9e5cb0d798c63ac43b5d0fc8d0f9bfd"
+    },
+    "rx/rx-lite.d.ts": {
+      "commit": "386e1708b9e5cb0d798c63ac43b5d0fc8d0f9bfd"
+    },
+    "angular2/router.d.ts": {
+      "commit": "386e1708b9e5cb0d798c63ac43b5d0fc8d0f9bfd"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+<form class="task-form" [ng-form-model]="form" (submit)="submit()" novalidate>
+  <input
+    (keyup.escape)="cancel()"
+    autocomplete="off"
+    autofocus
+    class="task-form__input"
+    ng-control="title"
+    placeholder="What needs to be done?"
+    type="text">
+</form>

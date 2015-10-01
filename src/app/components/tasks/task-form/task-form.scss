@@ -1,0 +1,27 @@
+@import
+"../../../../../node_modules/minx/src/settings",
+"../../../../../node_modules/minx/src/functions",
+"../../../../../node_modules/minx/src/mixins";
+
+//===================================================================
+//  TASK-FORM
+//===================================================================
+
+.task-form {
+  margin: 80px 0 20px;
+}
+
+
+.task-form__input {
+  outline: none;
+  border: 0;
+  border-bottom: 1px dotted #666;
+  padding: 0 0 5px 0;
+  width: 100%;
+  height: 61px;
+  font-family: inherit;
+  font-size: rem(32px);
+  font-weight: 300;
+  color: #fff;
+  background: transparent;
+}
