@@ -31,7 +31,7 @@ export class TaskList {
     this.zone = zone;
 
     store.emitter.observer({
-      next: () => zone.run(() => {})
+      next: (): void => zone.run(() => {})
     });
   }
 

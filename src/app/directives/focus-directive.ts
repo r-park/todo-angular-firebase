@@ -11,9 +11,10 @@ import {
   selector: '[focus]'
 })
 
+
 export class FocusDirective {
   element: ElementRef;
-  timeout: number;
+  private timeout: number;
 
   constructor(element: ElementRef) {
     this.element = element;

@@ -21,13 +21,13 @@ export class TaskStore {
     });
   }
 
-  filterActiveTasks() {
+  filterActiveTasks(): ITask[] {
     return this.tasks.filter((task: ITask) => {
       return task.completed === false;
     });
   }
 
-  filterCompletedTasks() {
+  filterCompletedTasks(): ITask[] {
     return this.tasks.filter((task: ITask) => {
       return task.completed;
     });
