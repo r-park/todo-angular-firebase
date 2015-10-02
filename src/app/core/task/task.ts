@@ -10,11 +10,10 @@ export interface ITask {
 
 @Injectable()
 export class Task implements ITask {
-  completed: boolean;
+  completed: boolean = false;
   title: string;
 
   constructor(title: string = '') {
-    this.completed = false;
     this.title = title;
   }
 }
