@@ -1,7 +1,7 @@
-import { Component, NgFor, View } from 'angular2/angular2';
+import { Component, NgFor, NgZone, View } from 'angular2/angular2';
 import { RouterLink, RouteParams } from 'angular2/router';
 import { ITask } from 'app/core/task/task';
-import { TaskService } from 'app/core/task/task-service';
+import { TaskStore } from 'app/core/task/task-store';
 import { TaskItem } from '../task-item/task-item';
 
 
@@ -22,20 +22,26 @@ import { TaskItem } from '../task-item/task-item';
 
 export class TaskList {
   filter: string;
-  private taskService: TaskService;
+  private store: TaskStore;
+  private zone: NgZone;
 
-  constructor(params: RouteParams, taskService: TaskService) {
+  constructor(params: RouteParams, store: TaskStore, zone: NgZone) {
     this.filter = params.get('filter');
-    this.taskService = taskService;
+    this.store = store;
+    this.zone = zone;
+
+    store.emitter.observer({
+      next: () => zone.run(() => {})
+    });
   }
 
   get tasks(): ITask[] {
     if (this.filter === 'active') {
-      return this.taskService.filterActiveTasks();
+      return this.store.filterActiveTasks();
     }
     else if (this.filter === 'completed') {
-      return this.taskService.filterCompletedTasks();
+      return this.store.filterCompletedTasks();
     }
-    return this.taskService.tasks;
+    return this.store.tasks;
   }
 }
