@@ -37,13 +37,10 @@ function loadTestFiles() {
 System.config({
   baseURL: '/base/',
   defaultJSExtensions: true,
-  map: {
-    //rx: 'lib/rx.min.js'
-  },
   paths: {
     '*': 'target/*',
     'angular2/*': 'target/lib/angular2/*',
-    'rx': 'target/lib/rx.min.js'
+    '@reactivex/rxjs/dist/cjs/*': 'lib/@reactivex/rxjs/*'
   }
 });
 

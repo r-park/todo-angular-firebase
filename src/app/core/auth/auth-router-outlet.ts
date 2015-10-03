@@ -1,6 +1,5 @@
 import { Attribute, Directive, DynamicComponentLoader, ElementRef } from 'angular2/angular2';
 import { ComponentInstruction, Router, RouterOutlet } from 'angular2/router';
-import { PromiseWrapper } from 'angular2/src/core/facade/async';
 import { AuthService } from './auth-service';
 
 
