@@ -2,6 +2,22 @@ declare module 'angular2/src/core/facade/async' {
   export class ObservableWrapper {
     static subscribe(emitter: any, onNext: Function, onThrow?: Function, onReturn?: Function);
   }
+
+  export interface PromiseCompleter<R> {
+    promise: Promise<R>;
+    resolve: (value?: R | PromiseLike<R>) => void;
+    reject: (error?: any, stackTrace?: string) => void;
+  }
+
+  export class PromiseWrapper {
+    static all(promises: any[]): Promise<any>;
+    static catchError<T>(promise: Promise<T>, onError: (error: any) => T | PromiseLike<T>): Promise<T>;
+    static completer(): PromiseCompleter<any>;
+    static reject(obj: any, _): Promise<any>;
+    static resolve<T>(obj: T): Promise<T>;
+    static then<T, U>(promise: Promise<T>, success: (value: T) => U | PromiseLike<U>, rejection?: (error: any, stack?: any) => U | PromiseLike<U>): Promise<U>;
+    static wrap<T>(computation: () => T): Promise<T>;
+  }
 }
 
 

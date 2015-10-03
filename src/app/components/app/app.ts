@@ -1,5 +1,6 @@
 import { Component, View } from 'angular2/angular2';
-import { RouteConfig, RouterOutlet } from 'angular2/router';
+import { RouteConfig } from 'angular2/router';
+import { AuthRouterOutlet } from 'app/core/auth/auth-router-outlet';
 import { Tasks } from '../tasks/tasks';
 
 
@@ -9,7 +10,7 @@ import { Tasks } from '../tasks/tasks';
 
 @View({
   directives: [
-    RouterOutlet
+    AuthRouterOutlet
   ],
   styleUrls: ['app/components/app/app.css'],
   templateUrl: 'app/components/app/app.html'

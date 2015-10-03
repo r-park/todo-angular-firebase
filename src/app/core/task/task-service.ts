@@ -1,13 +1,15 @@
-import { Inject } from 'angular2/angular2';
-import { firebaseRef } from '../firebase/firebase-ref';
+import { Inject, Injectable } from 'angular2/angular2';
+import { AuthService } from 'app/core/auth/auth-service';
+import { firebaseRef } from 'app/core/firebase/firebase-ref';
 import { ITask, Task } from './task';
 
 
+@Injectable()
 export class TaskService {
   private ref: Firebase;
 
-  constructor(@Inject(firebaseRef) ref: Firebase) {
-    this.ref = ref.child('tasks');
+  constructor(@Inject(firebaseRef) ref: Firebase, auth: AuthService) {
+    this.ref = ref.child('tasks/' + auth.id);
   }
 
   createTask(title: string): void {

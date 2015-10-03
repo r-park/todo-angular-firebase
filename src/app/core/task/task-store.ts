@@ -1,15 +1,17 @@
-import { EventEmitter, Inject } from 'angular2/angular2';
-import { firebaseRef } from '../firebase/firebase-ref';
+import { EventEmitter, Inject, Injectable } from 'angular2/angular2';
+import { AuthService } from 'app/core/auth/auth-service';
+import { firebaseRef } from 'app/core/firebase/firebase-ref';
 import { ITask } from './task';
 
 
+@Injectable()
 export class TaskStore {
   emitter: EventEmitter = new EventEmitter();
   tasks: ITask[] = [];
   private ref: Firebase;
 
-  constructor(@Inject(firebaseRef) ref: Firebase) {
-    this.ref = ref.child('tasks');
+  constructor(@Inject(firebaseRef) ref: Firebase, auth: AuthService) {
+    this.ref = ref.child('tasks/' + auth.id);
     this.ref.on('child_added', this._added.bind(this));
     this.ref.on('child_changed', this._changed.bind(this));
     this.ref.on('child_removed', this._removed.bind(this));
