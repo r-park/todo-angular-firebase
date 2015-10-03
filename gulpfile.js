@@ -29,11 +29,18 @@ var paths = {
       'node_modules/es6-module-loader/dist/es6-module-loader.{js,js.map}',
       'node_modules/firebase/lib/firebase-web.js',
       'node_modules/reflect-metadata/Reflect.js',
-      'node_modules/rx/dist/rx.{min.js,map}',
+      'node_modules/@reactivex/rxjs/dist/global/Rx.{min.js,min.js.map}',
       'node_modules/systemjs/dist/system.{js,js.map}',
       'node_modules/zone.js/dist/zone.min.js'
     ],
     target: 'target/lib'
+  },
+
+  rxjs: {
+    src: [
+      'node_modules/@reactivex/rxjs/dist/cjs/**/*.js'
+    ],
+    target: 'target/lib/@reactivex/rxjs'
   },
 
   src: {
@@ -134,6 +141,13 @@ gulp.task('copy.lib', function(){
 });
 
 
+gulp.task('copy.rxjs', function(){
+  return gulp
+    .src(paths.rxjs.src)
+    .pipe(gulp.dest(paths.rxjs.target));
+});
+
+
 gulp.task('lint', function(){
   return gulp
     .src(paths.src.ts)
@@ -191,6 +205,7 @@ gulp.task('build', gulp.series(
   'copy.html',
   'copy.js',
   'copy.lib',
+  'copy.rxjs',
   'sass',
   'ts'
 ));

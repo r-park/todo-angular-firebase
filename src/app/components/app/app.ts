@@ -17,7 +17,7 @@ import { Tasks } from '../tasks/tasks';
 
 @RouteConfig([
   { path: '/', redirectTo: '/tasks' },
-  { path: '/tasks', as: 'tasks', component: Tasks }
+  { path: '/tasks', as: 'Tasks', component: Tasks }
 ])
 
 

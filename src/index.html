@@ -29,10 +29,11 @@
       defaultJSExtensions: true,
       map: {
         firebase: 'lib/firebase-web.js',
-        rx: 'lib/rx.min.js'
+        immutable: 'lib/immutable.min.js'
       },
       paths: {
-        'angular2/*': 'lib/angular2/*'
+        'angular2/*': 'lib/angular2/*',
+        '@reactivex/rxjs/dist/cjs/*': 'lib/@reactivex/rxjs/*'
       }
     });
 
