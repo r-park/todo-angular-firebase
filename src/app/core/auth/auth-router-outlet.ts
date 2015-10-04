@@ -13,9 +13,9 @@ import { AuthService } from './auth-service';
 })
 
 export class AuthRouterOutlet extends RouterOutlet {
-  constructor(public _elementRef: ElementRef,
-              public _loader: DynamicComponentLoader,
-              public _parentRouter: Router,
+  constructor(private _elementRef: ElementRef,
+              private _loader: DynamicComponentLoader,
+              private _parentRouter: Router,
               @Attribute('name') nameAttr: string,
               private auth: AuthService) {
 

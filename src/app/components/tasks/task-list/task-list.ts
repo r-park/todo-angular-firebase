@@ -4,7 +4,6 @@ import {
   Component,
   Inject,
   NgFor,
-  NgZone,
   OnDestroy,
   View,
   ViewEncapsulation
@@ -37,20 +36,14 @@ export class TaskList implements OnDestroy {
   private store: TaskStore;
   private subscriber: any;
 
-  constructor(params: RouteParams, @Inject(ChangeDetectorRef) cdRef: ChangeDetectorRef, store: TaskStore, zone: NgZone) {
+  constructor(params: RouteParams, @Inject(ChangeDetectorRef) cdRef: ChangeDetectorRef, store: TaskStore) {
     this.filter = params.get('filter');
     this.store = store;
 
     store.ready.then(() => {
-      console.log('TaskStore READY');
       cdRef.markForCheck();
-      zone.run(() => true);
-
       this.subscriber = store.subscribe({
-        next: (): void => {
-          console.log('TaskStore CHANGED');
-          cdRef.markForCheck()
-        }
+        next: (): void => cdRef.markForCheck()
       });
     });
   }

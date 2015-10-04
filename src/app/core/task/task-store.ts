@@ -18,9 +18,7 @@ export class TaskStore {
     this.ref.on('child_removed', this._removed.bind(this));
 
     this.ready = new Promise<any>((resolve: (value?: any) => void) => {
-      this.ref.once('value', () => {
-        resolve();
-      });
+      this.ref.once('value', () => resolve());
     });
   }
 

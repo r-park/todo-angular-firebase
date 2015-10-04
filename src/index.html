@@ -19,24 +19,20 @@
   <app></app>
 
 
-  <script src="lib/Reflect.js"></script>
-  <script src="lib/zone.min.js"></script>
-  <script src="lib/es6-module-loader.js"></script>
   <script src="lib/system.js"></script>
   <script>
+    System.warnings = true;
     System.config({
       baseURL: './',
       defaultJSExtensions: true,
       map: {
-        firebase: 'lib/firebase-web.js',
-        immutable: 'lib/immutable.min.js'
-      },
-      paths: {
-        'angular2/*': 'lib/angular2/*',
-        '@reactivex/rxjs/*': 'lib/@reactivex/rxjs/*.js'
+        firebase: 'lib/firebase-web.js'
       }
     });
-
+  </script>
+  <script src="lib/angular2.dev.js"></script>
+  <script src="lib/router.dev.js"></script>
+  <script>
     System.import('app/main').catch(function(error){
       console.log(error);
     });
