@@ -1,4 +1,9 @@
-import { Attribute, Directive, DynamicComponentLoader, ElementRef } from 'angular2/angular2';
+import {
+  Attribute,
+  Directive,
+  DynamicComponentLoader,
+  ElementRef
+} from 'angular2/angular2';
 import { ComponentInstruction, Router, RouterOutlet } from 'angular2/router';
 import { AuthService } from './auth-service';
 

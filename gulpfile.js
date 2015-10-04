@@ -7,7 +7,6 @@ var autoprefixer = require('autoprefixer'),
     postcss      = require('gulp-postcss'),
     sass         = require('gulp-sass'),
     sourcemaps   = require('gulp-sourcemaps'),
-    //todoServer   = require('todo-server'),
     tslint       = require('gulp-tslint'),
     typescript   = require('gulp-typescript');
 
@@ -40,7 +39,7 @@ var paths = {
     src: [
       'node_modules/@reactivex/rxjs/dist/cjs/**/*.js'
     ],
-    target: 'target/lib/@reactivex/rxjs'
+    target: 'target/lib/@reactivex/rxjs/dist/cjs'
   },
 
   src: {
@@ -174,12 +173,6 @@ gulp.task('server', function(done){
   browserSync
     .create()
     .init(config.browserSync, done);
-});
-
-
-gulp.task('server.api', function(done){
-  todoServer.start();
-  done();
 });
 
 

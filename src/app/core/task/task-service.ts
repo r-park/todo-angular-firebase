@@ -9,7 +9,7 @@ export class TaskService {
   private ref: Firebase;
 
   constructor(@Inject(firebaseRef) ref: Firebase, auth: AuthService) {
-    this.ref = ref.child('tasks/' + auth.id);
+    this.ref = ref.child(`tasks/${auth.id}`);
   }
 
   createTask(title: string): void {

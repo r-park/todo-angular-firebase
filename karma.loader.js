@@ -40,7 +40,7 @@ System.config({
   paths: {
     '*': 'target/*',
     'angular2/*': 'target/lib/angular2/*',
-    '@reactivex/rxjs/dist/cjs/*': 'lib/@reactivex/rxjs/*'
+    '@reactivex/rxjs/*': 'lib/@reactivex/rxjs/*.js'
   }
 });
 
