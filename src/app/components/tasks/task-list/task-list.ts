@@ -23,15 +23,13 @@ import { TaskItem } from '../task-item/task-item';
 export class TaskList {
   filter: string;
   private store: TaskStore;
-  private zone: NgZone;
 
   constructor(params: RouteParams, store: TaskStore, zone: NgZone) {
     this.filter = params.get('filter');
     this.store = store;
-    this.zone = zone;
 
-    store.emitter.observer({
-      next: (): void => zone.run(() => {})
+    store.ready.then(() => {
+      zone.run(() => true);
     });
   }
 

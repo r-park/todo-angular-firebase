@@ -6,26 +6,31 @@ import { ITask } from './task';
 
 @Injectable()
 export class TaskStore {
-  emitter: EventEmitter = new EventEmitter();
+  ready: Promise<any>;
   tasks: ITask[] = [];
+  private emitter: EventEmitter = new EventEmitter();
   private ref: Firebase;
 
   constructor(@Inject(firebaseRef) ref: Firebase, auth: AuthService) {
-    this.ref = ref.child('tasks/' + auth.id);
+    this.ref = ref.child(`tasks/${auth.id}`);
     this.ref.on('child_added', this._added.bind(this));
     this.ref.on('child_changed', this._changed.bind(this));
     this.ref.on('child_removed', this._removed.bind(this));
 
-    this.ref.once('value', (snapshot: FirebaseDataSnapshot) => {
-      if (snapshot.exists()) {
-        this.emitter.next(this.tasks);
-      }
+    this.ready = new Promise<any>((resolve: (value?: any) => void) => {
+      this.ref.once('value', () => {
+        resolve();
+      });
     });
+  }
+
+  subscribe(generator: any): any {
+    return this.emitter.observer(generator);
   }
 
   filterActiveTasks(): ITask[] {
     return this.tasks.filter((task: ITask) => {
-      return task.completed === false;
+      return !task.completed;
     });
   }
 
@@ -36,14 +41,15 @@ export class TaskStore {
   }
 
   _added(snapshot: FirebaseDataSnapshot): void {
-    const task: ITask = snapshot.val();
+    let task: ITask = snapshot.val();
     task.key = snapshot.key();
     this.tasks.push(task);
+    this.emitter.next(this.tasks);
   }
 
   _changed(snapshot: FirebaseDataSnapshot): void {
-    const key: string = snapshot.key();
-    const index: number = this._indexOf(this.tasks, key);
+    let key: string = snapshot.key();
+    let index: number = this._indexOf(this.tasks, key);
     if (index > -1) {
       this.tasks[index] = snapshot.val();
       this.tasks[index].key = key;
@@ -51,7 +57,7 @@ export class TaskStore {
   }
 
   _removed(snapshot: FirebaseDataSnapshot): void {
-    const index: number = this._indexOf(this.tasks, snapshot.key());
+    let index: number = this._indexOf(this.tasks, snapshot.key());
     if (index > -1) {
       this.tasks.splice(index, 1);
     }
