@@ -4,6 +4,7 @@ var autoprefixer = require('autoprefixer'),
     exec         = require('child_process').exec,
     gulp         = require('gulp'),
     karma        = require('karma'),
+    modRewrite   = require('connect-modrewrite'),
     postcss      = require('gulp-postcss'),
     sass         = require('gulp-sass'),
     sourcemaps   = require('gulp-sourcemaps'),
@@ -76,7 +77,14 @@ var config = {
     notify: false,
     port: 7000,
     reloadDelay: 200,
-    server: {baseDir: paths.target}
+    server: {
+      baseDir: paths.target,
+      middleware: [
+        modRewrite([
+          '!\\.\\w+$ /index.html [L]'
+        ])
+      ]
+    }
   },
 
   karma: {

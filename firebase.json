@@ -19,5 +19,10 @@
     "lib/angular2/**",
     "lib/Reflect.js",
     "lib/zone.min.js"
-  ]
+  ],
+
+  "rewrites": [{
+    "source": "**",
+    "destination": "/index.html"
+  }]
 }
