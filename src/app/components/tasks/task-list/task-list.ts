@@ -1,4 +1,13 @@
-import { Component, NgFor, NgZone, View } from 'angular2/angular2';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  Inject,
+  NgFor,
+  NgZone,
+  OnDestroy,
+  View
+} from 'angular2/angular2';
 import { RouterLink, RouteParams } from 'angular2/router';
 import { ITask } from 'app/core/task/task';
 import { TaskStore } from 'app/core/task/task-store';
@@ -6,6 +15,7 @@ import { TaskItem } from '../task-item/task-item';
 
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'task-list'
 })
 
@@ -20,16 +30,26 @@ import { TaskItem } from '../task-item/task-item';
 })
 
 
-export class TaskList {
+export class TaskList implements OnDestroy {
   filter: string;
   private store: TaskStore;
+  private subscriber: any;
 
-  constructor(params: RouteParams, store: TaskStore, zone: NgZone) {
+  constructor(params: RouteParams, @Inject(ChangeDetectorRef) cdRef: ChangeDetectorRef, store: TaskStore, zone: NgZone) {
     this.filter = params.get('filter');
     this.store = store;
 
     store.ready.then(() => {
+      console.log('TaskStore READY');
+      cdRef.markForCheck();
       zone.run(() => true);
+
+      this.subscriber = store.subscribe({
+        next: (): void => {
+          console.log('TaskStore CHANGED');
+          cdRef.markForCheck()
+        }
+      });
     });
   }
 
@@ -41,5 +61,11 @@ export class TaskList {
       return this.store.filterCompletedTasks();
     }
     return this.store.tasks;
+  }
+
+  onDestroy(): void {
+    if (this.subscriber) {
+      this.subscriber.unsubscribe();
+    }
   }
 }
