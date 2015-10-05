@@ -1,4 +1,4 @@
-import { bind, bootstrap, FORM_BINDINGS } from 'angular2/angular2';
+import { bootstrap, FORM_BINDINGS } from 'angular2/angular2';
 import { routerBindings } from 'angular2/router';
 import { AUTH_BINDINGS } from 'app/core/auth/bindings';
 import { FIREBASE_BINDINGS } from 'app/core/firebase/bindings';

@@ -5,7 +5,7 @@ import { firebaseRef } from 'app/core/firebase/firebase-ref';
 
 
 export class AuthService {
-  private authData: FirebaseAuthData = null;
+  private authData: FirebaseAuthData;
   private ref: Firebase;
 
   constructor(@Inject(firebaseRef) ref: Firebase) {
