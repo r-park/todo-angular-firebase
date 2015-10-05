@@ -62,15 +62,13 @@ export class TaskItem {
     if (this.editing) {
       const value: string = this.form.controls.title.value.trim();
       if (value.length && value !== this.model.title) {
-        this.model.title = value;
-        this.taskService.updateTask(this.model);
+        this.taskService.updateTask(this.model, {title: value});
       }
       this.editing = false;
     }
   }
 
   toggleStatus(): void {
-    this.model.completed = !this.model.completed;
-    this.taskService.updateTask(this.model);
+    this.taskService.updateTask(this.model, {completed: !this.model.completed});
   }
 }

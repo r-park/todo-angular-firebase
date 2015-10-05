@@ -20,7 +20,7 @@ export class TaskService {
     this.ref.child(task.key).remove();
   }
 
-  updateTask(task: ITask): void {
-    this.ref.child(task.key).update(task);
+  updateTask(task: ITask, changes: any): void {
+    this.ref.child(task.key).update(changes);
   }
 }
