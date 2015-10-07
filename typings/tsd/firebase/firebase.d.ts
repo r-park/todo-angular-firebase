@@ -263,7 +263,7 @@ interface Firebase extends FirebaseQuery {
 	/**
 	 * Creates a new user account using an email / password combination.
 	 */
-	createUser(credentials: FirebaseCredentials, onComplete: (error: any) => void): void;
+	createUser(credentials: FirebaseCredentials, onComplete: (error: any, userData: any) => void): void;
 	/**
 	 * Updates the email associated with an email / password user account.
 	 */

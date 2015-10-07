@@ -5,8 +5,7 @@ import {
   FormBuilder,
   NgControlName,
   NgFormModel,
-  View,
-  ViewEncapsulation
+  View
 } from 'angular2/angular2';
 import { TaskService } from 'app/core/task/task-service';
 
@@ -21,7 +20,6 @@ import { TaskService } from 'app/core/task/task-service';
     NgControlName,
     NgFormModel
   ],
-  encapsulation: ViewEncapsulation.Emulated,
   styleUrls: ['app/components/tasks/task-form/task-form.css'],
   templateUrl: 'app/components/tasks/task-form/task-form.html'
 })

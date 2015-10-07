@@ -1,4 +1,4 @@
-import { Component, View, ViewEncapsulation } from 'angular2/angular2';
+import { Component, View } from 'angular2/angular2';
 import { RouteConfig } from 'angular2/router';
 import { AuthRouterOutlet } from 'app/core/auth/auth-router-outlet';
 import { Tasks } from '../tasks/tasks';
@@ -12,7 +12,6 @@ import { Tasks } from '../tasks/tasks';
   directives: [
     AuthRouterOutlet
   ],
-  encapsulation: ViewEncapsulation.Emulated, // Emulated | Native | None (default)
   styleUrls: ['app/components/app/app.css'],
   templateUrl: 'app/components/app/app.html'
 })

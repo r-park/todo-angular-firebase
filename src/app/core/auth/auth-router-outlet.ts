@@ -2,7 +2,8 @@ import {
   Attribute,
   Directive,
   DynamicComponentLoader,
-  ElementRef
+  ElementRef,
+  Inject
 } from 'angular2/angular2';
 import { ComponentInstruction, Router, RouterOutlet } from 'angular2/router';
 import { AuthService } from './auth-service';
@@ -12,9 +13,10 @@ import { AuthService } from './auth-service';
   selector: 'auth-router-outlet'
 })
 
+
 export class AuthRouterOutlet extends RouterOutlet {
-  constructor(private _elementRef: ElementRef,
-              private _loader: DynamicComponentLoader,
+  constructor(@Inject(ElementRef) _elementRef: ElementRef,
+              @Inject(DynamicComponentLoader) _loader: DynamicComponentLoader,
               private _parentRouter: Router,
               @Attribute('name') nameAttr: string,
               private auth: AuthService) {

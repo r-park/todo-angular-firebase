@@ -5,8 +5,7 @@ import {
   Inject,
   NgFor,
   OnDestroy,
-  View,
-  ViewEncapsulation
+  View
 } from 'angular2/angular2';
 import { RouterLink, RouteParams } from 'angular2/router';
 import { ITask } from 'app/core/task/task';
@@ -25,7 +24,6 @@ import { TaskItem } from '../task-item/task-item';
     RouterLink,
     TaskItem
   ],
-  encapsulation: ViewEncapsulation.Emulated,
   styleUrls: ['app/components/tasks/task-list/task-list.css'],
   templateUrl: 'app/components/tasks/task-list/task-list.html'
 })

@@ -16,31 +16,13 @@ var autoprefixer = require('autoprefixer'),
   PATHS
 ---------------------------------------------------------*/
 var paths = {
-  angular: {
-    src: [
-      'node_modules/angular2/**/*.{js,map}',
-      '!node_modules/angular2/{es6/**,node_modules/**,ts/**}'
-    ],
-    target: 'target/lib/angular2'
-  },
-
   lib: {
     src: [
-      'node_modules/angular2/bundles/{angular2.dev,router.dev}.{js,js.map}',
-      'node_modules/es6-module-loader/dist/es6-module-loader.{js,js.map}',
+      'node_modules/es6-module-loader/dist/es6-module-loader.js',
       'node_modules/firebase/lib/firebase-web.js',
-      'node_modules/reflect-metadata/Reflect.js',
-      'node_modules/systemjs/dist/system.{js,js.map}',
-      'node_modules/zone.js/dist/zone.min.js'
+      'node_modules/systemjs/dist/system.js'
     ],
     target: 'target/lib'
-  },
-
-  rxjs: {
-    src: [
-      'node_modules/@reactivex/rxjs/dist/cjs/**/*.js'
-    ],
-    target: 'target/lib/@reactivex/rxjs/dist/cjs'
   },
 
   src: {
@@ -119,13 +101,6 @@ gulp.task('clean.target', function(){
 });
 
 
-gulp.task('copy.angular', function(){
-  return gulp
-    .src(paths.angular.src)
-    .pipe(gulp.dest(paths.angular.target));
-});
-
-
 gulp.task('copy.html', function(){
   return gulp
     .src(paths.src.html)
@@ -144,13 +119,6 @@ gulp.task('copy.lib', function(){
   return gulp
     .src(paths.lib.src)
     .pipe(gulp.dest(paths.lib.target));
-});
-
-
-gulp.task('copy.rxjs', function(){
-  return gulp
-    .src(paths.rxjs.src)
-    .pipe(gulp.dest(paths.rxjs.target));
 });
 
 
@@ -201,11 +169,9 @@ gulp.task('ts', function(){
 ---------------------------*/
 gulp.task('build', gulp.series(
   'clean.target',
-  'copy.angular',
   'copy.html',
   'copy.js',
   'copy.lib',
-  'copy.rxjs',
   'sass',
   'ts'
 ));

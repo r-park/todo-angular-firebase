@@ -39,8 +39,8 @@ System.config({
   defaultJSExtensions: true,
   paths: {
     '*': 'target/*',
-    'angular2/*': 'target/lib/angular2/*',
-    '@reactivex/rxjs/*': 'lib/@reactivex/rxjs/*.js'
+    'angular2/*': 'node_modules/angular2/*',
+    '@reactivex/rxjs/*': 'node_modules/@reactivex/rxjs/*.js'
   }
 });
 

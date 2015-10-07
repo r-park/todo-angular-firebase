@@ -6,8 +6,7 @@ import {
   NgClass,
   NgControlName,
   NgFormModel,
-  View,
-  ViewEncapsulation
+  View
 } from 'angular2/angular2';
 import { ITask } from 'app/core/task/task';
 import { TaskService } from 'app/core/task/task-service';
@@ -27,7 +26,6 @@ import { FocusDirective } from 'app/directives/focus-directive';
     NgControlName,
     NgFormModel
   ],
-  encapsulation: ViewEncapsulation.Emulated,
   styleUrls: ['app/components/tasks/task-item/task-item.css'],
   templateUrl: 'app/components/tasks/task-item/task-item.html'
 })

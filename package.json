@@ -9,17 +9,17 @@
   "private": true,
   "scripts": {},
   "dependencies": {
-    "angular2": "2.0.0-alpha.38",
+    "angular2": "2.0.0-alpha.39",
     "es6-module-loader": "~0.17.8",
     "firebase": "~2.3.1",
     "reflect-metadata": "~0.1.2",
     "@reactivex/rxjs": "0.0.0-prealpha.3",
     "systemjs": "~0.19.3",
-    "zone.js": "~0.5.7"
+    "zone.js": "~0.5.8"
   },
   "devDependencies": {
     "autoprefixer": "~6.0.3",
-    "browser-sync": "~2.9.8",
+    "browser-sync": "~2.9.10",
     "connect-modrewrite": "^0.8.2",
     "del": "~2.0.2",
     "gulp": "gulpjs/gulp.git#4.0",
