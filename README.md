@@ -25,11 +25,6 @@ Without gulp v4:
 ```
 
 #### Installing Gulp v4 (optional)
-If you already have gulp v3.x installed globally, it must be removed to make way for v4.
-```bash
-npm uninstall -g gulp
-```
-Next, install the gulp v4 `gulp-cli` globally.
 ```bash
 npm install -g gulpjs/gulp-cli#4.0
 ```
