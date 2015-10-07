@@ -49,7 +49,6 @@ gulp dev
 Running `gulp dev` will:
 - Build the project
 - Start the server at <a href="http://localhost:7000" target="_blank">localhost:7000</a>
-- Open the app in Google Chrome
 - Watch for changes to the source files and process changes
 - Live-reload the browser
 

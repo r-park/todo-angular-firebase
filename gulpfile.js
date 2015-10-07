@@ -54,9 +54,9 @@ var config = {
   },
 
   browserSync: {
-    browser: ['google chrome'],
     files: [paths.target + '/**/*'],
     notify: false,
+    open: false,
     port: 7000,
     reloadDelay: 200,
     server: {
