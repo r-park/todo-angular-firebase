@@ -14,16 +14,16 @@
   height: 60px;
   overflow: hidden;
   color: #fff;
-  font-size: rem(24px);
+  font-size: rem(18px);
   font-weight: 300;
+
+  @include media-query(540) {
+    font-size: rem(24px);
+  }
 }
 
 .task-item--editing {
   border-bottom: 1px dotted #ccc;
-}
-
-[hidden] {
-  display: none !important;
 }
 
 
@@ -59,7 +59,7 @@
   outline: none;
   border: 0;
   border-radius: 100px;
-  padding-top: 6px;
+  padding: 3px 0 0 0;
   width: 40px;
   height: 40px;
   overflow: hidden;
@@ -72,6 +72,7 @@
 
 .icon {
   fill: #555;
+  transform: translate(0, 0);
 
   .task-item__button:hover & {
     fill: #999;
@@ -103,7 +104,7 @@
   position: relative;
   max-width: 100%;
   line-height: 60px;
-
+  outline: none;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -148,4 +149,9 @@
   color: inherit;
   font: inherit;
   background: transparent;
+
+  // remove `x`
+  &::-ms-clear {
+    display: none;
+  }
 }

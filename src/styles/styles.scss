@@ -10,3 +10,12 @@
 
 @import
 "grid";
+
+
+[hidden] {
+  display: none !important;
+}
+
+::selection {
+  background: rgba(200,200,255,.1);
+}
