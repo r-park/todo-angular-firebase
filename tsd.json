@@ -5,20 +5,23 @@
   "path": "typings/tsd",
   "bundle": "typings/tsd/tsd.d.ts",
   "installed": {
-    "angular2/angular2.d.ts": {
-      "commit": "e9be3cecf8a326d3e220c52b42d218169a7bb9f2"
+    "es6-shim/es6-shim.d.ts": {
+      "commit": "d6c98baa7fd703e449cf37f3ec39ed3bd92cfd35"
     },
     "firebase/firebase.d.ts": {
-      "commit": "e9be3cecf8a326d3e220c52b42d218169a7bb9f2"
+      "commit": "d6c98baa7fd703e449cf37f3ec39ed3bd92cfd35"
     },
-    "es6-shim/es6-shim.d.ts": {
-      "commit": "e9be3cecf8a326d3e220c52b42d218169a7bb9f2"
+    "angular2/angular2.d.ts": {
+      "commit": "d6c98baa7fd703e449cf37f3ec39ed3bd92cfd35"
     },
     "jasmine/jasmine.d.ts": {
-      "commit": "e9be3cecf8a326d3e220c52b42d218169a7bb9f2"
+      "commit": "d6c98baa7fd703e449cf37f3ec39ed3bd92cfd35"
+    },
+    "sinon/sinon.d.ts": {
+      "commit": "d6c98baa7fd703e449cf37f3ec39ed3bd92cfd35"
     },
     "angular2/router.d.ts": {
-      "commit": "e9be3cecf8a326d3e220c52b42d218169a7bb9f2"
+      "commit": "d6c98baa7fd703e449cf37f3ec39ed3bd92cfd35"
     }
   }
 }

@@ -22,7 +22,7 @@ export class FocusDirective implements OnDestroy {
 
   set focus(value: boolean) {
     this.clear();
-    if (value) {
+    if (value === true) {
       this.timeout = setTimeout(() => {
         this.element.nativeElement.focus();
       });

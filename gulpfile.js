@@ -58,7 +58,7 @@ var config = {
     notify: false,
     open: false,
     port: 7000,
-    reloadDelay: 200,
+    reloadDelay: 1500,
     server: {
       baseDir: paths.target,
       middleware: [
@@ -201,12 +201,12 @@ function karmaServer(options, done) {
 
 
 gulp.task('karma', function(done){
+  config.karma.singleRun = true;
   karmaServer(config.karma, done);
 });
 
 
-gulp.task('karma.single', function(done){
-  config.karma.singleRun = true;
+gulp.task('karma.watch', function(done){
   karmaServer(config.karma, done);
 });
 
@@ -221,10 +221,10 @@ gulp.task('karma.run', function(done){
 });
 
 
-gulp.task('test', gulp.series('lint', 'build', 'karma.single'));
+gulp.task('test', gulp.series('lint', 'build', 'karma'));
 
 
-gulp.task('test.watch', gulp.parallel(gulp.series('lint', 'build', 'karma'), function(){
+gulp.task('test.watch', gulp.parallel(gulp.series('lint', 'build', 'karma.watch'), function(){
   gulp.watch(paths.src.ts, gulp.series('ts', 'karma.run'));
 }));
 
