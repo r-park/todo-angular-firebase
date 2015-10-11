@@ -1,6 +1,7 @@
 language: node_js
 
-node_js: 4.1
+node_js:
+  - 4.1
 
 before_install:
   - export CHROME_BIN=chromium-browser
@@ -8,7 +9,6 @@ before_install:
   - sh -e /etc/init.d/xvfb start
 
 install:
-  - npm install -g bower
   - npm install -g firebase-tools
   - npm install
 

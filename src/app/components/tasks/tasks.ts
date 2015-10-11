@@ -15,5 +15,4 @@ import { TaskList } from './task-list/task-list';
   templateUrl: 'app/components/tasks/tasks.html'
 })
 
-
 export class Tasks {}

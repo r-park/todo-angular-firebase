@@ -30,7 +30,6 @@ import { FocusDirective } from 'app/directives/focus-directive';
   templateUrl: 'app/components/tasks/task-item/task-item.html'
 })
 
-
 export class TaskItem {
   editing: boolean;
   form: ControlGroup;

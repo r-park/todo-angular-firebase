@@ -21,5 +21,4 @@ import { Tasks } from '../tasks/tasks';
   { path: '/tasks', as: 'Tasks', component: Tasks }
 ])
 
-
 export class App {}

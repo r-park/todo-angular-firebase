@@ -28,7 +28,6 @@ import { TaskItem } from '../task-item/task-item';
   templateUrl: 'app/components/tasks/task-list/task-list.html'
 })
 
-
 export class TaskList implements OnDestroy {
   filter: string;
   private store: TaskStore;

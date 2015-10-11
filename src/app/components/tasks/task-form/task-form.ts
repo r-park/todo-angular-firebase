@@ -24,7 +24,6 @@ import { TaskService } from 'app/core/task/task-service';
   templateUrl: 'app/components/tasks/task-form/task-form.html'
 })
 
-
 export class TaskForm {
   form: ControlGroup;
   private taskService: TaskService;

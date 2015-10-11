@@ -4,7 +4,7 @@ import Firebase from 'firebase';
 
 export interface ITask {
   completed: boolean;
-  createdAt: any;
+  createdAt: number;
   key?: string;
   title: string;
 }
@@ -13,10 +13,10 @@ export interface ITask {
 @Injectable()
 export class Task implements ITask {
   completed: boolean = false;
-  createdAt: any = Firebase.ServerValue.TIMESTAMP;
+  createdAt: number = Firebase.ServerValue.TIMESTAMP;
   title: string;
 
-  constructor(title: string = '') {
+  constructor(title: string) {
     this.title = title;
   }
 }

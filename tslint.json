@@ -24,7 +24,7 @@
     "label-position": true,
     "label-undefined": true,
     "max-line-length": [
-      true,
+      false,
       140
     ],
     "member-ordering": [
@@ -97,7 +97,7 @@
       "variable-declaration": "nospace"
     }],
     "use-strict": [
-      true,
+      false,
       "check-module",
       "check-function"
     ],
