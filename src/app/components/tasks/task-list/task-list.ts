@@ -2,7 +2,6 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  Inject,
   NgFor,
   OnDestroy,
   View
@@ -33,7 +32,7 @@ export class TaskList implements OnDestroy {
   private store: TaskStore;
   private subscriber: any;
 
-  constructor(params: RouteParams, @Inject(ChangeDetectorRef) cdRef: ChangeDetectorRef, store: TaskStore) {
+  constructor(params: RouteParams, cdRef: ChangeDetectorRef, store: TaskStore) {
     this.filter = params.get('filter');
     this.store = store;
 

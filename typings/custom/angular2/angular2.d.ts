@@ -48,7 +48,7 @@ declare module 'angular2/src/core/facade/lang' {
 }
 
 
-declare module 'angular2/test' {
+declare module 'angular2/testing_internal' {
   class AsyncTestCompleter {
     constructor(_done: Function);
     done(): void;
@@ -61,34 +61,4 @@ declare module 'angular2/test' {
     spy(name: any): void;
     prop(name: any, value: any): void;
   }
-
-  interface RootTestComponent {
-    debugElement: ng.DebugElement;
-    detectChanges(): void;
-    destroy(): void;
-  }
-
-  class TestComponentBuilder {
-    constructor(_injector: ng.Injector);
-    overrideTemplate(componentType: any, template: string): TestComponentBuilder;
-    overrideView(componentType: any, view: any): TestComponentBuilder;
-    overrideDirective(componentType: any, from: any, to: any): TestComponentBuilder;
-    overrideBindings(type: any, bindings: any[]): TestComponentBuilder;
-    overrideViewBindings(type: any, bindings: any[]): TestComponentBuilder;
-    createAsync(rootComponentType: any): any;
-
-  }
-
-  function afterEach(fn: Function): void;
-  function beforeEach(fn: Function): void;
-  function beforeEachBindings(fn: any): void;
-  function describe(...args: any[]): void;
-  function ddescribe(...args: any[]): void;
-  function xdescribe(...args: any[]): void;
-  function expect(actual: any): any;
-  function it(name: any, fn: any, timeOut?: any): void;
-  function xit(name: any, fn: any, timeOut?: any): void;
-  function iit(name: any, fn: any, timeOut?: any): void;
-
-  function inject(tokens: any[], fn: Function);
 }

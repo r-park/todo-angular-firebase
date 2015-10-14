@@ -1,9 +1,9 @@
-[![Travis branch](https://img.shields.io/travis/r-park/todo-angular2-firebase/master.svg?style=flat-square)](https://travis-ci.org/r-park/todo-angular2-firebase)
-[![Coveralls branch](https://img.shields.io/coveralls/r-park/todo-angular2-firebase/master.svg?style=flat-square)](https://coveralls.io/github/r-park/todo-angular2-firebase?branch=master)
+[![Build Status](https://travis-ci.org/r-park/todo-angular2-firebase.svg?branch=master)](https://travis-ci.org/r-park/todo-angular2-firebase)
+[![Coverage Status](https://coveralls.io/repos/r-park/todo-angular2-firebase/badge.svg?branch=master&service=github)](https://coveralls.io/github/r-park/todo-angular2-firebase?branch=master)
 
 
 # Todo app with Angular 2 and Firebase
-- Angular 2 alpha.40
+- Angular 2 alpha.42
 - Firebase
 - Typescript
 - SystemJS

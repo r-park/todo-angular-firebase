@@ -1,6 +1,6 @@
 import { AuthService } from './auth-service';
 
 
-export const AUTH_BINDINGS: Array<any> = [
+export const AUTH_PROVIDERS: Array<any> = [
   AuthService
 ];
