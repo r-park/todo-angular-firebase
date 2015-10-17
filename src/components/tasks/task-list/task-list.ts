@@ -7,8 +7,8 @@ import {
   View
 } from 'angular2/angular2';
 import { RouterLink, RouteParams } from 'angular2/router';
-import { ITask } from 'app/core/task/task';
-import { TaskStore } from 'app/core/task/task-store';
+import { ITask } from 'core/task/task';
+import { TaskStore } from 'core/task/task-store';
 import { TaskItem } from '../task-item/task-item';
 
 
@@ -23,8 +23,8 @@ import { TaskItem } from '../task-item/task-item';
     RouterLink,
     TaskItem
   ],
-  styleUrls: ['app/components/tasks/task-list/task-list.css'],
-  templateUrl: 'app/components/tasks/task-list/task-list.html'
+  styleUrls: ['components/tasks/task-list/task-list.css'],
+  templateUrl: 'components/tasks/task-list/task-list.html'
 })
 
 export class TaskList implements OnDestroy {

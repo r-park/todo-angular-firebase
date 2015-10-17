@@ -4,8 +4,8 @@ import {
   describe,
   expect,
   it } from 'angular2/testing_internal';
-import { AuthService } from 'app/core/auth/auth-service';
-import { firebaseRef } from 'app/core/firebase/firebase-ref';
+import { AuthService } from '../auth/auth-service';
+import { firebaseRef } from '../firebase/firebase-ref';
 import { Task } from './task';
 import { TaskService } from './task-service';
 

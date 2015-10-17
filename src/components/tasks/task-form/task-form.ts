@@ -7,8 +7,8 @@ import {
   NgFormModel,
   View
 } from 'angular2/angular2';
-import { CustomValidators } from 'app/util/custom-validators';
-import { TaskService } from 'app/core/task/task-service';
+import { CustomValidators } from 'utils/custom-validators';
+import { TaskService } from 'core/task/task-service';
 
 
 @Component({
@@ -21,8 +21,8 @@ import { TaskService } from 'app/core/task/task-service';
     NgControlName,
     NgFormModel
   ],
-  styleUrls: ['app/components/tasks/task-form/task-form.css'],
-  templateUrl: 'app/components/tasks/task-form/task-form.html'
+  styleUrls: ['components/tasks/task-form/task-form.css'],
+  templateUrl: 'components/tasks/task-form/task-form.html'
 })
 
 export class TaskForm {
@@ -47,7 +47,7 @@ export class TaskForm {
 
   submit(): void {
     if (this.form.valid) {
-      this.taskService.createTask(this.form.controls.title.value);
+      this.taskService.createTask(this.form.controls.title.value.trim());
       this.clear();
     }
   }

@@ -1,6 +1,6 @@
 import { Inject } from 'angular2/angular2';
 import { PromiseWrapper } from 'angular2/src/core/facade/async';
-import { firebaseRef } from 'app/core/firebase/firebase-ref';
+import { firebaseRef } from 'core/firebase/firebase-ref';
 
 
 export class AuthService {

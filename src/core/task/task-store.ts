@@ -1,8 +1,8 @@
 import { Inject, Injectable } from 'angular2/angular2';
-import { AuthService } from 'app/core/auth/auth-service';
-import { firebaseRef } from 'app/core/firebase/firebase-ref';
-import { FirebaseStore } from 'app/core/firebase/firebase-store';
-import { ITask } from 'app/core/task/task';
+import { AuthService } from '../auth/auth-service';
+import { firebaseRef } from '../firebase/firebase-ref';
+import { FirebaseStore } from '../firebase/firebase-store';
+import { ITask } from './task';
 
 
 @Injectable()

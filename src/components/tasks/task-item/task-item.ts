@@ -8,9 +8,9 @@ import {
   NgFormModel,
   View
 } from 'angular2/angular2';
-import { ITask } from 'app/core/task/task';
-import { TaskService } from 'app/core/task/task-service';
-import { FocusDirective } from 'app/directives/focus-directive';
+import { ITask } from 'core/task/task';
+import { TaskService } from 'core/task/task-service';
+import { FocusDirective } from 'directives/focus-directive';
 
 
 @Component({
@@ -26,8 +26,8 @@ import { FocusDirective } from 'app/directives/focus-directive';
     NgControlName,
     NgFormModel
   ],
-  styleUrls: ['app/components/tasks/task-item/task-item.css'],
-  templateUrl: 'app/components/tasks/task-item/task-item.html'
+  styleUrls: ['components/tasks/task-item/task-item.css'],
+  templateUrl: 'components/tasks/task-item/task-item.html'
 })
 
 export class TaskItem {

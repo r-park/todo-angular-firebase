@@ -12,7 +12,7 @@ import { TaskList } from './task-list/task-list';
     TaskForm,
     TaskList
   ],
-  templateUrl: 'app/components/tasks/tasks.html'
+  templateUrl: 'components/tasks/tasks.html'
 })
 
 export class Tasks {}
