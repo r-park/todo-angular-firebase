@@ -1,6 +1,5 @@
 import { Inject } from 'angular2/angular2';
 import { PromiseWrapper } from 'angular2/src/core/facade/async';
-import { Defer } from 'app/util/promise';
 import { firebaseRef } from 'app/core/firebase/firebase-ref';
 
 
@@ -17,19 +16,17 @@ export class AuthService {
   }
 
   authenticate(): Promise<FirebaseAuthData> {
-    let deferred: Defer<FirebaseAuthData> = new Defer();
-
-    this.ref.authAnonymously((error: Error, authData: FirebaseAuthData) => {
-      if (!error) {
-        this.authData = authData;
-        deferred.resolve(authData);
-      }
-      else {
-        deferred.reject(error);
-      }
+    return new Promise((resolve: (value?: any) => void, reject: (error?: any) => void) => {
+      this.ref.authAnonymously((error: Error, authData: FirebaseAuthData) => {
+        if (!error) {
+          this.authData = authData;
+          resolve(authData);
+        }
+        else {
+          reject(error);
+        }
+      });
     });
-
-    return deferred.promise;
   }
 
   ensureAuth(): Promise<FirebaseAuthData> {
