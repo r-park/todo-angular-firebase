@@ -1,5 +1,4 @@
 [![Build Status](https://travis-ci.org/r-park/todo-angular2-firebase.svg?branch=master)](https://travis-ci.org/r-park/todo-angular2-firebase)
-[![Coverage Status](https://coveralls.io/repos/r-park/todo-angular2-firebase/badge.svg?branch=master&service=github)](https://coveralls.io/github/r-park/todo-angular2-firebase?branch=master)
 
 
 # Todo app with Angular 2 and Firebase
