@@ -59,11 +59,12 @@
   outline: none;
   border: 0;
   border-radius: 100px;
-  padding: 3px 0 0 0;
+  padding: 0;
   width: 40px;
   height: 40px;
   overflow: hidden;
   background: #2a2a2a;
+  transform: translate(0, 0);
 
   &:first-child {
     margin: 0;
@@ -71,17 +72,17 @@
 }
 
 .icon {
-  fill: #555;
-  transform: translate(0, 0);
+  line-height: 40px !important;
+  color: #555;
 
   .task-item__button:hover & {
-    fill: #999;
+    color: #999;
   }
 }
 
 .icon--active {
   &, .task-item__button:hover & {
-    fill: #85bf6b;
+    color: #85bf6b;
   }
 }
 
