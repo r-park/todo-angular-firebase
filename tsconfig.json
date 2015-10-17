@@ -1,4 +1,6 @@
 {
+  "version": "1.6.0",
+
   "compilerOptions": {
     "declaration": false,
     "emitDecoratorMetadata": true,
