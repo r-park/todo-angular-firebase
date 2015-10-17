@@ -8,6 +8,8 @@
 - SystemJS
 - SASS
 
+Try the demo at <a href="https://ng2-todo-app.firebaseapp.com" target="_blank">ng2-todo-app.firebaseapp.com</a>
+
 ## Installing dependencies
 ```bash
 npm install
