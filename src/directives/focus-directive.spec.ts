@@ -4,7 +4,7 @@ import {
   describe,
   expect,
   inject,
-  it,
+  xit,
   RootTestComponent,
   TestComponentBuilder } from 'angular2/testing_internal';
 import { FocusDirective } from './focus-directive';
@@ -19,7 +19,7 @@ class TestComponent {
 
 export function main(): void {
   describe('FocusDirective', () => {
-    it('should call `focus()` on element when bound expression evaluates to `true`', inject([TestComponentBuilder, AsyncTestCompleter], (tcb: TestComponentBuilder, async: AsyncTestCompleter) => {
+    xit('should call `focus()` on element when bound expression evaluates to `true`', inject([TestComponentBuilder, AsyncTestCompleter], (tcb: TestComponentBuilder, async: AsyncTestCompleter) => {
       let template: string = `<input [focus]="shouldFocus" type="text">`;
 
       tcb.overrideTemplate(TestComponent, template)
