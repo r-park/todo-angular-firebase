@@ -54,6 +54,12 @@ declare module 'angular2/testing_internal' {
     done(): void;
   }
 
+  class RootTestComponent {
+    debugElement: any;
+    detectChanges(): void;
+    destroy(): void;
+  }
+
   class SpyObject {
     constructor(type?: any);
     static stub(object?: any, config?: any, overrides?: any): void;
@@ -61,4 +67,24 @@ declare module 'angular2/testing_internal' {
     spy(name: any): void;
     prop(name: any, value: any): void;
   }
+
+  class TestComponentBuilder {
+    overrideTemplate(componentType: any, template: string): TestComponentBuilder;
+    createAsync(rootComponentType: any): Promise<RootTestComponent>;
+  }
+
+  var expect: (actual: any) => any;
+
+  function inject(tokens: any[], fn: Function): any;
+
+  function describe(...args: any[]): void;
+  function ddescribe(...args: any[]): void;
+  function xdescribe(...args: any[]): void;
+
+  function beforeEach(fn: any): void;
+  function beforeEachBindings(fn: any): void;
+
+  function it(name: any, fn: any, timeOut?: any): void;
+  function xit(name: any, fn: any, timeOut?: any): void;
+  function iit(name: any, fn: any, timeOut?: any): void;
 }

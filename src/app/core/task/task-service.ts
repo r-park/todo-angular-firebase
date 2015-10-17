@@ -13,14 +13,20 @@ export class TaskService {
   }
 
   createTask(title: string): void {
-    this.ref.push(new Task(title));
+    this.ref.push(new Task(title), (error: Error) => {
+      if (error) console.log('Error @createTask:', error);
+    });
   }
 
   deleteTask(task: ITask): void {
-    this.ref.child(task.key).remove();
+    this.ref.child(task.key).remove((error: Error) => {
+      if (error) console.log('Error @deleteTask:', error);
+    });
   }
 
   updateTask(task: ITask, changes: any): void {
-    this.ref.child(task.key).update(changes);
+    this.ref.child(task.key).update(changes, (error: Error) => {
+      if (error) console.log('Error @updateTask:', error);
+    });
   }
 }

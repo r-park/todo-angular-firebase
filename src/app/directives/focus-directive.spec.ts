@@ -6,7 +6,7 @@ import {
   inject,
   it,
   RootTestComponent,
-  TestComponentBuilder } from 'angular2/test';
+  TestComponentBuilder } from 'angular2/testing_internal';
 import { FocusDirective } from './focus-directive';
 
 

@@ -7,8 +7,8 @@ import { App } from 'app/components/app/app';
 
 
 bootstrap(App, [
-  ROUTER_PROVIDERS,
   provide(APP_BASE_HREF, {useValue: location.pathname}),
+  ROUTER_PROVIDERS,
   FORM_PROVIDERS,
   AUTH_PROVIDERS,
   FIREBASE_PROVIDERS,

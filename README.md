@@ -3,7 +3,7 @@
 
 
 # Todo app with Angular 2 and Firebase
-- Angular 2 alpha.42
+- Angular 2 alpha.44
 - Firebase
 - Typescript
 - SystemJS
@@ -15,13 +15,9 @@ npm install
 ```
 
 #### Gulp v4
-The gulp tasks for this project require gulp v4-alpha. If you don't wish to install it at this time, you can run the gulp tasks using the locally installed gulp. For example, with gulp v4 installed:
+The gulp tasks for this project require gulp v4-alpha. If you don't wish to globally install the v4 gulp-cli, you can run the gulp tasks using the locally installed gulp. For example:
 ```bash
-gulp dev
-```
-Without gulp v4:
-```bash
-./node_modules/.bin/gulp dev
+./node_modules/.bin/gulp run
 ```
 
 #### Installing Gulp v4 (optional)
@@ -31,17 +27,17 @@ npm install -g gulpjs/gulp-cli#4.0
 
 ## Running the app
 ```bash
-gulp
+gulp run
 ```
-Running `gulp` will:
+Executing `gulp run` will:
 - Build the project
 - Start the server at <a href="http://localhost:7000" target="_blank">localhost:7000</a>
 
 ## Developing
 ```bash
-gulp dev
+gulp
 ```
-Running `gulp dev` will:
+Executing the default `gulp` command will:
 - Build the project
 - Start the server at <a href="http://localhost:7000" target="_blank">localhost:7000</a>
 - Watch for changes to the source files and process changes

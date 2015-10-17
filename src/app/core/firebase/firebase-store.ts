@@ -12,7 +12,7 @@ export class FirebaseStore {
     this.ref.on('child_changed', this.updated.bind(this));
 
     this.ready = new Promise<any>((resolve: (value?: any) => void) => {
-      this.ref.once('value', () => resolve());
+      this.ref.once('value', resolve);
     });
   }
 
