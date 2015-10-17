@@ -40,6 +40,7 @@ System.config({
   paths: {
     '*': 'target/*',
     'angular2/*': 'node_modules/angular2/*',
+    'firebase': 'node_modules/firebase/lib/firebase-web.js',
     '@reactivex/rxjs/*': 'node_modules/@reactivex/rxjs/*.js'
   }
 });

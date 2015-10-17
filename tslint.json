@@ -50,7 +50,7 @@
     "no-duplicate-key": true,
     "no-shadowed-variable": true,
     "no-duplicate-variable": true,
-    "no-empty": true,
+    "no-empty": false,
     "no-eval": true,
     "no-internal-module": true,
     "no-require-imports": true,
@@ -85,7 +85,6 @@
       "call-signature",
       "parameter",
       "property-declaration",
-      "variable-declaration",
       "member-variable-declaration"
     ],
     "typedef-whitespace": [

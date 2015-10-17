@@ -20,6 +20,7 @@ module.exports = function(config) {
       'node_modules/systemjs/dist/system.js', // [ 2 ]
       'node_modules/reflect-metadata/Reflect.js',
       {pattern: 'node_modules/@reactivex/rxjs/**', included: false, watched: false}, // [ 3 ]
+      {pattern: 'node_modules/firebase/lib/**', included: false, watched: false}, // [ 3 ]
       {pattern: 'node_modules/angular2/**', included: false, watched: false}, // [ 3 ]
       {pattern: 'target/**', included: false, watched: false}, // [ 3 ]
       'karma.loader.js'

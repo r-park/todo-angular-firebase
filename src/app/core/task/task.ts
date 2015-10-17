@@ -14,6 +14,7 @@ export interface ITask {
 export class Task implements ITask {
   completed: boolean = false;
   createdAt: number = Firebase.ServerValue.TIMESTAMP;
+  key: string;
   title: string;
 
   constructor(title: string) {
