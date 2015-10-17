@@ -7,6 +7,7 @@ import {
   NgFormModel,
   View
 } from 'angular2/angular2';
+import { CustomValidators } from 'app/util/custom-validators';
 import { TaskService } from 'app/core/task/task-service';
 
 
@@ -29,7 +30,10 @@ export class TaskForm {
   private taskService: TaskService;
 
   constructor(formBuilder: FormBuilder, taskService: TaskService) {
-    this.form = formBuilder.group({title: ['']});
+    this.form = formBuilder.group({
+      title: ['', CustomValidators.required]
+    });
+
     this.taskService = taskService;
   }
 
