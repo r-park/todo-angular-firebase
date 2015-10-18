@@ -14,10 +14,12 @@
   "dependencies": {
     "angular2": "2.0.0-alpha.44",
     "es6-module-loader": "~0.17.8",
+    "es6-shim": "~0.33.6",
     "firebase": "~2.3.1",
     "systemjs": "~0.19.4"
   },
   "devDependencies": {
+    "@reactivex/rxjs": "5.0.0-alpha.4",
     "autoprefixer": "~6.0.3",
     "browser-sync": "~2.9.11",
     "connect-modrewrite": "~0.8.2",
@@ -33,7 +35,6 @@
     "karma-chrome-launcher": "~0.2.1",
     "karma-jasmine": "~0.3.6",
     "minx": "~0.4.14",
-    "@reactivex/rxjs": "5.0.0-alpha.4",
     "reflect-metadata": "~0.1.2",
     "sinon": "~1.17.1",
     "traceur": "~0.0.92",
