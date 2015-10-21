@@ -2,7 +2,8 @@ import { Control } from 'angular2/angular2';
 import {
   describe,
   expect,
-  it } from 'angular2/testing_internal';
+  it
+} from 'angular2/testing';
 import { CustomValidators } from './custom-validators';
 
 

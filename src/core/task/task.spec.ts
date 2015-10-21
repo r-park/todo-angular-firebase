@@ -3,7 +3,8 @@ import {
   beforeEach,
   describe,
   expect,
-  it } from 'angular2/testing_internal';
+  it
+} from 'angular2/testing';
 import { Task } from './task';
 
 

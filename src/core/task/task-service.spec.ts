@@ -3,7 +3,8 @@ import {
   beforeEach,
   describe,
   expect,
-  it } from 'angular2/testing_internal';
+  it
+} from 'angular2/testing';
 import { AuthService } from '../auth/auth-service';
 import { firebaseRef } from '../firebase/firebase-ref';
 import { Task } from './task';
