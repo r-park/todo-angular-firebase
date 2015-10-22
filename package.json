@@ -22,7 +22,7 @@
     "@reactivex/rxjs": "5.0.0-alpha.4",
     "autoprefixer": "~6.0.3",
     "browser-sync": "~2.9.11",
-    "connect-modrewrite": "~0.8.2",
+    "connect-history-api-fallback": "~1.1.0",
     "del": "~2.0.2",
     "gulp": "gulpjs/gulp.git#4.0",
     "gulp-postcss": "~6.0.1",

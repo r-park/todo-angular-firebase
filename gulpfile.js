@@ -3,8 +3,8 @@ var autoprefixer = require('autoprefixer'),
     del          = require('del'),
     exec         = require('child_process').exec,
     gulp         = require('gulp'),
+    historyApi   = require('connect-history-api-fallback'),
     karma        = require('karma'),
-    modRewrite   = require('connect-modrewrite'),
     postcss      = require('gulp-postcss'),
     sass         = require('gulp-sass'),
     sourcemaps   = require('gulp-sourcemaps'),
@@ -63,9 +63,7 @@ var config = {
     server: {
       baseDir: paths.target,
       middleware: [
-        modRewrite([
-          '!\\.\\w+$ /index.html [L]'
-        ])
+        historyApi()
       ]
     }
   },
