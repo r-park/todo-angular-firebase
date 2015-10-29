@@ -1,8 +1,5 @@
 module.exports = function(config) {
   config.set({
-
-    basePath: '.',
-
     frameworks: ['jasmine'],
 
     /**
@@ -26,15 +23,7 @@ module.exports = function(config) {
       'karma.loader.js'
     ],
 
-    exclude: [],
-
-    preprocessors: {},
-
     reporters: ['dots'],
-
-    port: 9876,
-
-    colors: true,
 
     // config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
     logLevel: config.LOG_INFO,
@@ -56,6 +45,5 @@ module.exports = function(config) {
     },
 
     browsers: process.env.TRAVIS ? ['TRAVIS_CHROME'] : ['Chrome']
-
   });
 };
