@@ -2,7 +2,7 @@
 
 
 # Todo app with Angular 2 and Firebase
-- Angular 2 alpha.44
+- Angular `2.0.0-alpha.45`
 - Firebase
 - Typescript
 - SystemJS
@@ -15,15 +15,13 @@ Try the demo at <a href="https://ng2-todo-app.firebaseapp.com" target="_blank">n
 npm install
 ```
 
-#### Gulp v4
-The gulp tasks for this project require gulp v4-alpha. If you don't wish to globally install the v4 gulp-cli, you can run the gulp tasks using the locally installed gulp. For example:
-```bash
-./node_modules/.bin/gulp run
-```
-
-#### Installing Gulp v4 (optional)
+#### Gulp v4 (optional)
 ```bash
 npm install -g gulpjs/gulp-cli#4.0
+```
+The gulp tasks for this project require gulp v4-alpha. If you don't wish to globally install the v4 gulp-cli, you can run the gulp tasks using the locally installed gulp under `./node_modules/.bin` — for example:
+```bash
+./node_modules/.bin/gulp run
 ```
 
 ## Running the app
@@ -46,9 +44,11 @@ Executing the default `gulp` command will:
 
 ## Testing
 ```bash
-gulp test
-```
-The following command will run the test suites, then watch for changes to the source files, and re-run the tests whenever the sources are modified.
-```bash
 gulp test.watch
 ```
+Executing `gulp test.watch` will:
+- Run the test suites
+- Watch for changes to the source files
+- Re-run the tests whenever the sources are modified
+
+For a single test run without auto-watch, execute `gulp test` instead.
