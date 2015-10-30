@@ -282,7 +282,14 @@ interface Firebase extends FirebaseQuery {
 	resetPassword(credentials: FirebaseResetPasswordCredentials, onComplete: (error: any) => void): void;
 	onDisconnect(): FirebaseOnDisconnect;
 }
+
+interface FirebaseInternal {
+  forceWebSockets(): void;
+}
+
 interface FirebaseStatic {
+  INTERNAL: FirebaseInternal;
+
 	/**
 	 * Constructs a new Firebase reference from a full Firebase URL.
 	 */
