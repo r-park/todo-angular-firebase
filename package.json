@@ -8,8 +8,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "./node_modules/.bin/gulp run",
-    "test": "./node_modules/.bin/gulp test"
+    "start": "./scripts/run.sh"
   },
   "dependencies": {
     "angular2": "2.0.0-alpha.45",
