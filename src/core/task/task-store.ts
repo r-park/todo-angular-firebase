@@ -14,16 +14,4 @@ export class TaskStore extends FirebaseStore {
   get tasks(): ITask[] {
     return this.list;
   }
-
-  filterActiveTasks(): ITask[] {
-    return this.tasks.filter((task: ITask) => {
-      return !task.completed;
-    });
-  }
-
-  filterCompletedTasks(): ITask[] {
-    return this.tasks.filter((task: ITask) => {
-      return task.completed;
-    });
-  }
 }

@@ -10,6 +10,7 @@ import { RouterLink, RouteParams } from 'angular2/router';
 import { ITask } from 'core/task/task';
 import { TaskStore } from 'core/task/task-store';
 import { TaskItem } from '../task-item/task-item';
+import { TaskListFilterPipe } from './task-list-filter-pipe';
 
 
 @Component({
@@ -23,12 +24,16 @@ import { TaskItem } from '../task-item/task-item';
     RouterLink,
     TaskItem
   ],
+  pipes: [
+    TaskListFilterPipe
+  ],
   styleUrls: ['components/tasks/task-list/task-list.css'],
   templateUrl: 'components/tasks/task-list/task-list.html'
 })
 
 export class TaskList implements OnDestroy {
   filter: string;
+  tasks: ITask[];
   private store: TaskStore;
   private subscriber: any;
 
@@ -37,21 +42,12 @@ export class TaskList implements OnDestroy {
     this.store = store;
 
     store.ready.then(() => {
+      this.tasks = this.store.tasks;
       cdRef.markForCheck();
       this.subscriber = store.subscribe({
         next: (): void => cdRef.markForCheck()
       });
     });
-  }
-
-  get tasks(): ITask[] {
-    if (this.filter === 'active') {
-      return this.store.filterActiveTasks();
-    }
-    else if (this.filter === 'completed') {
-      return this.store.filterCompletedTasks();
-    }
-    return this.store.tasks;
   }
 
   onDestroy(): void {
