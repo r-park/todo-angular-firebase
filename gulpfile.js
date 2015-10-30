@@ -18,8 +18,8 @@ var autoprefixer = require('autoprefixer'),
 var paths = {
   lib: {
     src: [
-      'node_modules/angular2/bundles/angular2.{dev.js,min.js}',
-      'node_modules/angular2/bundles/router.dev.{js,js.map,min.js,min.js.map}',
+      'node_modules/angular2/bundles/angular2.min.js',
+      'node_modules/angular2/bundles/router.dev.{min.js,min.js.map}',
       'node_modules/es6-module-loader/dist/es6-module-loader.{js,js.map}',
       'node_modules/es6-shim/es6-shim.{map,min.js}',
       'node_modules/firebase/lib/firebase-web.js',
