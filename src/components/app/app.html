@@ -2,12 +2,16 @@
   <div class="g-row">
     <div class="g-col">
       <h1 class="header__title">Todo Angular2 Firebase</h1>
-      <a class="header__link" href="https://github.com/r-park/todo-angular2-firebase"></a>
+
+      <ul class="header__links">
+        <li *ng-if="authenticated"><a class="header__link" (click)="signOut()" href="javascript:">Sign out</a></li>
+        <li><a class="header__link header__link--github" href="https://github.com/r-park/todo-angular2-firebase"></a></li>
+      </ul>
     </div>
   </div>
 </header>
 
 
 <main class="main">
-  <auth-router-outlet></auth-router-outlet>
+  <router-outlet></router-outlet>
 </main>

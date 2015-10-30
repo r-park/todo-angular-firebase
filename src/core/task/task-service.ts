@@ -1,32 +1,30 @@
-import { Inject, Injectable } from 'angular2/angular2';
-import { AuthService } from '../auth/auth-service';
-import { firebaseRef } from '../firebase/firebase-ref';
 import { ITask, Task } from './task';
 
 
-@Injectable()
 export class TaskService {
-  private ref: Firebase;
-
-  constructor(@Inject(firebaseRef) ref: Firebase, auth: AuthService) {
-    this.ref = ref.child(`tasks/${auth.id}`);
-  }
+  constructor(private ref: Firebase) {}
 
   createTask(title: string): void {
     this.ref.push(new Task(title), (error: Error) => {
-      if (error) console.log('Error @createTask:', error);
+      if (error) {
+        console.error('ERROR @ createTask :', error);
+      }
     });
   }
 
   deleteTask(task: ITask): void {
     this.ref.child(task.key).remove((error: Error) => {
-      if (error) console.log('Error @deleteTask:', error);
+      if (error) {
+        console.error('ERROR @ deleteTask :', error);
+      }
     });
   }
 
   updateTask(task: ITask, changes: any): void {
     this.ref.child(task.key).update(changes, (error: Error) => {
-      if (error) console.log('Error @updateTask:', error);
+      if (error) {
+        console.error('ERROR @ updateTask :', error);
+      }
     });
   }
 }

@@ -1,19 +1,12 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  NgFor,
-  OnDestroy,
-  View
-} from 'angular2/angular2';
+import { Component, NgFor, View } from 'angular2/angular2';
 import { RouterLink, RouteParams } from 'angular2/router';
 import { ITask } from 'core/task/task';
 import { TaskStore } from 'core/task/task-store';
 import { TaskItem } from '../task-item/task-item';
+import { TaskListFilterPipe } from './task-list-filter-pipe';
 
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'task-list'
 })
 
@@ -23,40 +16,22 @@ import { TaskItem } from '../task-item/task-item';
     RouterLink,
     TaskItem
   ],
+  pipes: [
+    TaskListFilterPipe
+  ],
   styleUrls: ['components/tasks/task-list/task-list.css'],
   templateUrl: 'components/tasks/task-list/task-list.html'
 })
 
-export class TaskList implements OnDestroy {
+export class TaskList {
   filter: string;
-  private store: TaskStore;
-  private subscriber: any;
+  tasks: ITask[];
 
-  constructor(params: RouteParams, cdRef: ChangeDetectorRef, store: TaskStore) {
+  constructor(store: TaskStore, params: RouteParams) {
     this.filter = params.get('filter');
-    this.store = store;
 
     store.ready.then(() => {
-      cdRef.markForCheck();
-      this.subscriber = store.subscribe({
-        next: (): void => cdRef.markForCheck()
-      });
+      this.tasks = store.list;
     });
-  }
-
-  get tasks(): ITask[] {
-    if (this.filter === 'active') {
-      return this.store.filterActiveTasks();
-    }
-    else if (this.filter === 'completed') {
-      return this.store.filterCompletedTasks();
-    }
-    return this.store.tasks;
-  }
-
-  onDestroy(): void {
-    if (this.subscriber) {
-      this.subscriber.unsubscribe();
-    }
   }
 }

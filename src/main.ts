@@ -1,16 +1,17 @@
-import { bootstrap, FORM_PROVIDERS, provide } from 'angular2/angular2';
+import { bootstrap, provide } from 'angular2/angular2';
 import { APP_BASE_HREF, ROUTER_PROVIDERS } from 'angular2/router';
-import { AUTH_PROVIDERS } from 'core/auth/bindings';
-import { FIREBASE_PROVIDERS } from 'core/firebase/bindings';
-import { TASK_PROVIDERS } from 'core/task/bindings';
+import Firebase from 'firebase';
+import { AUTH_PROVIDERS } from 'core/auth/providers';
+import { TASK_PROVIDERS } from 'core/task/providers';
 import { App } from 'components/app/app';
 
 
+Firebase.INTERNAL.forceWebSockets();
+
+
 bootstrap(App, [
-  provide(APP_BASE_HREF, {useValue: location.pathname}),
+  provide(APP_BASE_HREF, {useValue: '/'}),
   ROUTER_PROVIDERS,
-  FORM_PROVIDERS,
   AUTH_PROVIDERS,
-  FIREBASE_PROVIDERS,
   TASK_PROVIDERS
-]).catch((err: Error) => console.error(err));
+]).catch((error: Error) => console.error(error));
