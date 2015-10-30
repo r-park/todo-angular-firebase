@@ -1,13 +1,4 @@
-import {
-  Component,
-  ControlGroup,
-  DefaultValueAccessor,
-  FormBuilder,
-  NgControlName,
-  NgFormModel,
-  View
-} from 'angular2/angular2';
-import { CustomValidators } from 'utils/custom-validators';
+import { Component, FORM_DIRECTIVES, View } from 'angular2/angular2';
 import { TaskService } from 'core/task/task-service';
 
 
@@ -17,38 +8,26 @@ import { TaskService } from 'core/task/task-service';
 
 @View({
   directives: [
-    DefaultValueAccessor,
-    NgControlName,
-    NgFormModel
+    FORM_DIRECTIVES
   ],
   styleUrls: ['components/tasks/task-form/task-form.css'],
   templateUrl: 'components/tasks/task-form/task-form.html'
 })
 
 export class TaskForm {
-  form: ControlGroup;
-  private taskService: TaskService;
+  title: string = '';
 
-  constructor(formBuilder: FormBuilder, taskService: TaskService) {
-    this.form = formBuilder.group({
-      title: ['', CustomValidators.required]
-    });
-
-    this.taskService = taskService;
-  }
-
-  cancel(): void {
-    this.clear();
-  }
+  constructor(private taskService: TaskService) {}
 
   clear(): void {
-    this.form.controls.title.updateValue('');
+    this.title = '';
   }
 
   submit(): void {
-    if (this.form.valid) {
-      this.taskService.createTask(this.form.controls.title.value.trim());
-      this.clear();
+    const title = this.title.trim();
+    if (title.length) {
+      this.taskService.createTask(title);
     }
+    this.clear();
   }
 }
