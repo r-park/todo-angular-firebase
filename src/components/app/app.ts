@@ -1,7 +1,9 @@
-import { Component, View } from 'angular2/angular2';
-import { RouteConfig } from 'angular2/router';
-import { AuthRouterOutlet } from 'core/auth/auth-router-outlet';
-import { Tasks } from '../tasks/tasks';
+import { Component, NgIf, View } from 'angular2/angular2';
+import { RouteConfig, RouterOutlet } from 'angular2/router';
+import { AuthRouteHelper } from 'core/auth/auth-route-helper';
+import { AuthService } from 'core/auth/auth-service';
+import { SignIn } from 'components/sign-in/sign-in';
+import { Tasks } from 'components/tasks/tasks';
 
 
 @Component({
@@ -10,15 +12,29 @@ import { Tasks } from '../tasks/tasks';
 
 @View({
   directives: [
-    AuthRouterOutlet
+    NgIf,
+    RouterOutlet
   ],
   styleUrls: ['components/app/app.css'],
   templateUrl: 'components/app/app.html'
 })
 
 @RouteConfig([
-  { path: '/', redirectTo: '/tasks' },
-  { path: '/tasks', component: Tasks, as: 'Tasks' }
+  {path: '/', component: SignIn, as: 'SignIn'},
+  {path: '/tasks', component: Tasks, as: 'Tasks'}
 ])
 
-export class App {}
+export class App {
+  authenticated: boolean = false;
+
+  constructor(private auth: AuthService, routerHelper: AuthRouteHelper) {
+    auth.subscribe((authData: FirebaseAuthData) => {
+      this.authenticated = authData !== null;
+    });
+  }
+
+  signOut(): void {
+    this.auth.signOut();
+    window.location.replace('/');
+  }
+}

@@ -1,45 +1,51 @@
-import { Inject } from 'angular2/angular2';
-import { PromiseWrapper } from 'angular2/src/core/facade/async';
-import { firebaseRef } from 'core/firebase/firebase-ref';
-
-
 export class AuthService {
   private authData: FirebaseAuthData;
-  private ref: Firebase;
 
-  constructor(@Inject(firebaseRef) ref: Firebase) {
-    this.ref = ref;
+  constructor(private ref: Firebase) {
+    this.authData = this.ref.getAuth();
+  }
+
+  get authenticated(): boolean {
+    return this.authData !== null;
   }
 
   get id(): string {
-    return this.authData.uid;
+    return this.authenticated ? this.authData.uid : '';
   }
 
-  authenticate(): Promise<FirebaseAuthData> {
-    return new Promise((resolve: (value?: any) => void, reject: (error?: any) => void) => {
-      this.ref.authAnonymously((error: Error, authData: FirebaseAuthData) => {
-        if (!error) {
-          this.authData = authData;
-          resolve(authData);
+  signInWithGithub(): Promise<any> {
+    return this.authWithOAuth('github');
+  }
+
+  signInWithGoogle(): Promise<any> {
+    return this.authWithOAuth('google');
+  }
+
+  signInWithTwitter(): Promise<any> {
+    return this.authWithOAuth('twitter');
+  }
+
+  signOut(): void {
+    this.ref.unauth();
+  }
+
+  subscribe(callback: (authData: FirebaseAuthData) => void): any {
+    this.ref.onAuth(callback);
+    return () => this.ref.offAuth(callback);
+  }
+
+  private authWithOAuth(provider: string): Promise<any> {
+    return new Promise((resolve: () => void, reject: (reason: Error) => void) => {
+      this.ref.authWithOAuthPopup(provider, (error: Error, authData: FirebaseAuthData) => {
+        if (error) {
+          console.error('ERROR @ AuthService#authWithOAuth :', error);
+          reject(error);
         }
         else {
-          reject(error);
+          this.authData = authData;
+          resolve();
         }
       });
     });
-  }
-
-  ensureAuth(): Promise<FirebaseAuthData> {
-    this.authData = this.ref.getAuth();
-    if (this.authData) {
-      return PromiseWrapper.resolve(this.authData);
-    }
-    else {
-      return this.authenticate();
-    }
-  }
-
-  unauth(): void {
-    this.ref.unauth();
   }
 }
