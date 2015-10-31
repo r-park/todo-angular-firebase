@@ -13,6 +13,7 @@ A simple Todo app example built with **Angular 2**. The app features a **Firebas
 - Typescript
 - SystemJS
 - SASS
+- Gulp `4.0.0-alpha.1`
 
 ## Installing dependencies
 ```bash
