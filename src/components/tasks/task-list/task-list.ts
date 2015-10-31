@@ -1,12 +1,18 @@
-import { Component, NgFor, View } from 'angular2/angular2';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  NgFor,
+  View
+} from 'angular2/angular2';
 import { RouterLink, RouteParams } from 'angular2/router';
-import { ITask } from 'core/task/task';
-import { TaskStore } from 'core/task/task-store';
+import { List } from 'immutable';
 import { TaskItem } from '../task-item/task-item';
 import { TaskListFilterPipe } from './task-list-filter-pipe';
 
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'task-list'
 })
 
@@ -24,14 +30,11 @@ import { TaskListFilterPipe } from './task-list-filter-pipe';
 })
 
 export class TaskList {
+  @Input() tasks: List<any>;
+
   filter: string;
-  tasks: ITask[];
 
-  constructor(store: TaskStore, params: RouteParams) {
+  constructor(params: RouteParams) {
     this.filter = params.get('filter');
-
-    store.ready.then(() => {
-      this.tasks = store.list;
-    });
   }
 }

@@ -18,6 +18,7 @@ module.exports = function(config) {
       'node_modules/reflect-metadata/Reflect.js',
       {pattern: 'node_modules/@reactivex/rxjs/**', included: false, watched: false}, // [ 3 ]
       {pattern: 'node_modules/angular2/**', included: false, watched: false}, // [ 3 ]
+      {pattern: 'node_modules/immutable/**', included: false, watched: false}, // [ 3 ]
       {pattern: 'node_modules/mockfirebase/browser/**', included: false, watched: false}, // [ 3 ]
       {pattern: 'test/lib/**', included: false, watched: false}, // [ 3 ]
       {pattern: 'target/**', included: false, watched: false}, // [ 3 ]
