@@ -38,6 +38,7 @@
     "mockfirebase": "~0.12.0",
     "reflect-metadata": "~0.1.2",
     "sinon": "~1.17.2",
+    "traceur": "~0.0.91",
     "typescript": "~1.6.2",
     "zone.js": "~0.5.8"
   }
