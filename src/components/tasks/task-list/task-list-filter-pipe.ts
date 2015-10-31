@@ -4,16 +4,16 @@ import { ITask } from 'core/task/task';
 
 @Pipe({
   name: 'filterTasks',
-  pure: false
+  pure: true
 })
 
 export class TaskListFilterPipe implements PipeTransform {
-  transform(list: ITask[], args?: string[]): ITask[] {
-    if (!args || !args.length) {
+  transform(list: ITask[], filterType?: string[]): ITask[] {
+    if (!filterType || !filterType.length) {
       return list;
     }
 
-    switch (args[0]) {
+    switch (filterType[0]) {
       case 'active':
         return list.filter((task: ITask) => {
           return !task.completed;
