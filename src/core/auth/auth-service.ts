@@ -1,12 +1,25 @@
+import { EventEmitter } from 'angular2/angular2';
+
+
 export class AuthService {
   private authData: FirebaseAuthData;
+  private emitter: EventEmitter = new EventEmitter();
 
   constructor(private ref: Firebase) {
     this.authData = this.ref.getAuth();
+
+    this.ref.onAuth((authData: FirebaseAuthData) => {
+      this.authData = authData;
+      this.emit();
+    });
   }
 
   get authenticated(): boolean {
-    return this.authData !== null;
+    return this.authData !== null && !this.expired;
+  }
+
+  get expired(): boolean {
+    return !this.authData || (this.authData.expires * 1000) < Date.now();
   }
 
   get id(): string {
@@ -29,23 +42,27 @@ export class AuthService {
     this.ref.unauth();
   }
 
-  subscribe(callback: (authData: FirebaseAuthData) => void): any {
-    this.ref.onAuth(callback);
-    return () => this.ref.offAuth(callback);
+  subscribe(next: (authenticated: boolean) => void): any {
+    let subscription = this.emitter.observer({next});
+    this.emit();
+    return subscription;
   }
 
   private authWithOAuth(provider: string): Promise<any> {
     return new Promise((resolve: () => void, reject: (reason: Error) => void) => {
-      this.ref.authWithOAuthPopup(provider, (error: Error, authData: FirebaseAuthData) => {
+      this.ref.authWithOAuthPopup(provider, (error: Error) => {
         if (error) {
           console.error('ERROR @ AuthService#authWithOAuth :', error);
           reject(error);
         }
         else {
-          this.authData = authData;
           resolve();
         }
       });
     });
+  }
+
+  private emit(): void {
+    this.emitter.next(this.authenticated);
   }
 }

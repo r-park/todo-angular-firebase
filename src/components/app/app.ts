@@ -28,8 +28,8 @@ export class App {
   authenticated: boolean = false;
 
   constructor(private auth: AuthService, routerHelper: AuthRouteHelper) {
-    auth.subscribe((authData: FirebaseAuthData) => {
-      this.authenticated = authData !== null;
+    auth.subscribe((authenticated: boolean) => {
+      this.authenticated = authenticated;
     });
   }
 
