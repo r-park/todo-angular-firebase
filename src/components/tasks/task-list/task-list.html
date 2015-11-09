@@ -5,5 +5,5 @@
 </ul>
 
 <div class="task-list">
-  <task-item [model]="task" *ng-for="#task of tasks | filterTasks:filter"></task-item>
+  <task-item [model]="task" *ng-for="#task of tasks | async | filterTasks:filter"></task-item>
 </div>

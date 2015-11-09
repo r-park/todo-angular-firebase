@@ -1,27 +1,26 @@
-import { EventEmitter } from 'angular2/angular2';
 import { List } from 'immutable';
+import { ReplaySubject } from '@reactivex/rxjs/dist/cjs/Rx';
 import { ITask } from './task';
 
 
 export class TaskStore {
   list: List<any> = List();
-  ready: Promise<any>;
-  private emitter: EventEmitter = new EventEmitter();
+  private tasks: ReplaySubject = new ReplaySubject(1);
 
-  constructor(private ref: Firebase) {
-    this.ref.on('child_added', this.created.bind(this));
-    this.ref.on('child_changed', this.updated.bind(this));
-    this.ref.on('child_removed', this.deleted.bind(this));
+  constructor(ref: Firebase) {
+    ref.on('child_added', this.created.bind(this));
+    ref.on('child_changed', this.updated.bind(this));
+    ref.on('child_removed', this.deleted.bind(this));
 
-    this.ready = new Promise((resolve: () => void) => {
-      this.ref.once('value', () => {
-        resolve();
-      });
-    });
+    ref.once('value', () => this.emit());
+  }
+
+  emit(): void {
+    this.tasks.next(this.list);
   }
 
   subscribe(next: (list: List<any>) => void): any {
-    return this.emitter.observer({next});
+    return this.tasks.subscribe(next);
   }
 
   created(snapshot: FirebaseDataSnapshot): void {
@@ -38,7 +37,7 @@ export class TaskStore {
     let index: number = this.findIndex(snapshot.key());
     if (index !== -1) {
       this.list = this.list.delete(index);
-      this.emitter.next(this.list);
+      this.emit();
     }
   }
 
@@ -49,7 +48,7 @@ export class TaskStore {
       let task: ITask = snapshot.val();
       task.key = key;
       this.list = this.list.set(index, task);
-      this.emitter.next(this.list);
+      this.emit();
     }
   }
 
