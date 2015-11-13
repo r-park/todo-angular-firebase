@@ -4,9 +4,11 @@
   "compilerOptions": {
     "declaration": false,
     "emitDecoratorMetadata": true,
+    "experimentalAsyncFunctions": true,
     "experimentalDecorators": true,
     "listFiles": true,
     "module": "system",
+    "moduleResolution": "node",
     "noEmitHelpers": false,
     "noImplicitAny": false,
     "noLib": false,

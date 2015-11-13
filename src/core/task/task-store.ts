@@ -6,7 +6,7 @@ import { ITask } from './task';
 export class TaskStore {
   list: List<any> = List();
   ready: Promise<any>;
-  private emitter: EventEmitter = new EventEmitter();
+  private emitter: EventEmitter<any> = new EventEmitter();
 
   constructor(private ref: Firebase) {
     this.ref.on('child_added', this.created.bind(this));
@@ -21,7 +21,7 @@ export class TaskStore {
   }
 
   subscribe(next: (list: List<any>) => void): any {
-    return this.emitter.observer({next});
+    return this.emitter.subscribe(next);
   }
 
   created(snapshot: FirebaseDataSnapshot): void {
