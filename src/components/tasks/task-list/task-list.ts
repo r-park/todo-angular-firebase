@@ -28,7 +28,7 @@ import { TaskListFilterPipe } from './task-list-filter-pipe';
 })
 
 export class TaskList {
-  @Input() tasks: ReplaySubject;
+  @Input() tasks: ReplaySubject<any>;
 
   filter: string;
 

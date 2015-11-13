@@ -5,12 +5,6 @@
   "path": "typings/tsd",
   "bundle": "typings/tsd/tsd.d.ts",
   "installed": {
-    "es6-shim/es6-shim.d.ts": {
-      "commit": "62eedc3121a5e28c50473d2e4a9cefbcb9c3957f"
-    },
-    "jasmine/jasmine.d.ts": {
-      "commit": "62eedc3121a5e28c50473d2e4a9cefbcb9c3957f"
-    },
     "sinon/sinon.d.ts": {
       "commit": "62eedc3121a5e28c50473d2e4a9cefbcb9c3957f"
     }

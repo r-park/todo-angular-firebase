@@ -5,7 +5,7 @@ import { ITask } from './task';
 
 export class TaskStore {
   list: List<any> = List();
-  private tasks: ReplaySubject = new ReplaySubject(1);
+  private tasks: ReplaySubject<any> = new ReplaySubject(1);
 
   constructor(ref: Firebase) {
     ref.on('child_added', this.created.bind(this));
