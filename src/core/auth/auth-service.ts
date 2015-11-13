@@ -3,7 +3,7 @@ import { EventEmitter } from 'angular2/angular2';
 
 export class AuthService {
   private authData: FirebaseAuthData;
-  private emitter: EventEmitter = new EventEmitter();
+  private emitter: EventEmitter<any> = new EventEmitter();
 
   constructor(private ref: Firebase) {
     this.authData = this.ref.getAuth();
@@ -43,7 +43,7 @@ export class AuthService {
   }
 
   subscribe(next: (authenticated: boolean) => void): any {
-    let subscription = this.emitter.observer({next});
+    let subscription = this.emitter.subscribe(next);
     this.emit();
     return subscription;
   }

@@ -6,9 +6,9 @@ import {
   View
 } from 'angular2/angular2';
 
-import { ITask } from 'core/task/task';
-import { TaskService } from 'core/task/task-service';
-import { Autofocus } from 'directives/autofocus-directive';
+import { ITask } from '../../../core/task/task';
+import { TaskService } from '../../../core/task/task-service';
+import { Autofocus } from '../../../directives/autofocus-directive';
 
 
 @Component({
