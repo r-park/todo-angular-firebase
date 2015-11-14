@@ -2,32 +2,34 @@ module.exports = function(config) {
   config.set({
     frameworks: ['jasmine'],
 
-    /**
-     * 1. zone-microtask must be included first as it contains a Promise monkey patch
-     * 2. Including systemjs because it defines `__eval`, which produces correct stack traces.
-     * 3. Sources and specs to be loaded via `karma.loader.js`
-     */
     files: [
-      'node_modules/zone.js/dist/zone-microtask.js', // [ 1 ]
-      'node_modules/zone.js/dist/long-stack-trace-zone.js',
-      'node_modules/zone.js/dist/jasmine-patch.js',
-      'node_modules/traceur/bin/traceur-runtime.js',
-      'node_modules/es6-module-loader/dist/es6-module-loader.js',
-      'node_modules/sinon/pkg/sinon.js',
-      'node_modules/systemjs/dist/system.js', // [ 2 ]
-      'node_modules/reflect-metadata/Reflect.js',
-      {pattern: 'node_modules/@reactivex/rxjs/**', included: false, watched: false}, // [ 3 ]
-      {pattern: 'node_modules/angular2/**', included: false, watched: false}, // [ 3 ]
-      {pattern: 'node_modules/immutable/**', included: false, watched: false}, // [ 3 ]
-      {pattern: 'node_modules/mockfirebase/browser/**', included: false, watched: false}, // [ 3 ]
-      {pattern: 'test/lib/**', included: false, watched: false}, // [ 3 ]
-      {pattern: 'target/**', included: false, watched: false}, // [ 3 ]
-      'karma.loader.js'
+      // paths loaded directly by Karma
+      {pattern: 'node_modules/es6-shim/es6-shim.min.js', included: true, watched: true},
+      {pattern: 'node_modules/systemjs/dist/system.src.js', included: true, watched: true},
+      {pattern: 'node_modules/angular2/bundles/angular2.js', included: true, watched: true},
+      {pattern: 'node_modules/angular2/bundles/testing.js', included: true, watched: true},
+      {pattern: 'node_modules/mockfirebase/browser/mockfirebase.js', included: true, watched: true},
+      {pattern: 'node_modules/sinon/pkg/sinon.js', included: true, watched: true},
+      {pattern: 'karma.entry.js', included: true, watched: true},
+
+      // paths loaded via module imports
+      {pattern: 'node_modules/immutable/**', included: false, watched: false},
+      {pattern: 'target/**/*.js', included: false, watched: false},
+
+      // paths loaded via Angular's component compiler
+      // (these paths need to be rewritten, see `proxies` section below)
+      {pattern: 'target/**/*.html', included: false, watched: true},
+      {pattern: 'target/**/*.css', included: false, watched: true}
     ],
+
+    // proxied base paths
+    proxies: {
+      // required for component assests fetched by Angular's compiler
+      '/components/': '/base/target/components/'
+    },
 
     reporters: ['dots'],
 
-    // config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
     logLevel: config.LOG_INFO,
 
     // amount of time to wait for a message from browser before disconnecting
