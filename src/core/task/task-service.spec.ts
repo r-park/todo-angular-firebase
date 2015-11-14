@@ -16,26 +16,24 @@ import Firebase from 'firebase';
 import { TaskService } from './task-service';
 
 
-export function main(): void {
-  describe('TaskService', () => {
-    let firebaseRef;
-    let taskService;
+describe('TaskService', () => {
+  let firebaseRef;
+  let taskService;
 
-    beforeEach(() => {
-      firebaseRef = new Firebase('tasks/github:123');
-      taskService = new TaskService(firebaseRef);
-    });
+  beforeEach(() => {
+    firebaseRef = new Firebase('tasks/github:123');
+    taskService = new TaskService(firebaseRef);
+  });
 
-    describe('Creating a task', () => {
-      it('should push new task to firebase', (done: any) => {
-        firebaseRef.on('child_added', (snapshot: FirebaseDataSnapshot) => {
-          expect(snapshot.val().title).toEqual('test');
-          done();
-        });
-
-        taskService.createTask('test');
-        firebaseRef.flush();
+  describe('Creating a task', () => {
+    it('should push new task to firebase', (done: any) => {
+      firebaseRef.on('child_added', (snapshot: FirebaseDataSnapshot) => {
+        expect(snapshot.val().title).toEqual('test');
+        done();
       });
+
+      taskService.createTask('test');
+      firebaseRef.flush();
     });
   });
-}
+});

@@ -12,14 +12,12 @@
   },
   "dependencies": {
     "angular2": "2.0.0-alpha.46",
-    "es6-module-loader": "~0.17.8",
     "es6-shim": "~0.33.12",
     "firebase": "~2.3.1",
     "immutable": "~3.7.5",
     "systemjs": "~0.19.5"
   },
   "devDependencies": {
-    "@reactivex/rxjs": "5.0.0-alpha.7",
     "autoprefixer": "~6.1.0",
     "browser-sync": "~2.10.0",
     "connect-history-api-fallback": "~1.1.0",
@@ -36,10 +34,7 @@
     "karma-jasmine": "~0.3.6",
     "minx": "~0.4.14",
     "mockfirebase": "~0.12.0",
-    "reflect-metadata": "~0.1.2",
     "sinon": "~1.17.2",
-    "traceur": "~0.0.92",
-    "typescript": "~1.6.2",
-    "zone.js": "~0.5.8"
+    "typescript": "~1.6.2"
   }
 }
