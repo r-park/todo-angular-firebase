@@ -29,21 +29,13 @@ The gulp tasks for this project require gulp v4-alpha. If you don't wish to glob
 ./node_modules/.bin/gulp run
 ```
 
-## Running the app
-```bash
-gulp run
-```
-Executing `gulp run` will:
-- Build the project
-- Start the server at <a href="http://localhost:7000" target="_blank">localhost:7000</a>
-
 ## Developing
 ```bash
 gulp
 ```
 Executing the default `gulp` command will:
 - Build the project
-- Start the server at <a href="http://localhost:7000" target="_blank">localhost:7000</a>
+- Start the server at <a href="http://localhost:3000" target="_blank">localhost:3000</a>
 - Watch for changes to the source files and process changes
 - Live-reload the browser
 

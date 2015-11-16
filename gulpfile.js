@@ -58,8 +58,8 @@ var config = {
     files: [paths.target + '/**/*'],
     notify: false,
     open: false,
-    port: 7000,
-    reloadDelay: 1500,
+    port: 3000,
+    reloadDelay: 1300,
     server: {
       baseDir: paths.target,
       middleware: [
@@ -216,9 +216,3 @@ gulp.task('test.watch', gulp.parallel(
     gulp.watch(paths.src.ts, gulp.series('ts', 'karma.run'));
   }
 ));
-
-
-/*===========================
-  RUN
----------------------------*/
-gulp.task('run', gulp.series('build', 'serve'));
