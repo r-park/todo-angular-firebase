@@ -9,39 +9,51 @@ A simple Todo app example built with **Angular 2**. The app features a **Firebas
   - JSON Datastore
   - OAuth authentication with GitHub, Google, and Twitter
   - Hosting
-- Immutable
-- Typescript
-- SystemJS
-- SASS
 - Gulp `4.0.0-alpha.1`
+- Immutable
+- SASS
+- SystemJS
+- Typescript `~1.6.2`
+
 
 ## Installing dependencies
 ```bash
-npm install
+$ npm install
 ```
+
 
 #### Gulp v4 (optional)
 ```bash
-npm install -g gulpjs/gulp-cli#4.0
+$ npm install -g gulpjs/gulp-cli#4.0
 ```
 The gulp tasks for this project require gulp v4-alpha. If you don't wish to globally install the v4 gulp-cli, you can run the gulp tasks using the locally installed gulp under `./node_modules/.bin` — for example:
 ```bash
-./node_modules/.bin/gulp run
+$ ./node_modules/.bin/gulp run
 ```
+
 
 ## Developing
 ```bash
-gulp
+$ gulp
 ```
-Executing the default `gulp` command will:
+Or via locally installed gulp:
+```bash
+$ ./node_modules/.bin/gulp
+```
+Or via npm:
+```bash
+$ npm start
+```
+This will:
 - Build the project
-- Start the server at <a href="http://localhost:3000" target="_blank">localhost:3000</a>
+- Start the BrowserSync server at <a href="http://localhost:3000" target="_blank">localhost:3000</a>
 - Watch for changes to the source files and process changes
 - Live-reload the browser
 
+
 ## Testing
 ```bash
-gulp test.watch
+$ gulp test.watch
 ```
 Executing `gulp test.watch` will:
 - Run the test suites
