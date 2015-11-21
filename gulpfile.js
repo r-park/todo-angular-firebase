@@ -59,7 +59,7 @@ var config = {
     notify: false,
     open: false,
     port: 3000,
-    reloadDelay: 1300,
+    reloadDelay: 1000,
     server: {
       baseDir: paths.target,
       middleware: [

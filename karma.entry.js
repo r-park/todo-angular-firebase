@@ -23,7 +23,7 @@ System.config({
   },
 
   paths: {
-    'firebase': '/base/target/utils/firebase.js'
+    'firebase': '/base/target/utils/firebase-mock.js'
   }
 });
 
