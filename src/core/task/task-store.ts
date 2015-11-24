@@ -4,14 +4,13 @@ import { ITask } from './task';
 
 
 export class TaskStore {
-  list: List<any> = List();
-  private tasks: ReplaySubject<any> = new ReplaySubject(1);
+  tasks: ReplaySubject<any> = new ReplaySubject(1);
+  private list: List<any> = List();
 
   constructor(ref: Firebase) {
     ref.on('child_added', this.created.bind(this));
     ref.on('child_changed', this.updated.bind(this));
     ref.on('child_removed', this.deleted.bind(this));
-
     ref.once('value', () => this.emit());
   }
 
@@ -23,7 +22,7 @@ export class TaskStore {
     return this.tasks.subscribe(next);
   }
 
-  created(snapshot: FirebaseDataSnapshot): void {
+  private created(snapshot: FirebaseDataSnapshot): void {
     let key: string = snapshot.key();
     let index: number = this.findIndex(key);
     if (index === -1) {
@@ -33,7 +32,7 @@ export class TaskStore {
     }
   }
 
-  deleted(snapshot: FirebaseDataSnapshot): void {
+  private deleted(snapshot: FirebaseDataSnapshot): void {
     let index: number = this.findIndex(snapshot.key());
     if (index !== -1) {
       this.list = this.list.delete(index);
@@ -41,7 +40,7 @@ export class TaskStore {
     }
   }
 
-  updated(snapshot: FirebaseDataSnapshot): void {
+  private updated(snapshot: FirebaseDataSnapshot): void {
     let key: string = snapshot.key();
     let index: number = this.findIndex(key);
     if (index !== -1) {
