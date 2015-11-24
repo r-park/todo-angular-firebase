@@ -43,7 +43,7 @@ export class AuthService {
   }
 
   subscribe(next: (authenticated: boolean) => void): any {
-    let subscription = this.emitter.subscribe({next});
+    let subscription = this.emitter.subscribe(next);
     this.emit();
     return subscription;
   }

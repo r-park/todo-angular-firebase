@@ -6,7 +6,7 @@
   "bundle": "typings/tsd/tsd.d.ts",
   "installed": {
     "sinon/sinon.d.ts": {
-      "commit": "62eedc3121a5e28c50473d2e4a9cefbcb9c3957f"
+      "commit": "4f7b7e01d3a9622bfab0bef469e169529e60c66b"
     }
   }
 }
