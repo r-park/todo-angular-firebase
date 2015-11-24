@@ -14,13 +14,13 @@
   "dependencies": {
     "@reactivex/rxjs": "5.0.0-alpha.10",
     "angular2": "2.0.0-alpha.46",
-    "es6-shim": "~0.33.12",
-    "firebase": "~2.3.1",
+    "es6-shim": "~0.33.13",
+    "firebase": "~2.3.2",
     "immutable": "~3.7.5",
     "systemjs": "~0.19.6"
   },
   "devDependencies": {
-    "autoprefixer": "~6.1.0",
+    "autoprefixer": "~6.1.1",
     "browser-sync": "~2.10.0",
     "connect-history-api-fallback": "~1.1.0",
     "del": "~2.1.0",
