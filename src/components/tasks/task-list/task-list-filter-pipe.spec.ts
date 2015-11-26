@@ -40,4 +40,9 @@ describe('TaskListFilterPipe', () => {
   it('should return provided list if param `filterType` is not `active` or `completed`', () => {
     expect(pipe.transform(list, [''])).toBe(list);
   });
+
+  it('should return provided list if list is undefined and filter is provided', () => {
+    list = undefined;
+    expect(pipe.transform(list, ['active'])).toBe(list);
+  });
 });

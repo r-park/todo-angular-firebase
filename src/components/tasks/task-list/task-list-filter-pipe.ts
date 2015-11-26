@@ -9,7 +9,7 @@ import { ITask } from '../../../core/task/task';
 
 export class TaskListFilterPipe implements PipeTransform {
   transform(list: ITask[], filterType?: string[]): ITask[] {
-    if (!filterType || !filterType.length) {
+    if (list === undefined || !filterType || !filterType.length) {
       return list;
     }
 
