@@ -1,18 +1,16 @@
 import {
-  ChangeDetectionStrategy,
   Component,
   Input,
   NgFor,
   View
 } from 'angular2/angular2';
 import { RouterLink, RouteParams } from 'angular2/router';
-import { List } from 'immutable';
+import { ReplaySubject } from '@reactivex/rxjs/dist/cjs/Rx';
 import { TaskItem } from '../task-item/task-item';
 import { TaskListFilterPipe } from './task-list-filter-pipe';
 
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'task-list'
 })
 
@@ -30,7 +28,7 @@ import { TaskListFilterPipe } from './task-list-filter-pipe';
 })
 
 export class TaskList {
-  @Input() tasks: List<any>;
+  @Input() tasks: ReplaySubject<any>;
 
   filter: string;
 

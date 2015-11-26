@@ -1,30 +1,28 @@
-import { EventEmitter } from 'angular2/angular2';
 import { List } from 'immutable';
+import { ReplaySubject } from '@reactivex/rxjs/dist/cjs/Rx';
 import { ITask } from './task';
 
 
 export class TaskStore {
-  list: List<any> = List();
-  ready: Promise<any>;
-  private emitter: EventEmitter<any> = new EventEmitter();
+  tasks: ReplaySubject<any> = new ReplaySubject(1);
+  private list: List<any> = List();
 
-  constructor(private ref: Firebase) {
-    this.ref.on('child_added', this.created.bind(this));
-    this.ref.on('child_changed', this.updated.bind(this));
-    this.ref.on('child_removed', this.deleted.bind(this));
+  constructor(ref: Firebase) {
+    ref.on('child_added', this.created.bind(this));
+    ref.on('child_changed', this.updated.bind(this));
+    ref.on('child_removed', this.deleted.bind(this));
+    ref.once('value', () => this.emit());
+  }
 
-    this.ready = new Promise((resolve: () => void) => {
-      this.ref.once('value', () => {
-        resolve();
-      });
-    });
+  emit(): void {
+    this.tasks.next(this.list);
   }
 
   subscribe(next: (list: List<any>) => void): any {
-    return this.emitter.subscribe(next);
+    return this.tasks.subscribe(next);
   }
 
-  created(snapshot: FirebaseDataSnapshot): void {
+  private created(snapshot: FirebaseDataSnapshot): void {
     let key: string = snapshot.key();
     let index: number = this.findIndex(key);
     if (index === -1) {
@@ -34,22 +32,22 @@ export class TaskStore {
     }
   }
 
-  deleted(snapshot: FirebaseDataSnapshot): void {
+  private deleted(snapshot: FirebaseDataSnapshot): void {
     let index: number = this.findIndex(snapshot.key());
     if (index !== -1) {
       this.list = this.list.delete(index);
-      this.emitter.next(this.list);
+      this.emit();
     }
   }
 
-  updated(snapshot: FirebaseDataSnapshot): void {
+  private updated(snapshot: FirebaseDataSnapshot): void {
     let key: string = snapshot.key();
     let index: number = this.findIndex(key);
     if (index !== -1) {
       let task: ITask = snapshot.val();
       task.key = key;
       this.list = this.list.set(index, task);
-      this.emitter.next(this.list);
+      this.emit();
     }
   }
 
