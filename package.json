@@ -28,7 +28,7 @@
     "gulp-postcss": "~6.0.1",
     "gulp-sass": "~2.1.0",
     "gulp-sourcemaps": "~1.6.0",
-    "gulp-tslint": "~3.6.0",
+    "gulp-tslint": "~4.0.0",
     "gulp-typescript": "~2.9.2",
     "jasmine-core": "~2.3.4",
     "karma": "~0.13.15",
@@ -37,6 +37,7 @@
     "minx": "~0.4.14",
     "mockfirebase": "~0.12.0",
     "sinon": "~1.17.2",
+    "tslint": "~3.0.0",
     "typescript": "~1.6.2"
   }
 }
