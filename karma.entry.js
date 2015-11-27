@@ -23,6 +23,7 @@ System.config({
   },
 
   paths: {
+    'immutable': '/base/node_modules/immutable/dist/immutable.js',
     'firebase': '/base/target/utils/firebase-mock.js'
   }
 });

@@ -4,7 +4,7 @@ import { ITask } from './task';
 
 
 export class TaskStore {
-  tasks: ReplaySubject<any> = new ReplaySubject(1);
+  tasks: ReplaySubject<List<any>> = new ReplaySubject(1);
   private list: List<any> = List();
 
   constructor(ref: Firebase) {
@@ -14,12 +14,16 @@ export class TaskStore {
     ref.once('value', () => this.emit());
   }
 
-  emit(): void {
-    this.tasks.next(this.list);
+  get size(): number {
+    return this.list.size;
   }
 
   subscribe(next: (list: List<any>) => void): any {
     return this.tasks.subscribe(next);
+  }
+
+  private emit(): void {
+    this.tasks.next(this.list);
   }
 
   private created(snapshot: FirebaseDataSnapshot): void {

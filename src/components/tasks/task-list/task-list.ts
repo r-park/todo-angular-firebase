@@ -5,6 +5,7 @@ import {
   View
 } from 'angular2/angular2';
 import { RouterLink, RouteParams } from 'angular2/router';
+import { List } from 'immutable';
 import { ReplaySubject } from '@reactivex/rxjs/dist/cjs/Rx';
 import { TaskItem } from '../task-item/task-item';
 import { TaskListFilterPipe } from './task-list-filter-pipe';
@@ -28,7 +29,7 @@ import { TaskListFilterPipe } from './task-list-filter-pipe';
 })
 
 export class TaskList {
-  @Input() tasks: ReplaySubject<any>;
+  @Input() tasks: ReplaySubject<List<any>>;
 
   filter: string;
 
