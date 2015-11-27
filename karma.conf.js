@@ -8,12 +8,12 @@ module.exports = function(config) {
       {pattern: 'node_modules/systemjs/dist/system.src.js', included: true, watched: true},
       {pattern: 'node_modules/angular2/bundles/angular2.js', included: true, watched: true},
       {pattern: 'node_modules/angular2/bundles/testing.js', included: true, watched: true},
+      {pattern: 'node_modules/immutable/dist/immutable.js', included: true, watched: true},
       {pattern: 'node_modules/mockfirebase/browser/mockfirebase.js', included: true, watched: true},
       {pattern: 'node_modules/sinon/pkg/sinon.js', included: true, watched: true},
       {pattern: 'karma.entry.js', included: true, watched: true},
 
       // paths loaded via module imports
-      {pattern: 'node_modules/immutable/**', included: false, watched: false},
       {pattern: 'target/**/*.js', included: false, watched: false},
 
       // paths loaded via Angular's component compiler
