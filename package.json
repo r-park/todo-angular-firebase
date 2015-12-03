@@ -15,15 +15,15 @@
     "test": "./scripts/test.sh"
   },
   "dependencies": {
-    "@reactivex/rxjs": "5.0.0-alpha.10",
-    "angular2": "2.0.0-alpha.46",
+    "@reactivex/rxjs": "5.0.0-alpha.11",
+    "angular2": "2.0.0-alpha.47",
     "es6-shim": "~0.33.13",
     "firebase": "~2.3.2",
     "immutable": "~3.7.5",
     "systemjs": "~0.19.6"
   },
   "devDependencies": {
-    "autoprefixer": "~6.1.1",
+    "autoprefixer": "~6.1.2",
     "browser-sync": "~2.10.0",
     "connect-history-api-fallback": "~1.1.0",
     "del": "~2.1.0",
@@ -33,15 +33,15 @@
     "gulp-sass": "~2.1.0",
     "gulp-sourcemaps": "~1.6.0",
     "gulp-tslint": "~4.1.0",
-    "gulp-typescript": "~2.9.2",
+    "gulp-typescript": "~2.10.0",
     "jasmine-core": "~2.3.4",
     "karma": "~0.13.15",
-    "karma-chrome-launcher": "~0.2.1",
+    "karma-chrome-launcher": "~0.2.2",
     "karma-jasmine": "~0.3.6",
     "minx": "~0.4.14",
     "mockfirebase": "~0.12.0",
     "sinon": "~1.17.2",
-    "tslint": "~3.0.0",
-    "typescript": "~1.6.2"
+    "tslint": "~3.1.1",
+    "typescript": "~1.7.3"
   }
 }
