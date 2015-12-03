@@ -20,7 +20,7 @@ var paths = {
   lib: {
     src: [
       'node_modules/angular2/bundles/angular2.min.js',
-      'node_modules/angular2/bundles/router.dev.js', //{min.js,min.js.map}',
+      'node_modules/angular2/bundles/router.min.js',
       'node_modules/es6-shim/es6-shim.{map,min.js}',
       'node_modules/firebase/lib/firebase-web.js',
       'node_modules/immutable/dist/immutable.min.js',
@@ -52,7 +52,7 @@ var paths = {
 ---------------------------------------------------------*/
 var config = {
   autoprefixer: {
-    browsers: ['last 3 versions', 'Firefox ESR', 'Opera 12.1']
+    browsers: ['last 3 versions', 'Firefox ESR']
   },
 
   browserSync: {
