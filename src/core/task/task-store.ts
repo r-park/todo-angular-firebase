@@ -1,5 +1,5 @@
 import { List } from 'immutable';
-import { ReplaySubject } from '@reactivex/rxjs/dist/cjs/Rx';
+import { ReplaySubject } from 'rxjs/subject/ReplaySubject';
 import { ITask } from './task';
 
 

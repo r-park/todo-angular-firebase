@@ -13,14 +13,15 @@ var autoprefixer = require('autoprefixer'),
     typescript   = require('gulp-typescript');
 
 
-/*=========================================================
-  PATHS
----------------------------------------------------------*/
+//=========================================================
+//  PATHS
+//---------------------------------------------------------
 var paths = {
   lib: {
+    rxjs: 'node_modules/rxjs/**/*.{js,js.map}',
     src: [
-      'node_modules/angular2/bundles/angular2.min.js',
-      'node_modules/angular2/bundles/router.min.js',
+      'node_modules/angular2/bundles/angular2.{js,min.js}',
+      'node_modules/angular2/bundles/router.{js,min.js}',
       'node_modules/es6-shim/es6-shim.{map,min.js}',
       'node_modules/firebase/lib/firebase-web.js',
       'node_modules/immutable/dist/immutable.min.js',
@@ -47,9 +48,9 @@ var paths = {
 };
 
 
-/*=========================================================
-  CONFIG
----------------------------------------------------------*/
+//=========================================================
+//  CONFIG
+//---------------------------------------------------------
 var config = {
   autoprefixer: {
     browsers: ['last 3 versions', 'Firefox ESR']
@@ -93,9 +94,9 @@ var config = {
 };
 
 
-/*=========================================================
-  TASKS
----------------------------------------------------------*/
+//=========================================================
+//  TASKS
+//---------------------------------------------------------
 gulp.task('clean.target', function(){
   return del(paths.target);
 });
@@ -110,6 +111,12 @@ gulp.task('copy.html', function(){
 gulp.task('copy.lib', function(){
   return gulp.src(paths.lib.src)
     .pipe(gulp.dest(paths.lib.target));
+});
+
+
+gulp.task('copy.lib.rxjs', function(){
+  return gulp.src(paths.lib.rxjs)
+    .pipe(gulp.dest(`${paths.lib.target}/rxjs`));
 });
 
 
@@ -152,21 +159,22 @@ gulp.task('ts', function(){
 });
 
 
-/*===========================
-  BUILD
----------------------------*/
+//===========================
+//  BUILD
+//---------------------------
 gulp.task('build', gulp.series(
   'clean.target',
   'copy.html',
   'copy.lib',
+  'copy.lib.rxjs',
   'sass',
   'ts'
 ));
 
 
-/*===========================
-  DEVELOP
----------------------------*/
+//===========================
+//  DEVELOP
+//---------------------------
 gulp.task('default', gulp.series(
   'build',
   'serve',
@@ -178,9 +186,9 @@ gulp.task('default', gulp.series(
 ));
 
 
-/*===========================
-  TEST
----------------------------*/
+//===========================
+//  TEST
+//---------------------------
 function karmaServer(options, done) {
   var server = new karma.Server(options, function(error){
     if (error) process.exit(error);
