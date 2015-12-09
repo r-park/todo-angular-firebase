@@ -6,7 +6,7 @@ import {
 } from 'angular2/angular2';
 import { RouterLink, RouteParams } from 'angular2/router';
 import { List } from 'immutable';
-import { ReplaySubject } from '@reactivex/rxjs/dist/cjs/Rx';
+import { ReplaySubject } from 'rxjs/subject/ReplaySubject';
 import { TaskItem } from '../task-item/task-item';
 import { TaskListFilterPipe } from './task-list-filter-pipe';
 
