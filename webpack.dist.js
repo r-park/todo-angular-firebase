@@ -17,6 +17,7 @@ module.exports = {
   entry: {
     main: './src/main',
     vendor: [
+      'es6-shim',
       'rxjs',
       'zone.js',
       'reflect-metadata',
