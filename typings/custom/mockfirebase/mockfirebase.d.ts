@@ -1,1 +1,3 @@
-declare class MockFirebase {}
+declare class MockFirebase {
+  static override(): void;
+}

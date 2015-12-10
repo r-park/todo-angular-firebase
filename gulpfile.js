@@ -1,61 +1,32 @@
-var autoprefixer = require('autoprefixer'),
-    browserSync  = require('browser-sync'),
-    changed      = require('gulp-changed'),
-    del          = require('del'),
-    exec         = require('child_process').exec,
-    gulp         = require('gulp'),
-    historyApi   = require('connect-history-api-fallback'),
-    karma        = require('karma'),
-    postcss      = require('gulp-postcss'),
-    sass         = require('gulp-sass'),
-    sourcemaps   = require('gulp-sourcemaps'),
-    tslint       = require('gulp-tslint'),
-    typescript   = require('gulp-typescript');
+'use strict';
+
+const browserSync   = require('browser-sync');
+const del           = require('del');
+const gulp          = require('gulp');
+const gutil         = require('gulp-util');
+const historyApi    = require('connect-history-api-fallback');
+const karma         = require('karma');
+const tslint        = require('gulp-tslint');
+const webpack       = require('webpack');
+const WebpackServer = require('webpack-dev-server');
 
 
 //=========================================================
 //  PATHS
 //---------------------------------------------------------
-var paths = {
-  lib: {
-    rxjs: 'node_modules/rxjs/**/*.{js,js.map}',
-    src: [
-      'node_modules/angular2/bundles/angular2.{js,min.js}',
-      'node_modules/angular2/bundles/router.{js,min.js}',
-      'node_modules/es6-shim/es6-shim.{map,min.js}',
-      'node_modules/firebase/lib/firebase-web.js',
-      'node_modules/immutable/dist/immutable.min.js',
-      'node_modules/systemjs/dist/system.{js,js.map}'
-    ],
-    target: 'target/lib'
-  },
-
+const paths = {
   src: {
-    html: 'src/**/*.html',
-    sass: 'src/**/*.scss',
     ts: 'src/**/*.ts'
   },
 
-  target: 'target',
-
-  typings: {
-    entries: [
-      'typings/tsd/tsd.d.ts',
-      'typings/custom/custom.d.ts'
-    ],
-    watch: 'typings/**/*.ts'
-  }
+  target: 'target'
 };
 
 
 //=========================================================
 //  CONFIG
 //---------------------------------------------------------
-var config = {
-  autoprefixer: {
-    browsers: ['last 3 versions', 'Firefox ESR']
-  },
-
+const config = {
   browserSync: {
     files: [paths.target + '/**/*'],
     notify: false,
@@ -63,10 +34,7 @@ var config = {
     port: 3000,
     reloadDelay: 500,
     server: {
-      baseDir: paths.target,
-      middleware: [
-        historyApi()
-      ]
+      baseDir: paths.target
     }
   },
 
@@ -74,22 +42,16 @@ var config = {
     configFile: __dirname + '/karma.conf.js'
   },
 
-  sass: {
-    errLogToConsole: true,
-    outputStyle: 'nested',
-    precision: 10,
-    sourceComments: false
-  },
-
-  ts: {
-    configFile: 'tsconfig.json'
-  },
-
   tslint: {
     report: {
       options: {emitError: true},
       type: 'verbose'
     }
+  },
+
+  webpack: {
+    dev: './webpack.dev',
+    dist: './webpack.dist'
   }
 };
 
@@ -97,30 +59,10 @@ var config = {
 //=========================================================
 //  TASKS
 //---------------------------------------------------------
-gulp.task('clean.target', function(){
-  return del(paths.target);
-});
+gulp.task('clean.target', () => del(paths.target));
 
 
-gulp.task('copy.html', function(){
-  return gulp.src(paths.src.html)
-    .pipe(gulp.dest(paths.target));
-});
-
-
-gulp.task('copy.lib', function(){
-  return gulp.src(paths.lib.src)
-    .pipe(gulp.dest(paths.lib.target));
-});
-
-
-gulp.task('copy.lib.rxjs', function(){
-  return gulp.src(paths.lib.rxjs)
-    .pipe(gulp.dest(`${paths.lib.target}/rxjs`));
-});
-
-
-gulp.task('lint', function(){
+gulp.task('lint', () => {
   return gulp.src(paths.src.ts)
     .pipe(tslint())
     .pipe(tslint.report(
@@ -130,32 +72,34 @@ gulp.task('lint', function(){
 });
 
 
-gulp.task('sass', function(){
-  return gulp.src(paths.src.sass)
-    .pipe(sass(config.sass))
-    .pipe(postcss([
-      autoprefixer(config.autoprefixer)
-    ]))
-    .pipe(gulp.dest(paths.target));
-});
-
-
-gulp.task('serve', function(done){
+gulp.task('serve', done => {
+  config.browserSync.server.middleware = [historyApi()];
   browserSync.create()
     .init(config.browserSync, done);
 });
 
 
-var tsProject = typescript.createProject(config.ts.configFile);
+gulp.task('serve.dev', done => {
+  let conf = require(config.webpack.dev);
+  let compiler = webpack(conf);
+  let server = new WebpackServer(compiler, conf.devServer);
 
-gulp.task('ts', function(){
-  return gulp.src([paths.src.ts].concat(paths.typings.entries))
-    .pipe(changed(paths.target, {extension: '.js'}))
-    .pipe(sourcemaps.init())
-    .pipe(typescript(tsProject))
-    .js
-    .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest(paths.target));
+  server.listen(3000, 'localhost', () => {
+    gutil.log(gutil.colors.gray('-------------------------------------------'));
+    gutil.log('WebpackDevServer:', gutil.colors.magenta('http://localhost:3000'));
+    gutil.log(gutil.colors.gray('-------------------------------------------'));
+    done();
+  });
+});
+
+
+gulp.task('ts', done => {
+  let conf = require(config.webpack.dist);
+  webpack(conf).run((error, stats) => {
+    if (error) throw new gutil.PluginError('webpack', error);
+    gutil.log(stats.toString(conf.devServer.stats));
+    done();
+  });
 });
 
 
@@ -164,10 +108,6 @@ gulp.task('ts', function(){
 //---------------------------
 gulp.task('build', gulp.series(
   'clean.target',
-  'copy.html',
-  'copy.lib',
-  'copy.lib.rxjs',
-  'sass',
   'ts'
 ));
 
@@ -175,22 +115,14 @@ gulp.task('build', gulp.series(
 //===========================
 //  DEVELOP
 //---------------------------
-gulp.task('default', gulp.series(
-  'build',
-  'serve',
-  function watch(){
-    gulp.watch(paths.src.html, gulp.task('copy.html'));
-    gulp.watch(paths.src.sass, gulp.task('sass'));
-    gulp.watch([paths.src.ts, paths.typings.watch], gulp.task('ts'));
-  }
-));
+gulp.task('default', gulp.task('serve.dev'));
 
 
 //===========================
 //  TEST
 //---------------------------
 function karmaServer(options, done) {
-  var server = new karma.Server(options, function(error){
+  let server = new karma.Server(options, error => {
     if (error) process.exit(error);
     done();
   });
@@ -198,31 +130,22 @@ function karmaServer(options, done) {
 }
 
 
-gulp.task('karma', function(done){
+gulp.task('test', done => {
   config.karma.singleRun = true;
   karmaServer(config.karma, done);
 });
 
 
-gulp.task('karma.watch', function(done){
+gulp.task('test.watch', done => {
   karmaServer(config.karma, done);
 });
 
 
-gulp.task('karma.run', function(done){
-  var cmd = process.platform === 'win32' ? 'node_modules\\.bin\\karma run karma.conf.js' : 'node node_modules/.bin/karma run karma.conf.js';
-  exec(cmd, function(error, stdout){
-    done();
-  });
-});
-
-
-gulp.task('test', gulp.series('lint', 'build', 'karma'));
-
-
-gulp.task('test.watch', gulp.parallel(
-  gulp.series('lint', 'build', 'karma.watch'),
-  function(){
-    gulp.watch(paths.src.ts, gulp.series('ts', 'karma.run'));
-  }
+//===========================
+//  RELEASE
+//---------------------------
+gulp.task('dist', gulp.series(
+  'lint',
+  'test',
+  'build'
 ));

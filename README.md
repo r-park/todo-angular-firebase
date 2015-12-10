@@ -4,7 +4,7 @@
 # Todo app with Angular 2 and Firebase
 A simple Todo app example built with **Angular 2**. The app features a **Firebase** backend with **OAuth** authentication, and an **immutable** task list. Try the demo at <a href="https://ng2-todo-app.firebaseapp.com" target="_blank">https://ng2-todo-app.firebaseapp.com</a>.
 
-- Angular `2.0.0-alpha.47`
+- Angular `2.0.0-alpha.50`
 - Firebase
   - JSON Datastore
   - OAuth authentication with GitHub, Google, and Twitter
@@ -12,11 +12,16 @@ A simple Todo app example built with **Angular 2**. The app features a **Firebas
 - Gulp `4.0.0-alpha.2`
 - Immutable
 - SASS
-- SystemJS
 - Typescript `~1.7.3`
+- Webpack
+  - Development server
+  - Inline external SCSS files
+  - Inline external HTML templates
+  - Bundle and minify release builds
+  - Inject style and script tags into index.html
 
 
-## Installing dependencies
+## Installing Dependencies
 ```bash
 $ npm install
 ```
@@ -44,11 +49,14 @@ Or via npm:
 ```bash
 $ npm start
 ```
-This will:
-- Build the project
-- Start the BrowserSync server at <a href="http://localhost:3000" target="_blank">localhost:3000</a>
-- Watch for changes to the source files and process changes
-- Live-reload the browser
+This will start the Webpack dev server at <a href="http://localhost:3000" target="_blank">localhost:3000</a>, watch for changes to the source files and live-reload the browser.
+
+
+## Manual Builds
+```bash
+$ gulp build
+```
+This will generate minified build artifacts into `/target` directory. Run `gulp serve` to start a BrowserSync server in this directory.
 
 
 ## Testing

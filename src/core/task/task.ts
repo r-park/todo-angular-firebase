@@ -1,6 +1,3 @@
-import Firebase from 'firebase';
-
-
 export interface ITask {
   completed: boolean;
   createdAt: number;

@@ -2,18 +2,16 @@
   "version": "1.7.3",
 
   "compilerOptions": {
-    "declaration": false,
     "emitDecoratorMetadata": true,
-    "experimentalAsyncFunctions": true,
     "experimentalDecorators": true,
-    "listFiles": true,
-    "module": "system",
-    "moduleResolution": "node",
-    "noEmitHelpers": false,
-    "noImplicitAny": false,
-    "noLib": false,
+    "module": "commonjs",
     "removeComments": true,
     "sourceMap": true,
     "target": "es5"
-  }
+  },
+
+  "files": [
+    "src/main.ts",
+    "typings/custom/custom.d.ts"
+  ]
 }

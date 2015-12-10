@@ -1,5 +1,4 @@
 import { provide } from 'angular2/angular2';
-import Firebase from 'firebase';
 import { FIREBASE_TASKS_URL } from '../../config';
 import { AuthService } from '../auth/auth-service';
 import { TaskService } from './task-service';
