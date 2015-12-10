@@ -1,10 +1,10 @@
 import { provide } from 'angular2/angular2';
 import { bootstrap } from 'angular2/platform/browser';
 import { APP_BASE_HREF, ROUTER_PROVIDERS } from 'angular2/router';
-import Firebase from 'firebase';
 import { AUTH_PROVIDERS } from './core/auth/providers';
 import { TASK_PROVIDERS } from './core/task/providers';
 import { App } from './components/app/app';
+import 'styles/styles.scss';
 
 
 Firebase.INTERNAL.forceWebSockets();

@@ -1,6 +1,9 @@
 import { Component, FORM_DIRECTIVES, View } from 'angular2/angular2';
 import { TaskService } from '../../../core/task/task-service';
 
+const styles = require('!raw!autoprefixer!sass!./task-form.scss');
+const template = require('./task-form.html');
+
 
 @Component({
   selector: 'task-form'
@@ -10,8 +13,8 @@ import { TaskService } from '../../../core/task/task-service';
   directives: [
     FORM_DIRECTIVES
   ],
-  styleUrls: ['components/tasks/task-form/task-form.css'],
-  templateUrl: 'components/tasks/task-form/task-form.html'
+  styles: [styles],
+  template
 })
 
 export class TaskForm {

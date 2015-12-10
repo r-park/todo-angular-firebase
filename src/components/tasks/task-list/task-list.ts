@@ -1,14 +1,12 @@
-import {
-  Component,
-  Input,
-  NgFor,
-  View
-} from 'angular2/angular2';
+import { Component, Input, NgFor, View } from 'angular2/angular2';
 import { RouterLink, RouteParams } from 'angular2/router';
 import { List } from 'immutable';
 import { ReplaySubject } from 'rxjs/subject/ReplaySubject';
 import { TaskItem } from '../task-item/task-item';
 import { TaskListFilterPipe } from './task-list-filter-pipe';
+
+const styles = require('!raw!autoprefixer!sass!./task-list.scss');
+const template = require('./task-list.html');
 
 
 @Component({
@@ -24,8 +22,8 @@ import { TaskListFilterPipe } from './task-list-filter-pipe';
   pipes: [
     TaskListFilterPipe
   ],
-  styleUrls: ['components/tasks/task-list/task-list.css'],
-  templateUrl: 'components/tasks/task-list/task-list.html'
+  styles: [styles],
+  template
 })
 
 export class TaskList {

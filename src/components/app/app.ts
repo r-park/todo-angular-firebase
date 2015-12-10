@@ -5,6 +5,9 @@ import { AuthService } from '../../core/auth/auth-service';
 import { SignIn } from '../sign-in/sign-in';
 import { Tasks } from '../tasks/tasks';
 
+const styles = require('!raw!autoprefixer!sass!./app.scss');
+const template = require('./app.html');
+
 
 @Component({
   selector: 'app'
@@ -15,8 +18,8 @@ import { Tasks } from '../tasks/tasks';
     NgIf,
     RouterOutlet
   ],
-  styleUrls: ['components/app/app.css'],
-  templateUrl: 'components/app/app.html'
+  styles: [styles],
+  template
 })
 
 @RouteConfig([

@@ -12,7 +12,6 @@ import {
 } from 'angular2/testing';
 /* tslint:enable:no-unused-variable */
 
-import Firebase from 'firebase';
 import { Task } from './task';
 
 

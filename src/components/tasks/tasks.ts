@@ -5,6 +5,8 @@ import { TaskStore } from '../../core/task/task-store';
 import { TaskForm } from './task-form/task-form';
 import { TaskList } from './task-list/task-list';
 
+const template = require('./tasks.html');
+
 
 @Component({
   selector: 'tasks'
@@ -15,7 +17,7 @@ import { TaskList } from './task-list/task-list';
     TaskForm,
     TaskList
   ],
-  templateUrl: 'components/tasks/tasks.html'
+  template
 })
 
 @CanActivate(() => AuthRouteHelper.requireAuth())
