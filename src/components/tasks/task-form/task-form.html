@@ -1,8 +1,8 @@
-<form class="task-form" (ng-submit)="submit()" novalidate>
+<form class="task-form" (ngSubmit)="submit()" novalidate>
   <input
     (keyup.escape)="clear()"
-    ng-control="title"
-    [(ng-model)]="title"
+    ngControl="title"
+    [(ngModel)]="title"
     autocomplete="off"
     autofocus
     class="task-form__input"
