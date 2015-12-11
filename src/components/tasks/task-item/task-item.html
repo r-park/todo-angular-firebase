@@ -1,33 +1,33 @@
 <div
-  [ng-class]="{'task-item--completed': model.completed, 'task-item--editing': editing}"
+  [ngClass]="{'task-item--completed': model.completed, 'task-item--editing': editing}"
   class="task-item"
   tabindex="0">
 
   <div class="cell">
     <button
-      *ng-if="!editing"
+      *ngIf="!editing"
       (click)="toggleStatus()"
       aria-label="Mark task as completed"
       class="task-item__button"
       type="button">
-      <span class="icon material-icons" [ng-class]="{'icon--active': model.completed}">done</span>
+      <span class="icon material-icons" [ngClass]="{'icon--active': model.completed}">done</span>
     </button>
   </div>
 
   <div class="cell">
     <div
-      *ng-if="!editing"
+      *ngIf="!editing"
       class="task-item__title"
       tabindex="0">
       {{ model.title }}
     </div>
 
-    <form class="task-form" *ng-if="editing" (ng-submit)="saveTitle()" novalidate>
+    <form class="task-form" *ngIf="editing" (ngSubmit)="saveTitle()" novalidate>
       <input
         (blur)="stopEditing()"
         (keyup.escape)="stopEditing()"
-        ng-control="title"
-        [(ng-model)]="title"
+        ngControl="title"
+        [(ngModel)]="title"
         autocomplete="off"
         autofocus
         class="task-item__input"
@@ -37,7 +37,7 @@
 
   <div class="cell">
     <button
-      *ng-if="editing"
+      *ngIf="editing"
       (click)="stopEditing()"
       aria-label="Cancel editing"
       class="task-item__button"
@@ -45,7 +45,7 @@
       <span class="icon material-icons">&#xe14c;</span>
     </button>
     <button
-      *ng-if="!editing"
+      *ngIf="!editing"
       (click)="editTitle()"
       aria-label="Edit task title"
       class="task-item__button"
@@ -53,7 +53,7 @@
       <span class="icon material-icons">edit</span>
     </button>
     <button
-      *ng-if="!editing"
+      *ngIf="!editing"
       (click)="delete()"
       aria-label="Delete task"
       class="task-item__button"
