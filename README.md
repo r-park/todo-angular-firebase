@@ -2,7 +2,7 @@
 
 
 # Todo app with Angular 2 and Firebase
-A simple Todo app example built with **Angular 2**. The app features a **Firebase** backend with **OAuth** authentication, and an **immutable** task list. Try the demo at <a href="https://ng2-todo-app.firebaseapp.com" target="_blank">https://ng2-todo-app.firebaseapp.com</a>.
+A simple Todo app example built with **Angular 2**. The app features a **Firebase** backend with **OAuth** authentication, and an **immutable** task list. Try the demo at <a href="https://ng2-todo-app.firebaseapp.com" target="_blank">ng2-todo-app.firebaseapp.com</a>, and check out the <a href="https://github.com/r-park/angular2-webpack-seed" target="_blank">webpack seed</a> this project is based on.
 
 - Angular `2.0.0-alpha.52`
 - Firebase
@@ -14,20 +14,28 @@ A simple Todo app example built with **Angular 2**. The app features a **Firebas
 - SASS
 - Typescript `~1.7.3`
 - Webpack
-  - Development server
-  - Inline external SCSS files
-  - Inline external HTML templates
-  - Bundle and minify release builds
-  - Inject style and script tags into index.html
+  - Inlines external SCSS files
+  - Inlines external HTML templates
+  - Bundles and minifies release builds
+  - Injects style and script tags into index.html
 
 
-## Installing Dependencies
+## Developing
+### Prerequisites
+- `node` v5.x (v4.x should work)
+
+### Installing Global Dependencies
 ```bash
-$ npm install
+$ npm install -g karma-cli
 ```
 
+##### Webpack (optional)
+```bash
+$ npm install -g webpack
+$ npm install -g webpack-dev-server
+```
 
-#### Gulp v4 (optional)
+##### Gulp v4 (optional)
 ```bash
 $ npm install -g gulpjs/gulp-cli#4.0
 ```
@@ -37,36 +45,46 @@ $ ./node_modules/.bin/gulp run
 ```
 
 
-## Developing
+### Installing Project-local Dependencies
+```bash
+$ npm install
+```
+
+
+## Commands
+#### Develop
 ```bash
 $ gulp
 ```
-Or via locally installed gulp:
+- Start the Webpack dev server at <a href="http://localhost:3000" target="_blank">localhost:3000</a>
+- Watch for changes to your source files
+- Live-reload the browser
+
+#### Lint (tslint)
 ```bash
-$ ./node_modules/.bin/gulp
+$ gulp lint
 ```
-Or via npm:
+
+#### Test (single-run)
 ```bash
-$ npm start
+$ gulp test
 ```
-This will start the Webpack dev server at <a href="http://localhost:3000" target="_blank">localhost:3000</a>, watch for changes to the source files and live-reload the browser.
 
-
-## Manual Builds
-```bash
-$ gulp build
-```
-This will generate minified build artifacts into `/target` directory. Run `gulp serve` to start a BrowserSync server in this directory.
-
-
-## Testing
+#### Test (watch mode)
 ```bash
 $ gulp test.watch
 ```
-Executing `gulp test.watch` will:
-- Run the test suites
-- Watch for changes to the source files
-- Re-run the tests whenever the sources are modified
 
-For a single test run without auto-watch, execute `gulp test` instead.
+#### Build
+```bash
+$ gulp build
+```
 
+#### Dist build
+```bash
+$ gulp dist
+```
+Executes the following:
+- `gulp lint`
+- `gulp test`
+- `gulp build`
