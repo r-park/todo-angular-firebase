@@ -11,7 +11,7 @@
   "license": "MIT",
   "private": true,
   "engines": {
-    "node": "~5.1"
+    "node": ">=4.2"
   },
   "scripts": {
     "start": "./node_modules/.bin/gulp",

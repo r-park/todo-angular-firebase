@@ -22,7 +22,7 @@ A simple Todo app example built with **Angular 2**. The app features a **Firebas
 
 ## Developing
 ### Prerequisites
-- `node` v5.x (v4.x should work)
+- `node >=4.2`
 
 ### Installing Global Dependencies
 ```bash
