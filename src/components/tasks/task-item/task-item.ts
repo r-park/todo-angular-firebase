@@ -4,7 +4,7 @@ import { ITask } from '../../../core/task/task';
 import { TaskService } from '../../../core/task/task-service';
 import { Autofocus } from '../../../directives/autofocus-directive';
 
-const styles: string = require('!raw!autoprefixer!sass!./task-item.scss');
+const styles: string = require('./task-item.scss');
 const template: string = require('./task-item.html');
 
 

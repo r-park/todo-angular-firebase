@@ -2,7 +2,7 @@ import { FORM_DIRECTIVES } from 'angular2/common';
 import { Component, View } from 'angular2/core';
 import { TaskService } from '../../../core/task/task-service';
 
-const styles: string = require('!raw!autoprefixer!sass!./task-form.scss');
+const styles: string = require('./task-form.scss');
 const template: string = require('./task-form.html');
 
 

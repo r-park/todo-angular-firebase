@@ -6,7 +6,7 @@ import { ReplaySubject } from 'rxjs/subject/ReplaySubject';
 import { TaskItem } from '../task-item/task-item';
 import { TaskListFilterPipe } from './task-list-filter-pipe';
 
-const styles: string = require('!raw!autoprefixer!sass!./task-list.scss');
+const styles: string = require('./task-list.scss');
 const template: string = require('./task-list.html');
 
 

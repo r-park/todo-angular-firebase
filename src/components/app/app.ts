@@ -6,7 +6,7 @@ import { AuthService } from '../../core/auth/auth-service';
 import { SignIn } from '../sign-in/sign-in';
 import { Tasks } from '../tasks/tasks';
 
-const styles: string = require('!raw!autoprefixer!sass!./app.scss');
+const styles: string = require('./app.scss');
 const template: string = require('./app.html');
 
 
