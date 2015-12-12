@@ -1,4 +1,4 @@
-import { Injectable } from 'angular2/angular2';
+import { Injectable } from 'angular2/core';
 import { Router } from 'angular2/router';
 import { AuthService } from './auth-service';
 

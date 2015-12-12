@@ -22,7 +22,8 @@ module.exports = {
       'rxjs',
       'zone.js',
       'reflect-metadata',
-      'angular2/angular2',
+      'angular2/bootstrap',
+      'angular2/common',
       'angular2/core',
       'angular2/router',
       'firebase',
@@ -49,7 +50,8 @@ module.exports = {
   module: {
     loaders: [
       {test: /\.html$/, loader: 'raw'},
-      {test: /\.scss$/, loader: 'style!css!autoprefixer-loader?{browsers:["last 3 versions", "Firefox ESR"]}!sass'},
+      {test: /\.scss$/, include: [path.resolve(__dirname, 'src/components')], loader: 'raw!autoprefixer-loader?{browsers:["last 3 versions", "Firefox ESR"]}!sass'},
+      {test: /\.scss$/, include: [path.resolve(__dirname, 'src/styles')], loader: 'style!css!autoprefixer-loader?{browsers:["last 3 versions", "Firefox ESR"]}!sass'},
       {test: /\.ts$/, exclude: [/\.spec\.ts$/, /node_modules/], loader: 'ts'}
     ]
   },

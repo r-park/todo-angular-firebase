@@ -1,10 +1,11 @@
-import { Component, CORE_DIRECTIVES, FORM_DIRECTIVES, Input, View } from 'angular2/angular2';
+import { CORE_DIRECTIVES, FORM_DIRECTIVES } from 'angular2/common';
+import { Component, Input, View } from 'angular2/core';
 import { ITask } from '../../../core/task/task';
 import { TaskService } from '../../../core/task/task-service';
 import { Autofocus } from '../../../directives/autofocus-directive';
 
-const styles = require('!raw!autoprefixer!sass!./task-item.scss');
-const template = require('./task-item.html');
+const styles: string = require('./task-item.scss');
+const template: string = require('./task-item.html');
 
 
 @Component({
