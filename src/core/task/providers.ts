@@ -1,4 +1,4 @@
-import { provide } from 'angular2/angular2';
+import { provide } from 'angular2/core';
 import { FIREBASE_TASKS_URL } from '../../config';
 import { AuthService } from '../auth/auth-service';
 import { TaskService } from './task-service';

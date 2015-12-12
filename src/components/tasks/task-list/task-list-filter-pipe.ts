@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from 'angular2/angular2';
+import { Pipe, PipeTransform } from 'angular2/core';
 import { ITask } from '../../../core/task/task';
 
 

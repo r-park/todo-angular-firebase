@@ -1,4 +1,5 @@
-import { Component, Input, NgFor, View } from 'angular2/angular2';
+import { NgFor } from 'angular2/common';
+import { Component, Input, View } from 'angular2/core';
 import { RouterLink, RouteParams } from 'angular2/router';
 import { List } from 'immutable';
 import { ReplaySubject } from 'rxjs/subject/ReplaySubject';

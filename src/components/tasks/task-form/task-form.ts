@@ -1,4 +1,5 @@
-import { Component, FORM_DIRECTIVES, View } from 'angular2/angular2';
+import { FORM_DIRECTIVES } from 'angular2/common';
+import { Component, View } from 'angular2/core';
 import { TaskService } from '../../../core/task/task-service';
 
 const styles = require('!raw!autoprefixer!sass!./task-form.scss');

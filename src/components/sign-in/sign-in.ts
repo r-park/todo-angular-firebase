@@ -1,4 +1,4 @@
-import { Component, View } from 'angular2/angular2';
+import { Component, View } from 'angular2/core';
 import { CanActivate, Router } from 'angular2/router';
 import { AuthRouteHelper } from '../../core/auth/auth-route-helper';
 import { AuthService } from '../../core/auth/auth-service';

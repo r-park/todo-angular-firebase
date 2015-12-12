@@ -22,7 +22,9 @@
     "es6-shim": "~0.33.13",
     "firebase": "~2.3.2",
     "immutable": "~3.7.5",
-    "rxjs": "5.0.0-alpha.14"
+    "reflect-metadata": "~0.1.2",
+    "rxjs": "5.0.0-alpha.14",
+    "zone.js": "0.5.8"
   },
   "devDependencies": {
     "autoprefixer-loader": "~3.1.0",
@@ -45,14 +47,12 @@
     "mockfirebase": "^0.12.0",
     "node-sass": "~3.4.2",
     "raw-loader": "~0.5.1",
-    "reflect-metadata": "~0.1.2",
     "sass-loader": "~3.1.2",
     "style-loader": "~0.13.0",
     "ts-loader": "~0.7.2",
     "tslint": "~3.1.1",
     "typescript": "~1.7.3",
     "webpack": "~1.12.9",
-    "webpack-dev-server": "~1.14.0",
-    "zone.js": "~0.5.9"
+    "webpack-dev-server": "~1.14.0"
   }
 }
