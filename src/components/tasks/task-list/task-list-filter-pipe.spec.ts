@@ -17,7 +17,7 @@ import { TaskListFilterPipe } from './task-list-filter-pipe';
 
 describe('TaskListFilterPipe', () => {
   let pipe: TaskListFilterPipe;
-  let list;
+  let list: any[];
 
   beforeEach(() => {
     list = [{completed: true}, {completed: false}];

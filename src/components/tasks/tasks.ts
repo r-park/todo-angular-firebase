@@ -5,7 +5,7 @@ import { TaskStore } from '../../core/task/task-store';
 import { TaskForm } from './task-form/task-form';
 import { TaskList } from './task-list/task-list';
 
-const template = require('./tasks.html');
+const template: string = require('./tasks.html');
 
 
 @Component({

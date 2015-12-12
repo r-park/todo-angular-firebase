@@ -3,8 +3,8 @@ import { CanActivate, Router } from 'angular2/router';
 import { AuthRouteHelper } from '../../core/auth/auth-route-helper';
 import { AuthService } from '../../core/auth/auth-service';
 
-const styles = require('!raw!autoprefixer!sass!./sign-in.scss');
-const template = require('./sign-in.html');
+const styles: string = require('!raw!autoprefixer!sass!./sign-in.scss');
+const template: string = require('./sign-in.html');
 
 
 @Component({

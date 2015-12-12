@@ -2,8 +2,8 @@ import { FORM_DIRECTIVES } from 'angular2/common';
 import { Component, View } from 'angular2/core';
 import { TaskService } from '../../../core/task/task-service';
 
-const styles = require('!raw!autoprefixer!sass!./task-form.scss');
-const template = require('./task-form.html');
+const styles: string = require('!raw!autoprefixer!sass!./task-form.scss');
+const template: string = require('./task-form.html');
 
 
 @Component({
@@ -28,7 +28,7 @@ export class TaskForm {
   }
 
   submit(): void {
-    const title = this.title.trim();
+    const title: string = this.title.trim();
     if (title.length) {
       this.taskService.createTask(title);
     }

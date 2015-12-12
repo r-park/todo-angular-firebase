@@ -6,8 +6,8 @@ import { AuthService } from '../../core/auth/auth-service';
 import { SignIn } from '../sign-in/sign-in';
 import { Tasks } from '../tasks/tasks';
 
-const styles = require('!raw!autoprefixer!sass!./app.scss');
-const template = require('./app.html');
+const styles: string = require('!raw!autoprefixer!sass!./app.scss');
+const template: string = require('./app.html');
 
 
 @Component({

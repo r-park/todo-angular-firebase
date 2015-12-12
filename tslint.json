@@ -1,7 +1,7 @@
 {
   "rules": {
     "align": [
-      true,
+      false,
       "parameters",
       "arguments",
       "statements"
@@ -27,6 +27,7 @@
       false,
       140
     ],
+    "member-access": false,
     "member-ordering": [
       true,
       "public-before-private",
@@ -36,6 +37,8 @@
     "no-any": false,
     "no-arg": true,
     "no-bitwise": true,
+    "no-conditional-assignment": true,
+    "no-consecutive-blank-lines": false,
     "no-console": [
       true,
       "debug",
@@ -48,15 +51,16 @@
     "no-constructor-vars": false,
     "no-debugger": true,
     "no-duplicate-key": true,
-    "no-shadowed-variable": true,
     "no-duplicate-variable": true,
     "no-empty": false,
     "no-eval": true,
+    "no-inferrable-types": false,
     "no-internal-module": true,
+    "no-null-keyword": true,
     "no-require-imports": false,
+    "no-shadowed-variable": true,
     "no-string-literal": true,
     "no-switch-case-fall-through": true,
-    "no-trailing-comma": true,
     "no-trailing-whitespace": true,
     "no-unreachable": true,
     "no-unused-expression": true,
@@ -64,6 +68,7 @@
     "no-use-before-declare": true,
     "no-var-keyword": true,
     "no-var-requires": false,
+    "object-literal-sort-keys": false,
     "one-line": [
       true,
       "check-open-brace",
@@ -71,11 +76,18 @@
     ],
     "quotemark": [
       true,
-      "single"
+      "single",
+      "avoid-escape"
     ],
     "radix": true,
     "semicolon": true,
     "switch-default": true,
+    "trailing-comma": [
+      false, {
+        "multiline": "always",
+        "singleline": "never"
+      }
+    ],
     "triple-equals": [
       true,
       "allow-null-check"
@@ -89,18 +101,24 @@
     ],
     "typedef-whitespace": [
       true, {
-      "call-signature": "nospace",
-      "index-signature": "nospace",
-      "parameter": "nospace",
-      "property-declaration": "nospace",
-      "variable-declaration": "nospace"
-    }],
+        "call-signature": "nospace",
+        "index-signature": "nospace",
+        "parameter": "nospace",
+        "property-declaration": "nospace",
+        "variable-declaration": "nospace"
+      }
+    ],
     "use-strict": [
       false,
       "check-module",
       "check-function"
     ],
-    "variable-name": false,
+    "variable-name": [
+      true,
+      "check-format",
+      "allow-leading-underscore",
+      "ban-keywords"
+    ],
     "whitespace": [
       true,
       "check-branch",

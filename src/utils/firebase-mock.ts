@@ -1,2 +1,3 @@
-const Firebase = MockFirebase;
+/* tslint:disable:variable-name */
+const Firebase: any = MockFirebase;
 export default Firebase;

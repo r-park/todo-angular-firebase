@@ -4,8 +4,8 @@ import { ITask } from '../../../core/task/task';
 import { TaskService } from '../../../core/task/task-service';
 import { Autofocus } from '../../../directives/autofocus-directive';
 
-const styles = require('!raw!autoprefixer!sass!./task-item.scss');
-const template = require('./task-item.html');
+const styles: string = require('!raw!autoprefixer!sass!./task-item.scss');
+const template: string = require('./task-item.html');
 
 
 @Component({
