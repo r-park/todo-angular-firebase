@@ -14,7 +14,9 @@
     "node": ">=4.2"
   },
   "scripts": {
-    "start": "./node_modules/.bin/gulp",
+    "build": "npm test && ./node_modules/.bin/gulp clean.target && webpack --config webpack.dist.js --progress",
+    "dev": "webpack-dev-server --config webpack.dev.js --progress",
+    "start": "npm run dev",
     "test": "./node_modules/.bin/gulp test"
   },
   "dependencies": {
@@ -34,10 +36,10 @@
     "del": "~2.2.0",
     "extract-text-webpack-plugin": "~0.9.1",
     "gulp": "gulpjs/gulp.git#4.0",
-    "gulp-tslint": "~4.1.2",
+    "gulp-tslint": "~4.2.1",
     "gulp-util": "~3.0.7",
     "html-webpack-plugin": "~1.7.0",
-    "jasmine-core": "^2.4.1",
+    "jasmine-core": "~2.4.1",
     "karma": "~0.13.15",
     "karma-chrome-launcher": "~0.2.2",
     "karma-jasmine": "~0.3.6",
@@ -50,8 +52,8 @@
     "sass-loader": "~3.1.2",
     "style-loader": "~0.13.0",
     "ts-loader": "~0.7.2",
-    "tslint": "~3.1.1",
-    "typescript": "~1.7.3",
+    "tslint": "~3.2.0",
+    "typescript": "~1.7.5",
     "webpack": "~1.12.9",
     "webpack-dev-server": "~1.14.0"
   }
