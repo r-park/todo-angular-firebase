@@ -20,6 +20,15 @@ A simple Todo app example built with **Angular 2**. The app features a **Firebas
   - Injects style and script tags into index.html
 
 
+## Quick Start
+```bash
+$ git clone https://github.com/r-park/todo-angular2-firebase.git
+$ cd todo-angular2-firebase
+$ npm install
+$ ./node_modules/.bin/gulp
+```
+
+
 ## Developing
 ### Prerequisites
 - `node >=4.2`
