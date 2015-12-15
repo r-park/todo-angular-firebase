@@ -12,7 +12,7 @@ A simple Todo app example built with **Angular 2**. The app features a **Firebas
 - Gulp `4.0.0-alpha.2`
 - Immutable
 - SASS
-- Typescript `~1.7.3`
+- Typescript `~1.7.5`
 - Webpack
   - Inlines external SCSS files
   - Inlines external HTML templates
