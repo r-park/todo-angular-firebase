@@ -78,6 +78,8 @@ module.exports = {
   devServer: {
     contentBase: './src',
     historyApiFallback: true,
+    hot: true,
+    port: 3000,
     publicPath: '/',
     stats: {
       cached: true,
