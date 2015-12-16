@@ -31,10 +31,6 @@ module.exports = {
     ]
   },
 
-  external: {
-    Firebase: 'firebase'
-  },
-
   output: {
     filename: '[name].js',
     path: path.resolve('./target'),

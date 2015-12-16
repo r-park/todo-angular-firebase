@@ -1,7 +1,7 @@
 import { CORE_DIRECTIVES, FORM_DIRECTIVES } from 'angular2/common';
 import { Component, Input, View } from 'angular2/core';
-import { ITask } from '../../../core/task/task';
-import { TaskService } from '../../../core/task/task-service';
+import { ITask } from '../../../modules/task/task';
+import { TaskService } from '../../../modules/task/task-service';
 import { Autofocus } from '../../../directives/autofocus-directive';
 
 const styles: string = require('./task-item.scss');
