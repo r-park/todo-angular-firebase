@@ -1,8 +1,8 @@
 import { NgIf } from 'angular2/common';
-import { Component, View } from 'angular2/core';
+import { Component } from 'angular2/core';
 import { RouteConfig, RouterOutlet } from 'angular2/router';
-import { AuthRouteHelper } from '../../modules/auth/auth-route-helper';
-import { AuthService } from '../../modules/auth/auth-service';
+import { AuthRouteHelper } from 'modules/auth/auth-route-helper';
+import { AuthService } from 'modules/auth/auth-service';
 import { SignIn } from '../sign-in/sign-in';
 import { Tasks } from '../tasks/tasks';
 
@@ -11,14 +11,11 @@ const template: string = require('./app.html');
 
 
 @Component({
-  selector: 'app'
-})
-
-@View({
   directives: [
     NgIf,
     RouterOutlet
   ],
+  selector: 'app',
   styles: [styles],
   template
 })

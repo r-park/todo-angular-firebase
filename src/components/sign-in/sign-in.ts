@@ -1,17 +1,14 @@
-import { Component, View } from 'angular2/core';
+import { Component } from 'angular2/core';
 import { CanActivate, Router } from 'angular2/router';
-import { AuthRouteHelper } from '../../modules/auth/auth-route-helper';
-import { AuthService } from '../../modules/auth/auth-service';
+import { AuthRouteHelper } from 'modules/auth/auth-route-helper';
+import { AuthService } from 'modules/auth/auth-service';
 
 const styles: string = require('./sign-in.scss');
 const template: string = require('./sign-in.html');
 
 
 @Component({
-  selector: 'sign-in'
-})
-
-@View({
+  selector: 'sign-in',
   styles: [styles],
   template
 })

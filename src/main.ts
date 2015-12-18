@@ -3,11 +3,11 @@ import { bootstrap } from 'angular2/platform/browser';
 import { APP_BASE_HREF, ROUTER_PROVIDERS } from 'angular2/router';
 
 // root component
-import { App } from './components/app/app';
+import { App } from 'components/app/app';
 
 // modules
-import { AUTH_PROVIDERS } from './modules/auth/providers';
-import { TASK_PROVIDERS } from './modules/task/providers';
+import { AUTH_PROVIDERS } from 'modules/auth/providers';
+import { TASK_PROVIDERS } from 'modules/task/providers';
 
 // global styles
 import './styles/styles.scss';
@@ -15,7 +15,11 @@ import './styles/styles.scss';
 
 Firebase.INTERNAL.forceWebSockets();
 
-enableProdMode();
+
+if (process.env.NODE_ENV === 'production') {
+  enableProdMode();
+}
+
 
 bootstrap(App, [
   ROUTER_PROVIDERS,
