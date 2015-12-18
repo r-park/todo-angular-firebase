@@ -1,4 +1,3 @@
-import { CORE_DIRECTIVES, FORM_DIRECTIVES } from 'angular2/common';
 import { Component, Input } from 'angular2/core';
 import { ITask } from 'modules/task/task';
 import { TaskService } from 'modules/task/task-service';
@@ -10,9 +9,7 @@ const template: string = require('./task-item.html');
 
 @Component({
   directives: [
-    Autofocus,
-    CORE_DIRECTIVES,
-    FORM_DIRECTIVES
+    Autofocus
   ],
   selector: 'task-item',
   styles: [styles],

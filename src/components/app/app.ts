@@ -1,4 +1,3 @@
-import { NgIf } from 'angular2/common';
 import { Component } from 'angular2/core';
 import { RouteConfig, RouterOutlet } from 'angular2/router';
 import { AuthRouteHelper } from 'modules/auth/auth-route-helper';
@@ -12,7 +11,6 @@ const template: string = require('./app.html');
 
 @Component({
   directives: [
-    NgIf,
     RouterOutlet
   ],
   selector: 'app',
@@ -28,7 +26,7 @@ const template: string = require('./app.html');
 export class App {
   authenticated: boolean = false;
 
-  constructor(private auth: AuthService, routerHelper: AuthRouteHelper) {
+  constructor(private auth: AuthService, routeHelper: AuthRouteHelper) {
     auth.subscribe((authenticated: boolean) => {
       this.authenticated = authenticated;
     });

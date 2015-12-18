@@ -1,4 +1,4 @@
-import { enableProdMode, provide } from 'angular2/core';
+import { /* enableProdMode,*/ provide } from 'angular2/core';
 import { bootstrap } from 'angular2/platform/browser';
 import { APP_BASE_HREF, ROUTER_PROVIDERS } from 'angular2/router';
 
@@ -14,11 +14,6 @@ import './styles/styles.scss';
 
 
 Firebase.INTERNAL.forceWebSockets();
-
-
-if (process.env.NODE_ENV === 'production') {
-  enableProdMode();
-}
 
 
 bootstrap(App, [

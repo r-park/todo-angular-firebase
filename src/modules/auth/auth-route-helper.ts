@@ -2,6 +2,10 @@ import { Injectable } from 'angular2/core';
 import { Router } from 'angular2/router';
 import { AuthService } from './auth-service';
 
+/**
+ * This is an ugly workaround until `CanActivate` supports DI
+ * @see https://github.com/angular/angular/issues/4112
+ */
 
 @Injectable()
 export class AuthRouteHelper {
