@@ -1,8 +1,8 @@
 import { CORE_DIRECTIVES, FORM_DIRECTIVES } from 'angular2/common';
 import { Component, Input, View } from 'angular2/core';
-import { ITask } from '../../../modules/task/task';
-import { TaskService } from '../../../modules/task/task-service';
-import { Autofocus } from '../../../directives/autofocus-directive';
+import { ITask } from 'modules/task/task';
+import { TaskService } from 'modules/task/task-service';
+import { Autofocus } from 'directives/autofocus-directive';
 
 const styles: string = require('./task-item.scss');
 const template: string = require('./task-item.html');
