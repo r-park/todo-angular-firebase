@@ -15,7 +15,11 @@ import './styles/styles.scss';
 
 Firebase.INTERNAL.forceWebSockets();
 
-enableProdMode();
+
+if (process.env.NODE_ENV === 'production') {
+  enableProdMode();
+}
+
 
 bootstrap(App, [
   ROUTER_PROVIDERS,
