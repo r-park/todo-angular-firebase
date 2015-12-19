@@ -1,4 +1,3 @@
-import { NgFor } from 'angular2/common';
 import { ChangeDetectionStrategy, Component, Input } from 'angular2/core';
 import { RouterLink, RouteParams } from 'angular2/router';
 import { List } from 'immutable';
@@ -13,7 +12,6 @@ const template: string = require('./task-list.html');
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   directives: [
-    NgFor,
     RouterLink,
     TaskItem
   ],

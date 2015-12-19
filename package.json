@@ -14,10 +14,10 @@
     "node": ">=4.2"
   },
   "scripts": {
-    "build": "npm test && ./node_modules/.bin/gulp clean.target && webpack --config webpack.dist.js --progress",
-    "dev": "webpack-dev-server --config webpack.dev.js --progress",
-    "start": "npm run dev",
-    "test": "./node_modules/.bin/gulp test"
+    "build": "npm run clean && npm test && ./node_modules/.bin/webpack --config webpack.dist.js --progress",
+    "clean": "./node_modules/.bin/de ./target",
+    "start": "./node_modules/.bin/webpack-dev-server --config webpack.dev.js --progress",
+    "test": "./node_modules/.bin/karma start --single-run"
   },
   "dependencies": {
     "angular2": "2.0.0-beta.0",
@@ -34,6 +34,7 @@
     "connect-history-api-fallback": "~1.1.0",
     "css-loader": "~0.23.0",
     "del": "~2.2.0",
+    "del-cli": "~0.1.1",
     "extract-text-webpack-plugin": "~0.9.1",
     "gulp": "gulpjs/gulp.git#4.0",
     "gulp-tslint": "~4.2.1",
