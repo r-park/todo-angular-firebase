@@ -33,6 +33,7 @@ export class TaskStore {
       let task: ITask = snapshot.val();
       task.key = key;
       this.list = this.list.push(task);
+      this.emit();
     }
   }
 
