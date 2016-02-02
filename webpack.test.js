@@ -20,9 +20,7 @@ module.exports = {
     ],
 
     noParse: [
-      /zone\.js\/dist\/jasmine-patch\.js/,
-      /zone\.js\/dist\/long-stack-trace-zone\.js/,
-      /zone\.js\/dist\/zone-microtask\.js/
+      /angular2\/bundles\/.+/
     ]
   }
 };
