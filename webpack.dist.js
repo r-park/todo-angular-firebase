@@ -4,6 +4,7 @@ const webpack = require('webpack');
 
 // plugins
 const CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
+const DedupePlugin = webpack.optimize.DedupePlugin;
 const DefinePlugin = webpack.DefinePlugin;
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -71,9 +72,9 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
     new ExtractTextPlugin('styles.css'),
+    new DedupePlugin(),
     new OccurenceOrderPlugin(),
     new CommonsChunkPlugin({name: 'vendor', filename: 'vendor.js', minChunks: Infinity}),
-    new CommonsChunkPlugin({name: 'common', filename: 'common.js'}),
     new HtmlWebpackPlugin({
       chunksSortMode: 'none',
       filename: 'index.html',
@@ -87,7 +88,8 @@ module.exports = {
         screw_ie8: true,
         unused: true,
         warnings: false
-      }
+      },
+      mangle: false
     })
   ],
 
