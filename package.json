@@ -27,7 +27,7 @@
     "rxjs": "5.0.0-beta.0"
   },
   "devDependencies": {
-    "autoprefixer-loader": "~3.1.0",
+    "autoprefixer": "~6.3.1",
     "browser-sync": "~2.11.1",
     "connect-history-api-fallback": "~1.1.0",
     "css-loader": "~0.23.1",
@@ -47,6 +47,7 @@
     "minx": "~0.4.14",
     "mockfirebase": "^0.12.0",
     "node-sass": "~3.4.2",
+    "postcss-loader": "~0.8.0",
     "raw-loader": "~0.5.1",
     "reflect-metadata": "0.1.2",
     "sass-loader": "~3.1.2",

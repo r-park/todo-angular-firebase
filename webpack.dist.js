@@ -1,8 +1,10 @@
+const autoprefixer = require('autoprefixer');
 const path = require('path');
 const webpack = require('webpack');
 
 // plugins
 const CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
+const DefinePlugin = webpack.DefinePlugin;
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OccurenceOrderPlugin = webpack.optimize.OccurenceOrderPlugin;
@@ -18,14 +20,14 @@ module.exports = {
     main: './src/main',
     vendor: [
       'es6-shim',
-      'rxjs',
       'angular2/bundles/angular2-polyfills',
       'angular2/common',
       'angular2/core',
       'angular2/platform/browser',
       'angular2/router',
       'firebase',
-      'immutable'
+      'immutable',
+      'rxjs'
     ]
   },
 
@@ -45,16 +47,18 @@ module.exports = {
     loaders: [
       {test: /\.html$/, loader: 'raw'},
       {test: /\.ts$/, exclude: [/\.spec\.ts$/, /node_modules/], loader: 'ts'},
-      {test: /\.scss$/, include: [path.resolve(__dirname, 'src/components')], loader: 'raw!autoprefixer-loader?{browsers:["last 3 versions", "Firefox ESR"]}!sass'},
-      {test: /\.scss$/, include: [path.resolve(__dirname, 'src/styles')], loader: ExtractTextPlugin.extract(
-        'css!autoprefixer-loader?{browsers:["last 3 versions", "Firefox ESR"]}!sass'
-      )}
+      {test: /\.scss$/, include: [path.resolve(__dirname, 'src/components')], loader: 'raw!postcss-loader!sass'},
+      {test: /\.scss$/, include: [path.resolve(__dirname, 'src/styles')], loader: ExtractTextPlugin.extract('css!postcss-loader!sass')}
     ],
 
     noParse: [
       /angular2\/bundles\/.+/
     ]
   },
+
+  postcss: [
+    autoprefixer({ browsers: ['last 3 versions', 'Firefox ESR'] })
+  ],
 
   sassLoader: {
     outputStyle: 'compressed',
@@ -63,6 +67,9 @@ module.exports = {
   },
 
   plugins: [
+    new DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
+    }),
     new ExtractTextPlugin('styles.css'),
     new OccurenceOrderPlugin(),
     new CommonsChunkPlugin({name: 'vendor', filename: 'vendor.js', minChunks: Infinity}),
@@ -84,20 +91,15 @@ module.exports = {
     })
   ],
 
-  devServer: {
-    contentBase: './src',
-    historyApiFallback: true,
-    publicPath: '/',
-    stats: {
-      cached: true,
-      cachedAssets: true,
-      chunks: true,
-      chunkModules: false,
-      colors: true,
-      hash: false,
-      reasons: true,
-      timings: true,
-      version: false
-    }
+  stats: {
+    cached: true,
+    cachedAssets: true,
+    chunks: true,
+    chunkModules: true,
+    colors: true,
+    hash: false,
+    reasons: false,
+    timings: true,
+    version: false
   }
 };
