@@ -24,8 +24,6 @@ module.exports = function(config) {
 
     logLevel: config.LOG_INFO,
 
-    browserNoActivityTimeout: 180000, // 3 mins
-
     autoWatch: true,
 
     singleRun: false,

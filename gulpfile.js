@@ -97,7 +97,7 @@ gulp.task('ts', done => {
   let conf = require(config.webpack.dist);
   webpack(conf).run((error, stats) => {
     if (error) throw new gutil.PluginError('webpack', error);
-    gutil.log(stats.toString(conf.devServer.stats));
+    gutil.log(stats.toString(conf.stats));
     done();
   });
 });

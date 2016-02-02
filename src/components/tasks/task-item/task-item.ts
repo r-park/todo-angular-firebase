@@ -1,6 +1,6 @@
 import { Component, Input } from 'angular2/core';
-import { ITask } from 'modules/task/task';
-import { TaskService } from 'modules/task/task-service';
+import { ITask } from 'core/task/task';
+import { TaskService } from 'core/task/task-service';
 import { Autofocus } from 'directives/autofocus-directive';
 
 const styles: string = require('./task-item.scss');
