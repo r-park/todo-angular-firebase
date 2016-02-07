@@ -4,6 +4,7 @@ const webpack = require('webpack');
 
 // plugins
 const CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
+const DefinePlugin = webpack.DefinePlugin;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OccurenceOrderPlugin = webpack.optimize.OccurenceOrderPlugin;
 
@@ -67,6 +68,9 @@ module.exports = {
   },
 
   plugins: [
+    new DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development')
+    }),
     new OccurenceOrderPlugin(),
     new CommonsChunkPlugin({name: 'vendor', filename: 'vendor.js', minChunks: Infinity}),
     new CommonsChunkPlugin({name: 'common', filename: 'common.js'}),
