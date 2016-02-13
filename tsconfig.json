@@ -12,6 +12,9 @@
 
   "files": [
     "src/main.ts",
-    "typings/custom/custom.d.ts"
+    "typings/browser.d.ts",
+    "typings/custom/custom.d.ts",
+    "node_modules/angular2/typings/browser.d.ts",
+    "node_modules/immutable/dist/immutable.d.ts"
   ]
 }

@@ -11,35 +11,36 @@
   "license": "MIT",
   "private": true,
   "engines": {
-    "node": ">=4.2"
+    "node": ">=5.2"
   },
   "scripts": {
     "build": "npm run clean && npm test && ./node_modules/.bin/webpack --config webpack.dist.js --progress",
     "clean": "./node_modules/.bin/de ./target",
+    "postinstall": "./node_modules/.bin/typings install",
     "start": "./node_modules/.bin/webpack-dev-server --config webpack.dev.js --progress",
     "test": "./node_modules/.bin/karma start --single-run"
   },
   "dependencies": {
-    "angular2": "2.0.0-beta.3",
-    "es6-shim": "~0.33.13",
+    "angular2": "2.0.0-beta.6",
+    "es6-shim": "~0.34.4",
     "firebase": "~2.3.2",
     "immutable": "~3.7.6",
-    "rxjs": "5.0.0-beta.0"
+    "rxjs": "5.0.0-beta.1"
   },
   "devDependencies": {
-    "autoprefixer": "~6.3.1",
+    "autoprefixer": "~6.3.2",
     "browser-sync": "~2.11.1",
     "connect-history-api-fallback": "~1.1.0",
     "css-loader": "~0.23.1",
     "del": "~2.2.0",
-    "del-cli": "~0.1.2",
+    "del-cli": "~0.2.0",
     "extract-text-webpack-plugin": "~1.0.1",
     "gulp": "gulpjs/gulp.git#4.0",
     "gulp-tslint": "~4.3.1",
     "gulp-util": "~3.0.7",
     "html-webpack-plugin": "~1.7.0",
     "jasmine-core": "~2.4.1",
-    "karma": "0.13.18",
+    "karma": "0.13.21",
     "karma-chrome-launcher": "~0.2.2",
     "karma-jasmine": "~0.3.7",
     "karma-sourcemap-loader": "~0.3.7",
@@ -52,12 +53,12 @@
     "reflect-metadata": "0.1.2",
     "sass-loader": "~3.1.2",
     "style-loader": "~0.13.0",
-    "ts-loader": "~0.8.0",
-    "tsd": "~0.6.5",
+    "ts-loader": "~0.8.1",
     "tslint": "~3.3.0",
     "typescript": "~1.7.5",
+    "typings": "~0.6.8",
     "webpack": "~1.12.13",
     "webpack-dev-server": "~1.14.1",
-    "zone.js": "0.5.11"
+    "zone.js": "0.5.14"
   }
 }
