@@ -18,10 +18,6 @@ export class TaskStore {
     return this.list.size;
   }
 
-  subscribe(next: (list: List<any>) => void): any {
-    return this.tasks.subscribe(next);
-  }
-
   private emit(): void {
     this.tasks.next(this.list);
   }
