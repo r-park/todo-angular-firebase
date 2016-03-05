@@ -28,7 +28,7 @@ module.exports = {
       'angular2/router',
       'firebase',
       'immutable',
-      'rxjs'
+      'rxjs/subject/ReplaySubject'
     ]
   },
 
