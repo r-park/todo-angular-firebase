@@ -14,21 +14,21 @@
     "node": ">=5.2"
   },
   "scripts": {
-    "build": "npm run clean && npm test && ./node_modules/.bin/webpack --config webpack.dist.js --progress",
-    "clean": "./node_modules/.bin/de ./target",
-    "postinstall": "./node_modules/.bin/typings install",
-    "start": "./node_modules/.bin/webpack-dev-server --config webpack.dev.js --progress",
-    "test": "./node_modules/.bin/karma start --single-run"
+    "build": "npm run clean && npm test && webpack --config webpack.dist.js --progress",
+    "clean": "del-cli ./target",
+    "postinstall": "typings install",
+    "start": "webpack-dev-server --config webpack.dev.js --progress",
+    "test": "karma start --single-run"
   },
   "dependencies": {
-    "angular2": "2.0.0-beta.7",
-    "es6-shim": "~0.34.4",
+    "angular2": "2.0.0-beta.8",
+    "es6-shim": "~0.35.0",
     "firebase": "~2.3.2",
     "immutable": "~3.7.6",
     "rxjs": "5.0.0-beta.2"
   },
   "devDependencies": {
-    "autoprefixer": "~6.3.2",
+    "autoprefixer": "~6.3.3",
     "browser-sync": "~2.11.1",
     "connect-history-api-fallback": "~1.1.0",
     "css-loader": "~0.23.1",
@@ -36,7 +36,7 @@
     "del-cli": "~0.2.0",
     "extract-text-webpack-plugin": "~1.0.1",
     "gulp": "gulpjs/gulp.git#4.0",
-    "gulp-tslint": "~4.3.2",
+    "gulp-tslint": "~4.3.3",
     "gulp-util": "~3.0.7",
     "html-webpack-plugin": "~1.7.0",
     "jasmine-core": "~2.4.1",
@@ -54,10 +54,10 @@
     "sass-loader": "~3.1.2",
     "style-loader": "~0.13.0",
     "ts-loader": "~0.8.1",
-    "tslint": "~3.4.0",
-    "typescript": "~1.7.5",
-    "typings": "~0.6.8",
-    "webpack": "~1.12.13",
+    "tslint": "~3.5.0",
+    "typescript": "~1.8.7",
+    "typings": "~0.6.9",
+    "webpack": "~1.12.14",
     "webpack-dev-server": "~1.14.1",
     "zone.js": "0.5.15"
   }
