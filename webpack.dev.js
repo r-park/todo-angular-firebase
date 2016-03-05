@@ -28,7 +28,7 @@ module.exports = {
       'angular2/router',
       'firebase',
       'immutable',
-      'rxjs'
+      'rxjs/subject/ReplaySubject'
     ]
   },
 
@@ -86,7 +86,6 @@ module.exports = {
   devServer: {
     contentBase: './src',
     historyApiFallback: true,
-    hot: true,
     port: 3000,
     publicPath: '/',
     stats: {
