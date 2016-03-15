@@ -1,6 +1,6 @@
-const autoprefixer = require('autoprefixer');
 const path = require('path');
 const webpack = require('webpack');
+const config = require('./webpack.base');
 
 // plugins
 const CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
@@ -12,36 +12,18 @@ const OccurenceOrderPlugin = webpack.optimize.OccurenceOrderPlugin;
 module.exports = {
   cache: true,
   debug: true,
-  devtool: 'source-map',
+  devtool: 'source-map', // for faster builds use 'cheap-module-eval-source-map'
+  output: config.output,
+  resolve: config.resolve,
+  postcss: config.postcss,
+  sassLoader: config.sassLoader,
 
   entry: {
     main: [
       'webpack-dev-server/client?http://localhost:3000',
-      './src/main'
+      config.entry.main
     ],
-    vendor: [
-      'es6-shim',
-      'angular2/bundles/angular2-polyfills',
-      'angular2/common',
-      'angular2/core',
-      'angular2/platform/browser',
-      'angular2/router',
-      'firebase',
-      'immutable',
-      'rxjs/subject/ReplaySubject'
-    ]
-  },
-
-  output: {
-    filename: '[name].js',
-    path: path.resolve('./target'),
-    publicPath: '/'
-  },
-
-  resolve: {
-    extensions: ['', '.ts', '.js'],
-    modulesDirectories: ['node_modules'],
-    root: path.resolve('./src')
+    vendor: config.entry.vendor
   },
 
   module: {
@@ -52,19 +34,7 @@ module.exports = {
       {test: /\.ts$/, exclude: [/\.spec\.ts$/, /node_modules/], loader: 'ts'}
     ],
 
-    noParse: [
-      /angular2\/bundles\/.+/
-    ]
-  },
-
-  postcss: [
-    autoprefixer({ browsers: ['last 3 versions', 'Firefox ESR'] })
-  ],
-
-  sassLoader: {
-    outputStyle: 'nested',
-    precision: 10,
-    sourceComments: false
+    noParse: config.module.noParse
   },
 
   plugins: [

@@ -1,6 +1,6 @@
-const autoprefixer = require('autoprefixer');
 const path = require('path');
 const webpack = require('webpack');
+const config = require('./webpack.base');
 
 // plugins
 const CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
@@ -16,33 +16,11 @@ module.exports = {
   cache: true,
   debug: true,
   devtool: 'source-map',
-
-  entry: {
-    main: './src/main',
-    vendor: [
-      'es6-shim',
-      'angular2/bundles/angular2-polyfills',
-      'angular2/common',
-      'angular2/core',
-      'angular2/platform/browser',
-      'angular2/router',
-      'firebase',
-      'immutable',
-      'rxjs/subject/ReplaySubject'
-    ]
-  },
-
-  output: {
-    filename: '[name].js',
-    path: path.resolve('./target'),
-    publicPath: '/'
-  },
-
-  resolve: {
-    extensions: ['', '.ts', '.js'],
-    modulesDirectories: ['node_modules'],
-    root: path.resolve('./src')
-  },
+  entry: config.entry,
+  output: config.output,
+  resolve: config.resolve,
+  postcss: config.postcss,
+  sassLoader: config.sassLoader,
 
   module: {
     loaders: [
@@ -52,19 +30,7 @@ module.exports = {
       {test: /\.scss$/, include: [path.resolve(__dirname, 'src/styles')], loader: ExtractTextPlugin.extract('css!postcss-loader!sass')}
     ],
 
-    noParse: [
-      /angular2\/bundles\/.+/
-    ]
-  },
-
-  postcss: [
-    autoprefixer({ browsers: ['last 3 versions', 'Firefox ESR'] })
-  ],
-
-  sassLoader: {
-    outputStyle: 'compressed',
-    precision: 10,
-    sourceComments: false
+    noParse: config.module.noParse
   },
 
   plugins: [

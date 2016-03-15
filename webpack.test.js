@@ -1,16 +1,12 @@
-const autoprefixer = require('autoprefixer');
 const path = require('path');
 const webpack = require('webpack');
+const config = require('./webpack.base');
 
 
 module.exports = {
   devtool: 'inline-source-map',
-
-  resolve: {
-    extensions: ['', '.ts', '.js'],
-    modulesDirectories: ['node_modules'],
-    root: path.resolve('./src')
-  },
+  resolve: config.resolve,
+  postcss: config.postcss,
 
   module: {
     loaders: [
@@ -20,12 +16,6 @@ module.exports = {
       {test: /\.ts$/, exclude: [/node_modules/], loader: 'ts'}
     ],
 
-    noParse: [
-      /angular2\/bundles\/.+/
-    ]
-  },
-
-  postcss: [
-    autoprefixer({ browsers: ['last 3 versions', 'Firefox ESR'] })
-  ]
+    noParse: config.module.noParse
+  }
 };
