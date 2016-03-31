@@ -28,10 +28,10 @@ module.exports = {
 
   module: {
     loaders: [
-      {test: /\.html$/, loader: 'raw'},
-      {test: /\.scss$/, include: [path.resolve(__dirname, 'src/components')], loader: 'raw!postcss-loader!sass'},
-      {test: /\.scss$/, include: [path.resolve(__dirname, 'src/styles')], loader: 'style!css!postcss-loader!sass'},
-      {test: /\.ts$/, exclude: [/\.spec\.ts$/, /node_modules/], loader: 'ts'}
+      {test: /\.ts$/, exclude: [/\.spec\.ts$/, /node_modules/], loader: 'ts'},
+      {test: /\.scss$/, include: [path.resolve(__dirname, 'src/views/common/styles')], loader: 'style!css!postcss-loader!sass'},
+      {test: /\.scss$/, exclude: [path.resolve(__dirname, 'src/views/common/styles')], include: [path.resolve(__dirname, 'src/views')], loader: 'raw!postcss-loader!sass'},
+      {test: /\.html$/, loader: 'raw'}
     ],
 
     noParse: config.module.noParse
@@ -57,7 +57,7 @@ module.exports = {
     contentBase: './src',
     historyApiFallback: true,
     port: 3000,
-    publicPath: '/',
+    publicPath: config.output.publicPath,
     stats: {
       cached: true,
       cachedAssets: true,

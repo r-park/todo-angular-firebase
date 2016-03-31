@@ -4,9 +4,7 @@
 **/node_modules/
 target/
 tmp/
-typings/*.d.ts
-typings/browser/
-typings/main/
+typings/
 
 
 #---------------------------------

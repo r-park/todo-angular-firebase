@@ -1,10 +1,9 @@
 export interface ITask {
+  $key?: string;
   completed: boolean;
   createdAt: number;
-  key?: string;
   title: string;
 }
-
 
 export class Task implements ITask {
   completed: boolean = false;

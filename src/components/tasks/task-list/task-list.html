@@ -1,9 +1,0 @@
-<ul class="task-filters">
-  <li><a [class.active]="!filter" [routerLink]="['/Tasks']">View All</a></li>
-  <li><a [class.active]="filter == 'active'" [routerLink]="['/Tasks', {filter: 'active'}]">Active</a></li>
-  <li><a [class.active]="filter == 'completed'" [routerLink]="['/Tasks', {filter: 'completed'}]">Completed</a></li>
-</ul>
-
-<div class="task-list">
-  <task-item [model]="task" *ngFor="#task of tasks | async | filterTasks:filter"></task-item>
-</div>

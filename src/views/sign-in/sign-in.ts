@@ -1,16 +1,23 @@
 import { Component } from 'angular2/core';
 import { CanActivate, Router } from 'angular2/router';
-import { AuthRouteHelper } from 'core/auth/auth-route-helper';
-import { AuthService } from 'core/auth/auth-service';
-
-const styles: string = require('./sign-in.scss');
-const template: string = require('./sign-in.html');
+import { AuthRouteHelper, AuthService } from 'src/core/auth';
 
 
 @Component({
   selector: 'sign-in',
-  styles: [styles],
-  template
+  styles: [
+    require('./sign-in.scss')
+  ],
+  template: `
+    <div class="g-row sign-in">
+      <div class="g-col">
+        <h1 class="sign-in__heading">Sign in</h1>
+        <button class="sign-in__button" (click)="signInWithGithub()" type="button">GitHub</button>
+        <button class="sign-in__button" (click)="signInWithGoogle()" type="button">Google</button>
+        <button class="sign-in__button" (click)="signInWithTwitter()" type="button">Twitter</button>
+      </div>
+    </div>
+  `
 })
 
 @CanActivate(() => AuthRouteHelper.requireUnauth())

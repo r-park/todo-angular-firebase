@@ -12,9 +12,9 @@ module.exports = {
       'angular2/core',
       'angular2/platform/browser',
       'angular2/router',
+      'angularfire2',
       'firebase',
-      'immutable',
-      'rxjs/subject/ReplaySubject'
+      'rxjs/add/operator/map'
     ]
   },
 
@@ -27,7 +27,7 @@ module.exports = {
   resolve: {
     extensions: ['', '.ts', '.js'],
     modulesDirectories: ['node_modules'],
-    root: path.resolve('./src')
+    root: path.resolve('.')
   },
 
   module: {
