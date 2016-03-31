@@ -9,9 +9,6 @@ testing.setBaseTestProviders(
   browser.TEST_BROWSER_APPLICATION_PROVIDERS
 );
 
-// Override global `Firebase` with `MockFirebase`
-MockFirebase.override();
-
 // Turn on full stack traces in errors to help debugging
 Error.stackTraceLimit = Infinity;
 

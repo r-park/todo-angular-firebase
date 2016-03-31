@@ -1,5 +1,5 @@
 <div
-  [ngClass]="{'task-item--completed': model.completed, 'task-item--editing': editing}"
+  [ngClass]="{'task-item--completed': task.completed, 'task-item--editing': editing}"
   class="task-item"
   tabindex="0">
 
@@ -10,7 +10,7 @@
       aria-label="Mark task as completed"
       class="task-item__button"
       type="button">
-      <span class="icon material-icons" [ngClass]="{'icon--active': model.completed}">done</span>
+      <span class="icon material-icons" [ngClass]="{'icon--active': task.completed}">done</span>
     </button>
   </div>
 
@@ -19,7 +19,7 @@
       *ngIf="!editing"
       class="task-item__title"
       tabindex="0">
-      {{ model.title }}
+      {{ task.title }}
     </div>
 
     <form class="task-form" *ngIf="editing" (ngSubmit)="saveTitle()" novalidate>
@@ -54,7 +54,7 @@
     </button>
     <button
       *ngIf="!editing"
-      (click)="delete()"
+      (click)="remove.emit()"
       aria-label="Delete task"
       class="task-item__button"
       type="button">

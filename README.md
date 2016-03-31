@@ -1,16 +1,16 @@
 [![Build Status](https://travis-ci.org/r-park/todo-angular2-firebase.svg?branch=master)](https://travis-ci.org/r-park/todo-angular2-firebase)
 
 
-# Todo app with Angular 2 and Firebase
-A simple Todo app example built with **Angular 2**. The app features a **Firebase** backend with **OAuth** authentication, and an **immutable** task list. Try the demo at <a href="https://ng2-todo-app.firebaseapp.com" target="_blank">ng2-todo-app.firebaseapp.com</a>.
+# Todo app with Angular2, AngularFire2, and Firebase
+A simple Todo app example built with **Angular2** and **AngularFire2**. The app features a **Firebase** backend with **OAuth** authentication. Try the demo at <a href="https://ng2-todo-app.firebaseapp.com" target="_blank">ng2-todo-app.firebaseapp.com</a>.
 
-- Angular2 `beta.9`
+- Angular2 `2.0.0-beta.13`
+- AngularFire2 `2.0.0-alpha.13`
 - Firebase
   - JSON Datastore
   - OAuth authentication with GitHub, Google, and Twitter
   - Hosting
 - Gulp
-- Immutable
 - RxJS
 - SASS
 - Typescript
@@ -89,11 +89,6 @@ $ gulp test
 $ gulp test.watch
 ```
 
-#### Build
-```bash
-$ gulp build
-```
-
 #### Dist build
 ```bash
 $ gulp dist
@@ -102,3 +97,10 @@ Executes the following:
 - `gulp lint`
 - `gulp test`
 - `gulp build`
+
+#### BrowserSync server
+```bash
+$ gulp dist
+$ gulp serve
+```
+- Serves the dist build from the `/target` directory

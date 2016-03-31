@@ -4,7 +4,6 @@ module.exports = function(config) {
 
     files: [
       'node_modules/es6-shim/es6-shim.min.js',
-      'node_modules/mockfirebase/browser/mockfirebase.js',
       'karma.entry.js'
     ],
 
@@ -12,10 +11,8 @@ module.exports = function(config) {
       'karma.entry.js': ['webpack', 'sourcemap']
     },
 
-    // webpack config
     webpack: require('./webpack.test'),
 
-    // webpack server config
     webpackServer: {
       noInfo: true
     },

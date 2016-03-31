@@ -1,17 +1,4 @@
-/* tslint:disable:no-unused-variable */
-import {
-  afterEach,
-  beforeEach,
-  describe,
-  fdescribe,
-  xdescribe,
-  expect,
-  it,
-  fit,
-  xit
-} from 'angular2/testing';
-/* tslint:enable:no-unused-variable */
-
+import { beforeEach, describe, expect, it } from 'angular2/testing';
 import { TaskListFilterPipe } from './task-list-filter-pipe';
 
 

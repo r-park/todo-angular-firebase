@@ -1,5 +1,5 @@
 {
-  "version": "1.8.7",
+  "version": "1.8.9",
 
   "compilerOptions": {
     "emitDecoratorMetadata": true,
@@ -12,9 +12,6 @@
 
   "files": [
     "src/main.ts",
-    "typings/browser.d.ts",
-    "typings/custom/custom.d.ts",
-    "node_modules/angular2/typings/browser.d.ts",
-    "node_modules/immutable/dist/immutable.d.ts"
+    "typings/browser.d.ts"
   ]
 }
