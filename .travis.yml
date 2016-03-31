@@ -16,7 +16,7 @@ install:
   - npm install
 
 script:
-  - ./scripts/dist.sh
+  - ./node_modules/.bin/gulp dist
 
 after_success:
   - ./scripts/deploy.sh

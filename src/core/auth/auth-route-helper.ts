@@ -12,8 +12,9 @@ let appInjector: Injector;
 
 export class AuthRouteHelper {
   static dependencies(): {auth: AuthService, router: Router} {
-    const auth: AuthService = AuthRouteHelper.injector().get(AuthService);
-    const router: Router = AuthRouteHelper.injector().get(Router);
+    const injector: Injector = AuthRouteHelper.injector();
+    const auth: AuthService = injector.get(AuthService);
+    const router: Router = injector.get(Router);
     return {auth, router};
   }
 
