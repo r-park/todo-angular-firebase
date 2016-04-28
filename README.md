@@ -4,13 +4,12 @@
 # Todo app with Angular2, AngularFire2, and Firebase
 A simple Todo app example built with **Angular2** and **AngularFire2**. The app features a **Firebase** backend with **OAuth** authentication. Try the demo at <a href="https://ng2-todo-app.firebaseapp.com" target="_blank">ng2-todo-app.firebaseapp.com</a>.
 
-- Angular2 `2.0.0-beta.13`
-- AngularFire2 `2.0.0-alpha.13`
+- Angular2 `2.0.0-beta.15`
+- AngularFire2 `2.0.0-alpha.16`
 - Firebase
   - JSON Datastore
   - OAuth authentication with GitHub, Google, and Twitter
   - Hosting
-- Gulp
 - RxJS
 - SASS
 - Typescript
@@ -21,8 +20,10 @@ A simple Todo app example built with **Angular2** and **AngularFire2**. The app 
   - Injects style and script tags into index.html
 
 
-## Quick Start
-```bash
+Quick Start
+-----------
+
+```shell
 $ git clone https://github.com/r-park/todo-angular2-firebase.git
 $ cd todo-angular2-firebase
 $ npm install
@@ -30,77 +31,16 @@ $ npm start
 ```
 
 
-## Developing
-### Prerequisites
-- `node >=5.2`
+Commands
+--------
 
-### Installing Global Dependencies
-```bash
-$ npm install -g karma-cli
-```
-
-##### Webpack (optional)
-```bash
-$ npm install -g webpack
-$ npm install -g webpack-dev-server
-```
-
-##### Gulp v4 (optional)
-```bash
-$ npm install -g gulpjs/gulp-cli#4.0
-```
-The gulp tasks for this project require gulp v4-alpha. If you don't wish to globally install the v4 gulp-cli, you can run the gulp tasks using the locally installed gulp under `./node_modules/.bin` — for example:
-```bash
-$ ./node_modules/.bin/gulp run
-```
-
-
-### Installing Project-local Dependencies
-```bash
-$ npm install
-```
-
-
-## Commands
-#### Develop
-```bash
-$ gulp
-```
-or
-```bash
-$ npm start
-```
-- Start the Webpack dev server at <a href="http://localhost:3000" target="_blank">localhost:3000</a>
-- Watch for changes to your source files
-- Live-reload the browser
-
-#### Lint (tslint)
-```bash
-$ gulp lint
-```
-
-#### Test (single-run)
-```bash
-$ gulp test
-```
-
-#### Test (watch mode)
-```bash
-$ gulp test.watch
-```
-
-#### Dist build
-```bash
-$ gulp dist
-```
-Executes the following:
-- `gulp lint`
-- `gulp test`
-- `gulp build`
-
-#### BrowserSync server
-```bash
-$ gulp dist
-$ gulp serve
-```
-- Serves the dist build from the `/target` directory
+|Script|Description|
+|---|---|
+|`npm start`|Start webpack development server @ `localhost:3000`|
+|`npm run build`|Lint, test, and build the application to `./target`|
+|`npm run dev`|Same as `npm start`|
+|`npm run lint`|Lint `.ts` files using tslint|
+|`npm run server`|Start express server @ `localhost:3000` to serve built artifacts from `./target` (must run `npm run build` first)|
+|`npm test`|Run unit tests with Karma and Jasmine|
+|`npm run test:watch`|Run unit tests with Karma and Jasmine; watch for changes to re-run tests|
+|`npm run typings`|Install ambient typings|
