@@ -6,8 +6,19 @@
       "arguments",
       "statements"
     ],
-    "ban": false,
+    "ban": [
+      true,
+      [ "_", "forEach" ],
+      [ "_", "each" ],
+      [ "$", "each" ],
+      [ "angular", "forEach" ]
+    ],
     "class-name": true,
+    "comment-format": [
+      false,
+      "check-space",
+      "check-lowercase"
+    ],
     "curly": false,
     "eofline": true,
     "forin": true,
@@ -15,7 +26,10 @@
       true,
       "spaces"
     ],
-    "interface-name": false,
+    "interface-name": [
+      true,
+      "always-prefix"
+    ],
     "jsdoc-format": true,
     "label-position": true,
     "label-undefined": true,
@@ -30,6 +44,7 @@
       "static-before-instance",
       "variables-before-functions"
     ],
+    "no-angle-bracket-type-assertion": true,
     "no-any": false,
     "no-arg": true,
     "no-bitwise": true,
@@ -48,11 +63,13 @@
     "no-debugger": true,
     "no-duplicate-key": true,
     "no-duplicate-variable": true,
-    "no-empty": false,
+    "no-empty": true,
     "no-eval": true,
     "no-inferrable-types": false,
     "no-internal-module": true,
+    "no-invalid-this": true,
     "no-null-keyword": false,
+    "no-reference": true,
     "no-require-imports": false,
     "no-shadowed-variable": false,
     "no-string-literal": true,
@@ -76,12 +93,12 @@
       "avoid-escape"
     ],
     "radix": true,
-    "semicolon": true,
+    "semicolon": [true, "always"],
     "switch-default": true,
     "trailing-comma": [
-      false,
+      true,
       {
-        "multiline": "always",
+        "multiline": "never",
         "singleline": "never"
       }
     ],
@@ -104,8 +121,16 @@
         "parameter": "nospace",
         "property-declaration": "nospace",
         "variable-declaration": "nospace"
+      },
+      {
+        "call-signature": "space",
+        "index-signature": "space",
+        "parameter": "space",
+        "property-declaration": "space",
+        "variable-declaration": "space"
       }
     ],
+    "use-isnan": true,
     "use-strict": [
       false,
       "check-module",
