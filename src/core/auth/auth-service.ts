@@ -7,6 +7,8 @@ export class AuthService {
   private authState: FirebaseAuthData|FirebaseAuthState;
 
   constructor(public auth$: FirebaseAuth) {
+    this.authState = auth$.getAuth();
+
     auth$.subscribe((state: FirebaseAuthState) => {
       this.authState = state;
     });
@@ -17,8 +19,6 @@ export class AuthService {
   }
 
   get expired(): boolean {
-    // FirebaseAuthState is currently missing `expires` field
-    // @see https://github.com/angular/angularfire2/issues/112
     return !this.authState || (this.authState.expires * 1000) < Date.now();
   }
 
