@@ -28,9 +28,7 @@ module.exports = {
       {test: /\.scss$/, include: [path.resolve(__dirname, 'src/views/common/styles')], loader: ExtractTextPlugin.extract('css!postcss-loader!sass')},
       {test: /\.scss$/, exclude: [path.resolve(__dirname, 'src/views/common/styles')], include: [path.resolve(__dirname, 'src/views')], loader: 'raw!postcss-loader!sass'},
       {test: /\.html$/, loader: 'raw'}
-    ],
-
-    noParse: config.module.noParse
+    ]
   },
 
   plugins: [
