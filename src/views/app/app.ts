@@ -1,8 +1,8 @@
 import { Component } from 'angular2/core';
 import { RouteConfig, RouterOutlet } from 'angular2/router';
-import { AuthService } from 'src/core/auth';
-import { SignIn } from 'src/views/sign-in';
-import { Tasks } from 'src/views/tasks';
+import { AuthService } from '../../core/auth';
+import { SignIn } from '../../views/sign-in';
+import { Tasks } from '../../views/tasks';
 import { AppHeader } from './app-header';
 
 
