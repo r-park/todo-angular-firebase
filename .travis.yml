@@ -16,10 +16,14 @@ install:
   - npm install
 
 script:
-  - ./node_modules/.bin/gulp dist
+  - npm run build
 
-after_success:
-  - ./scripts/deploy.sh
+deploy:
+  provider: script
+  script: firebase deploy --token $FIREBASE_TOKEN
+  on:
+    branch: master
+    tags: true
 
 notifications:
   email:
