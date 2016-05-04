@@ -72,6 +72,7 @@ if (ENV_DEVELOPMENT || ENV_PRODUCTION) {
       'core-js/es6/set',
       'core-js/es6/string',
       'core-js/es6/symbol',
+      'core-js/fn/object/assign',
       'core-js/es7/reflect',
       'zone.js',
       'angular2/common',

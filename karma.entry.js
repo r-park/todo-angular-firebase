@@ -3,6 +3,7 @@ require('core-js/es6/map');
 require('core-js/es6/set');
 require('core-js/es6/string');
 require('core-js/es6/symbol');
+require('core-js/fn/object/assign');
 require('core-js/es7/reflect');
 require('zone.js');
 
