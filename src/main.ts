@@ -1,6 +1,6 @@
-import { ComponentRef, enableProdMode, provide } from 'angular2/core';
-import { bootstrap } from 'angular2/platform/browser';
-import { APP_BASE_HREF, ROUTER_PROVIDERS } from 'angular2/router';
+import { ComponentRef, enableProdMode, ReflectiveInjector } from '@angular/core';
+import { bootstrap } from '@angular/platform-browser-dynamic';
+import { ROUTER_PROVIDERS } from '@angular/router-deprecated';
 
 // core
 import { AUTH_PROVIDERS, AuthRouteHelper } from './core/auth';
@@ -23,11 +23,12 @@ const providers: any[] = [
   AUTH_PROVIDERS,
   FIREBASE_APP_PROVIDERS,
   ROUTER_PROVIDERS,
-  TASK_PROVIDERS,
-  provide(APP_BASE_HREF, {useValue: '/'})
+  TASK_PROVIDERS
 ];
 
 
 bootstrap(App, providers)
-  .then((appRef: ComponentRef) => AuthRouteHelper.injector(appRef.injector))
+  .then((appRef: ComponentRef<App>) => {
+    AuthRouteHelper.injector(appRef.injector as ReflectiveInjector);
+  })
   .catch((error: Error) => console.error(error));

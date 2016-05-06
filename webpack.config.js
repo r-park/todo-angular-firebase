@@ -75,10 +75,10 @@ if (ENV_DEVELOPMENT || ENV_PRODUCTION) {
       'core-js/fn/object/assign',
       'core-js/es7/reflect',
       'zone.js',
-      'angular2/common',
-      'angular2/core',
-      'angular2/platform/browser',
-      'angular2/router',
+      '@angular/common',
+      '@angular/core',
+      '@angular/platform-browser-dynamic',
+      '@angular/router-deprecated',
       'angularfire2',
       'firebase',
       'rxjs/add/operator/map'
@@ -149,7 +149,7 @@ if (ENV_PRODUCTION) {
     new ExtractTextPlugin('styles.css'),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
-      mangle: false,
+      mangle: true,
       compress: {
         dead_code: true, // eslint-disable-line camelcase
         screw_ie8: true, // eslint-disable-line camelcase

@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from 'angular2/core';
+import { Pipe, PipeTransform } from '@angular/core';
 import { ITask } from 'src/core/task';
 
 
@@ -8,12 +8,12 @@ import { ITask } from 'src/core/task';
 })
 
 export class TaskListFilterPipe implements PipeTransform {
-  transform(list: ITask[], filterType?: string[]): ITask[] {
+  transform(list: ITask[], filterType?: string): ITask[] {
     if (!list || !filterType) {
       return list;
     }
 
-    switch (filterType[0]) {
+    switch (filterType) {
       case 'active':
         return list.filter((task: ITask) => {
           return !task.completed;

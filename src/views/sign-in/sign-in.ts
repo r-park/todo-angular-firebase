@@ -1,5 +1,5 @@
-import { Component } from 'angular2/core';
-import { CanActivate, Router } from 'angular2/router';
+import { Component } from '@angular/core';
+import { CanActivate, Router } from '@angular/router-deprecated';
 import { AuthRouteHelper, AuthService } from 'src/core/auth';
 
 

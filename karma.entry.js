@@ -8,12 +8,12 @@ require('core-js/es7/reflect');
 require('zone.js');
 
 // Specify platform and application providers
-var browser = require('angular2/platform/testing/browser');
-var testing = require('angular2/testing');
+var browser = require('@angular/platform-browser-dynamic/testing');
+var testing = require('@angular/core/testing');
 
 testing.setBaseTestProviders(
-  browser.TEST_BROWSER_PLATFORM_PROVIDERS,
-  browser.TEST_BROWSER_APPLICATION_PROVIDERS
+  browser.TEST_BROWSER_DYNAMIC_PLATFORM_PROVIDERS,
+  browser.TEST_BROWSER_DYNAMIC_APPLICATION_PROVIDERS
 );
 
 // Recursively discover and load all spec files
