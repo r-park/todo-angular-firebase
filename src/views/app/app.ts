@@ -1,5 +1,5 @@
-import { Component } from 'angular2/core';
-import { RouteConfig, RouterOutlet } from 'angular2/router';
+import { Component } from '@angular/core';
+import { Route, RouteConfig, RouterOutlet } from '@angular/router-deprecated';
 import { AuthService } from 'src/core/auth';
 import { SignIn } from 'src/views/sign-in';
 import { Tasks } from 'src/views/tasks';
@@ -7,8 +7,8 @@ import { AppHeader } from './app-header';
 
 
 @RouteConfig([
-  {path: '/', component: SignIn, as: 'SignIn'},
-  {path: '/tasks', component: Tasks, as: 'Tasks'}
+  new Route({path: '/', component: SignIn, name: 'SignIn'}),
+  new Route({path: '/tasks', component: Tasks, name: 'Tasks'})
 ])
 
 @Component({

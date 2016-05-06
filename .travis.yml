@@ -20,7 +20,8 @@ script:
 
 deploy:
   provider: script
-  script: firebase deploy --token $FIREBASE_TOKEN
+  script: ./deploy.sh
+  skip_cleanup: true
   on:
     branch: master
     tags: true

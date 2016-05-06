@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 'angular2/core';
-import { RouterLink, RouteParams } from 'angular2/router';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { RouterLink, RouteParams } from '@angular/router-deprecated';
 import { FirebaseListObservable } from 'angularfire2';
 import { ITask } from 'src/core/task';
 import { TaskItem } from '../task-item/task-item';
@@ -28,7 +28,7 @@ import { TaskListFilterPipe } from './task-list-filter-pipe';
     
     <div class="task-list">
       <task-item
-        *ngFor="#task of taskItems$ | async | filterTasks:activeFilter"
+        *ngFor="let task of taskItems$ | async | filterTasks:activeFilter"
         [task]="task"
         (remove)="remove.emit(task)"
         (update)="update.emit({task: task, changes: $event})"></task-item>

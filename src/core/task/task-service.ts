@@ -1,6 +1,6 @@
 import 'rxjs/add/operator/map';
 
-import { Injectable } from 'angular2/core';
+import { Injectable } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { AuthService } from 'src/core/auth';
 import { ITask, Task } from './task';
