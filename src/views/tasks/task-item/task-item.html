@@ -24,13 +24,13 @@
 
     <form class="task-form" *ngIf="editing" (ngSubmit)="saveTitle()" novalidate>
       <input
+        [(ngModel)]="title"
         (blur)="stopEditing()"
         (keyup.escape)="stopEditing()"
-        ngControl="title"
-        [(ngModel)]="title"
         autocomplete="off"
         autofocus
         class="task-item__input"
+        name="title"
         type="text">
     </form>
   </div>

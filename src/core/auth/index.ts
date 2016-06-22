@@ -1,10 +1,15 @@
+import { AuthGuard } from './auth-guard';
 import { AuthService } from './auth-service';
+import { UnauthGuard } from './unauth-guard';
 
 
+export { AuthGuard };
 export { AuthService };
-export { AuthRouteHelper } from './auth-route-helper';
+export { UnauthGuard };
 
 
 export const AUTH_PROVIDERS: any[] = [
-  AuthService
+  AuthGuard,
+  AuthService,
+  UnauthGuard
 ];

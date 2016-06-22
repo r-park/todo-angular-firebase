@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { RouterLink, RouteParams } from '@angular/router-deprecated';
 import { FirebaseListObservable } from 'angularfire2';
 import { ITask } from 'src/core/task';
 import { TaskItem } from '../task-item/task-item';
@@ -9,7 +8,6 @@ import { TaskListFilterPipe } from './task-list-filter-pipe';
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   directives: [
-    RouterLink,
     TaskItem
   ],
   pipes: [
@@ -21,14 +19,14 @@ import { TaskListFilterPipe } from './task-list-filter-pipe';
   ],
   template: `
     <ul class="task-filters">
-      <li><a [class.active]="!activeFilter" [routerLink]="['/Tasks']">View All</a></li>
-      <li><a [class.active]="activeFilter == 'active'" [routerLink]="['/Tasks', {filter: 'active'}]">Active</a></li>
-      <li><a [class.active]="activeFilter == 'completed'" [routerLink]="['/Tasks', {filter: 'completed'}]">Completed</a></li>
+      <li><a [class.active]="!filter" [routerLink]="['/tasks']">View All</a></li>
+      <li><a [class.active]="filter == 'active'" [routerLink]="['/tasks', {filter: 'active'}]">Active</a></li>
+      <li><a [class.active]="filter == 'completed'" [routerLink]="['/tasks', {filter: 'completed'}]">Completed</a></li>
     </ul>
     
     <div class="task-list">
       <task-item
-        *ngFor="let task of taskItems$ | async | filterTasks:activeFilter"
+        *ngFor="let task of taskItems | async | filterTasks:filter"
         [task]="task"
         (remove)="remove.emit(task)"
         (update)="update.emit({task: task, changes: $event})"></task-item>
@@ -37,13 +35,9 @@ import { TaskListFilterPipe } from './task-list-filter-pipe';
 })
 
 export class TaskList {
-  @Input() taskItems$: FirebaseListObservable<ITask[]>;
-  @Output() remove: EventEmitter<ITask> = new EventEmitter(false);
+  @Input() filter: string;
+  @Input() taskItems: FirebaseListObservable<ITask[]>;
+
+  @Output() remove: EventEmitter<any> = new EventEmitter(false);
   @Output() update: EventEmitter<any> = new EventEmitter(false);
-
-  activeFilter: string;
-
-  constructor(params: RouteParams) {
-    this.activeFilter = params.get('filter');
-  }
 }

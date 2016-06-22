@@ -1,20 +1,11 @@
 import { Component } from '@angular/core';
-import { Route, RouteConfig, RouterOutlet } from '@angular/router-deprecated';
 import { AuthService } from 'src/core/auth';
-import { SignIn } from 'src/views/sign-in';
-import { Tasks } from 'src/views/tasks';
 import { AppHeader } from './app-header';
 
 
-@RouteConfig([
-  new Route({path: '/', component: SignIn, name: 'SignIn'}),
-  new Route({path: '/tasks', component: Tasks, name: 'Tasks'})
-])
-
 @Component({
   directives: [
-    AppHeader,
-    RouterOutlet
+    AppHeader
   ],
   selector: 'app',
   styles: [

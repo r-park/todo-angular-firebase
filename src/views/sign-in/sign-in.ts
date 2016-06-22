@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { CanActivate, Router } from '@angular/router-deprecated';
-import { AuthRouteHelper, AuthService } from 'src/core/auth';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/core/auth';
 
 
 @Component({
@@ -19,8 +19,6 @@ import { AuthRouteHelper, AuthService } from 'src/core/auth';
     </div>
   `
 })
-
-@CanActivate(() => AuthRouteHelper.requireUnauth())
 
 export class SignIn {
   constructor(private auth: AuthService, private router: Router) {}
@@ -41,6 +39,6 @@ export class SignIn {
   }
 
   private postSignIn(): void {
-    this.router.navigate(['/Tasks']);
+    this.router.navigate(['/tasks']);
   }
 }

@@ -1,11 +1,14 @@
-import { ComponentRef, enableProdMode, ReflectiveInjector } from '@angular/core';
+import { enableProdMode } from '@angular/core';
+import { disableDeprecatedForms, provideForms } from '@angular/forms';
 import { bootstrap } from '@angular/platform-browser-dynamic';
-import { ROUTER_PROVIDERS } from '@angular/router-deprecated';
 
 // core
-import { AUTH_PROVIDERS, AuthRouteHelper } from './core/auth';
+import { AUTH_PROVIDERS } from './core/auth';
 import { FIREBASE_APP_PROVIDERS } from './core/firebase';
 import { TASK_PROVIDERS } from './core/task';
+
+// routes
+import { ROUTER_PROVIDERS } from './views/routes';
 
 // root component
 import { App } from './views/app';
@@ -19,16 +22,11 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 
-const providers: any[] = [
+bootstrap(App, [
+  disableDeprecatedForms(),
+  provideForms(),
   AUTH_PROVIDERS,
   FIREBASE_APP_PROVIDERS,
   ROUTER_PROVIDERS,
   TASK_PROVIDERS
-];
-
-
-bootstrap(App, providers)
-  .then((appRef: ComponentRef<App>) => {
-    AuthRouteHelper.injector(appRef.injector as ReflectiveInjector);
-  })
-  .catch((error: Error) => console.error(error));
+]).catch((error: Error) => console.error(error));
