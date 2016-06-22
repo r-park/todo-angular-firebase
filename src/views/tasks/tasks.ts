@@ -1,6 +1,8 @@
+import 'rxjs/add/operator/pluck';
+
 import { Component } from '@angular/core';
-import { CanActivate } from '@angular/router-deprecated';
-import { AuthRouteHelper } from 'src/core/auth';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 import { TaskService } from 'src/core/task';
 import { TaskForm } from './task-form/task-form';
 import { TaskList } from './task-list/task-list';
@@ -17,10 +19,11 @@ import { TaskList } from './task-list/task-list';
       <div class="g-col">
         <task-form (createTask)="taskService.createTask($event)"></task-form>
       </div>
-    
+
       <div class="g-col">
-        <task-list 
-          [taskItems$]="taskService.taskItems$"
+        <task-list
+          [filter]="taskFilter | async"
+          [taskItems]="taskService.taskItems$"
           (remove)="taskService.removeTask($event)"
           (update)="taskService.updateTask($event.task, $event.changes)"></task-list>
       </div>
@@ -28,8 +31,10 @@ import { TaskList } from './task-list/task-list';
   `
 })
 
-@CanActivate(() => AuthRouteHelper.requireAuth())
-
 export class Tasks {
-  constructor(private taskService: TaskService) {}
+  taskFilter: Observable<any>;
+
+  constructor(public route: ActivatedRoute, public taskService: TaskService) {
+    this.taskFilter = route.params.pluck('filter');
+  }
 }

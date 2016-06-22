@@ -10,12 +10,12 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angul
   template: `
     <form class="task-form" (ngSubmit)="submit()" novalidate>
       <input
-        (keyup.escape)="clear()"
-        ngControl="title"
         [(ngModel)]="title"
+        (keyup.escape)="clear()"
         autocomplete="off"
         autofocus
         class="task-form__input"
+        name="title"
         placeholder="What needs to be done?"
         required
         type="text">
@@ -24,7 +24,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angul
 })
 
 export class TaskForm {
-  @Output() createTask: EventEmitter<string> = new EventEmitter(false);
+  @Output() createTask: EventEmitter<any> = new EventEmitter(false);
 
   title: string = '';
 

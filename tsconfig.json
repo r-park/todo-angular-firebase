@@ -1,6 +1,4 @@
 {
-  "version": "1.8.10",
-
   "compilerOptions": {
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -12,6 +10,6 @@
 
   "files": [
     "src/main.ts",
-    "typings/browser.d.ts"
+    "typings/index.d.ts"
   ]
 }

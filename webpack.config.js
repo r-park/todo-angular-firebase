@@ -77,11 +77,13 @@ if (ENV_DEVELOPMENT || ENV_PRODUCTION) {
       'zone.js',
       '@angular/common',
       '@angular/core',
+      '@angular/forms',
       '@angular/platform-browser-dynamic',
-      '@angular/router-deprecated',
+      '@angular/router',
       'angularfire2',
       'firebase',
-      'rxjs/add/operator/map'
+      'rxjs/add/operator/map',
+      'rxjs/add/operator/pluck'
     ]
   };
 
