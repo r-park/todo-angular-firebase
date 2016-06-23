@@ -80,9 +80,10 @@ if (ENV_DEVELOPMENT || ENV_PRODUCTION) {
       '@angular/platform-browser-dynamic',
       '@angular/router',
       'angularfire2',
-      'firebase',
+      'rxjs/add/operator/do',
       'rxjs/add/operator/map',
-      'rxjs/add/operator/pluck'
+      'rxjs/add/operator/pluck',
+      'rxjs/add/operator/take'
     ]
   };
 

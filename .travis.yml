@@ -24,7 +24,7 @@ deploy:
   skip_cleanup: true
   on:
     branch: master
-    tags: true
+  #  tags: true
 
 notifications:
   email:

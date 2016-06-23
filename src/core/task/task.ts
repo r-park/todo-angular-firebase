@@ -1,13 +1,13 @@
 export interface ITask {
   $key?: string;
   completed: boolean;
-  createdAt: number;
+  //createdAt: number;
   title: string;
 }
 
 export class Task implements ITask {
   completed: boolean = false;
-  createdAt: number = Firebase.ServerValue.TIMESTAMP;
+  //createdAt: number = firebase.database.ServerValue.TIMESTAMP;
   title: string;
 
   constructor(title: string) {
