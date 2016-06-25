@@ -11,18 +11,18 @@ export class TaskService {
   taskItems$: FirebaseListObservable<ITask[]>;
 
   constructor(af: AngularFire, auth: AuthService) {
-    this.taskItems$ = af.list(`/tasks/${auth.id}`) as FirebaseListObservable<ITask[]>;
+    this.taskItems$ = af.database.list(`/tasks/${auth.id}`) as FirebaseListObservable<ITask[]>;
   }
 
-  createTask(title: string): Promise<any> {
+  createTask(title: string): firebase.Promise<any> {
     return this.taskItems$.push(new Task(title));
   }
 
-  removeTask(task: ITask): Promise<any> {
+  removeTask(task: ITask): firebase.Promise<any> {
     return this.taskItems$.remove(task.$key);
   }
 
-  updateTask(task: ITask, changes: any): Promise<any> {
+  updateTask(task: ITask, changes: any): firebase.Promise<any> {
     return this.taskItems$.update(task.$key, changes);
   }
 }
