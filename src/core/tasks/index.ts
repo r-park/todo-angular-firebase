@@ -5,6 +5,6 @@ export { TaskService };
 export { ITask } from './task';
 
 
-export const TASK_PROVIDERS: any[] = [
+export const TASKS_PROVIDERS: any[] = [
   TaskService
 ];

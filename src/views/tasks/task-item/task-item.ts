@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { ITask } from 'src/core/task';
+import { ITask } from 'src/core/tasks';
 import { Autofocus } from 'src/views/common';
 
 
