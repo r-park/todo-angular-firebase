@@ -3,7 +3,7 @@ import 'rxjs/add/operator/pluck';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { TaskService } from 'src/core/task';
+import { TaskService } from 'src/core/tasks';
 import { TaskForm } from './task-form/task-form';
 import { TaskList } from './task-list/task-list';
 
