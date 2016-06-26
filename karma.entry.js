@@ -1,3 +1,5 @@
+/// <reference path="node_modules/angularfire2/firebase3.d.ts" />
+
 require('core-js/es6/array');
 require('core-js/es6/map');
 require('core-js/es6/set');
@@ -6,6 +8,7 @@ require('core-js/es6/symbol');
 require('core-js/fn/object/assign');
 require('core-js/es7/reflect');
 require('zone.js');
+require('firebase/firebase-browser');
 
 // Specify platform and application providers
 var browser = require('@angular/platform-browser-dynamic/testing');
