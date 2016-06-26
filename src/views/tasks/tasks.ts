@@ -23,7 +23,7 @@ import { TaskList } from './task-list/task-list';
       <div class="g-col">
         <task-list
           [filter]="filter | async"
-          [taskItems]="taskService.taskItems$"
+          [tasks]="taskService.visibleTasks$"
           (remove)="taskService.removeTask($event)"
           (update)="taskService.updateTask($event.task, $event.changes)"></task-list>
       </div>
@@ -35,6 +35,10 @@ export class Tasks {
   filter: Observable<any>;
 
   constructor(public route: ActivatedRoute, public taskService: TaskService) {
-    this.filter = route.params.pluck('filter');
+    this.filter = route.params.pluck('completed');
+
+    this.filter.subscribe((value: string) => {
+      taskService.filterTasks(value);
+    });
   }
 }
