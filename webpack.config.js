@@ -62,31 +62,9 @@ config.sassLoader = {
 //-------------------------------------
 if (ENV_DEVELOPMENT || ENV_PRODUCTION) {
   config.entry = {
-    main: [
-      './src/main'
-    ],
-    vendor: [
-      'core-js/es6/array',
-      'core-js/es6/map',
-      'core-js/es6/set',
-      'core-js/es6/string',
-      'core-js/es6/symbol',
-      'core-js/fn/object/assign',
-      'core-js/es7/reflect',
-      'zone.js',
-      '@angular/common',
-      '@angular/core',
-      '@angular/forms',
-      '@angular/platform-browser-dynamic',
-      '@angular/router',
-      'angularfire2',
-      'rxjs/add/observable/merge',
-      'rxjs/add/operator/do',
-      'rxjs/add/operator/map',
-      'rxjs/add/operator/pluck',
-      'rxjs/add/operator/switchMap',
-      'rxjs/add/operator/take'
-    ]
+    main: ['./src/main.ts'],
+    polyfills: './src/polyfills.ts',
+    vendor: './src/vendor.ts'
   };
 
   config.output = {
@@ -97,10 +75,11 @@ if (ENV_DEVELOPMENT || ENV_PRODUCTION) {
 
   config.plugins.push(
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
+      name: ['vendor', 'polyfills'],
       minChunks: Infinity
     }),
     new HtmlWebpackPlugin({
+      chunkSortMode: 'dependency',
       filename: 'index.html',
       hash: false,
       inject: 'body',
