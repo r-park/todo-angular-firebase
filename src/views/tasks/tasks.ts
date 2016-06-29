@@ -1,3 +1,4 @@
+import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/pluck';
 
 import { Component } from '@angular/core';
@@ -35,10 +36,8 @@ export class Tasks {
   filter: Observable<any>;
 
   constructor(public route: ActivatedRoute, public taskService: TaskService) {
-    this.filter = route.params.pluck('completed');
-
-    this.filter.subscribe((value: string) => {
-      taskService.filterTasks(value);
-    });
+    this.filter = route.params
+      .pluck('completed')
+      .do((value: string) => taskService.filterTasks(value));
   }
 }

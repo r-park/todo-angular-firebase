@@ -1,5 +1,3 @@
-/// <reference path="node_modules/angularfire2/firebase3.d.ts" />
-
 require('core-js/es6/array');
 require('core-js/es6/map');
 require('core-js/es6/set');
