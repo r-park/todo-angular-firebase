@@ -9,8 +9,6 @@
   },
 
   "files": [
-    "src/main.ts",
-    "typings/index.d.ts",
-    "node_modules/angularfire2/firebase3.d.ts"
+    "typings/index.d.ts"
   ]
 }
