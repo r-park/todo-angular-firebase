@@ -28,7 +28,7 @@ export class TaskService {
       equalTo: this.filter$
     }});
 
-    this.visibleTasks$ = Observable.merge(this.filter$)
+    this.visibleTasks$ = this.filter$
       .switchMap(filter => filter === null ? this.tasks$ : this.filteredTasks$);
   }
 
