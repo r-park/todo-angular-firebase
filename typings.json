@@ -1,8 +1,8 @@
 {
   "globalDependencies": {
-    "es6-shim": "registry:dt/es6-shim#0.31.2+20160602141504",
+    "core-js": "registry:dt/core-js#0.0.0+20160602141332",
     "firebase3": "file:node_modules/angularfire2/firebase3.d.ts",
     "jasmine": "registry:dt/jasmine#2.2.0+20160621224255",
-    "node": "registry:dt/node#6.0.0+20160621231320"
+    "node": "registry:dt/node#6.0.0+20160709114037"
   }
 }
