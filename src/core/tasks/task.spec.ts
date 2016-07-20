@@ -1,7 +1,7 @@
 import { Task } from './task';
 
 
-describe('tasks', () => {
+describe('tasks/', () => {
   describe('Task', () => {
     it('should set title', () => {
       expect(new Task('test').title).toBe('test');

@@ -14,7 +14,7 @@ module.exports = function(config) {
       noInfo: true
     },
 
-    reporters: ['dots'],
+    reporters: ['mocha'],
 
     logLevel: config.LOG_INFO,
 
