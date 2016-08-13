@@ -6,7 +6,9 @@ require('core-js/es6/symbol');
 require('core-js/fn/object/assign');
 require('core-js/es7/reflect');
 require('zone.js');
+require('ts-helpers');
 require('firebase/firebase-browser');
+
 
 // Specify platform and application providers
 var browser = require('@angular/platform-browser-dynamic/testing');
