@@ -1,5 +1,0 @@
-{
-  "globalDependencies": {
-    "firebase3": "file:node_modules/angularfire2/firebase3.d.ts"
-  }
-}
