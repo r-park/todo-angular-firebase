@@ -1,1 +1,1 @@
-export { Autofocus } from './directives/autofocus-directive';
+export { AutoFocus } from './directives/autofocus-directive';

@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/core/auth';
-import { AppHeader } from './app-header';
 
 
 @Component({
-  directives: [
-    AppHeader
-  ],
   selector: 'app',
   styles: [
     require('./app.scss')
