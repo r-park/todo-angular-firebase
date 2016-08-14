@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/core/auth';
+import { AuthService } from '../services/auth-service';
 
 
 @Component({
-  selector: 'sign-in',
   styles: [
     require('./sign-in.scss')
   ],
@@ -20,7 +19,7 @@ import { AuthService } from 'src/core/auth';
   `
 })
 
-export class SignIn {
+export class SignInComponent {
   constructor(private auth: AuthService, private router: Router) {}
 
   signInWithGithub(): void {

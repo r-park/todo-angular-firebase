@@ -23,7 +23,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
   `
 })
 
-export class AppHeader {
+export class AppHeaderComponent {
   @Input() authenticated: boolean;
-  @Output() signOut: EventEmitter<any> = new EventEmitter(false);
+  @Output() signOut = new EventEmitter(false);
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from 'src/core/auth';
+import { AuthService } from 'src/auth';
 
 
 @Component({
@@ -18,11 +18,10 @@ import { AuthService } from 'src/core/auth';
   `
 })
 
-export class App {
+export class AppComponent {
   constructor(private auth: AuthService) {}
 
   signOut(): void {
     this.auth.signOut();
-    window.location.replace('/');
   }
 }
