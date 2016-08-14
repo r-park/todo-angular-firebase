@@ -140,7 +140,10 @@ if (ENV_PRODUCTION) {
     new ExtractTextPlugin('styles.[contenthash].css'),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
-      mangle: true,
+      mangle: {
+        keep_fnames: true, // eslint-disable-line camelcase
+        screw_ie8: true    // eslint-disable-line camelcase
+      },
       compress: {
         dead_code: true, // eslint-disable-line camelcase
         screw_ie8: true, // eslint-disable-line camelcase
