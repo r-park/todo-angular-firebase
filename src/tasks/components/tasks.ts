@@ -4,17 +4,10 @@ import 'rxjs/add/operator/pluck';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { TaskService } from 'src/core/tasks';
-import { TaskForm } from './task-form/task-form';
-import { TaskList } from './task-list/task-list';
+import { TaskService } from '../services/task-service';
 
 
 @Component({
-  directives: [
-    TaskForm,
-    TaskList
-  ],
-  selector: 'tasks',
   template: `
     <div class="g-row">
       <div class="g-col">
@@ -32,7 +25,7 @@ import { TaskList } from './task-list/task-list';
   `
 })
 
-export class Tasks {
+export class TasksComponent {
   filter: Observable<any>;
 
   constructor(public route: ActivatedRoute, public taskService: TaskService) {

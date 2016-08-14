@@ -2,31 +2,28 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 
-import { AUTH_PROVIDERS } from 'src/core/auth';
-import { FirebaseModule } from 'src/core/firebase';
-import { SignInModule } from '../sign-in';
+import { AuthModule } from '../auth';
+import { FirebaseModule } from '../firebase';
 import { TasksModule } from '../tasks';
-import { App } from './app';
-import { AppHeader } from './app-header';
+
+import { AppComponent } from './components/app';
+import { AppHeaderComponent } from './components/app-header';
 
 
 @NgModule({
   bootstrap: [
-    App
+    AppComponent
   ],
   declarations: [
-    App,
-    AppHeader
+    AppComponent,
+    AppHeaderComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot([], {useHash: false}),
+    AuthModule,
     FirebaseModule,
-    SignInModule,
     TasksModule
-  ],
-  providers: [
-    AUTH_PROVIDERS
   ]
 })
 

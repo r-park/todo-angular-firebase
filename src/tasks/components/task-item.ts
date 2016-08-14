@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { ITask } from 'src/core/tasks';
+import { ITask } from '../models/task';
 
 
 @Component({
@@ -11,10 +11,10 @@ import { ITask } from 'src/core/tasks';
   template: require('./task-item.html')
 })
 
-export class TaskItem {
+export class TaskItemComponent {
   @Input() task: ITask;
-  @Output() remove: EventEmitter<any> = new EventEmitter(false);
-  @Output() update: EventEmitter<any> = new EventEmitter(false);
+  @Output() remove = new EventEmitter(false);
+  @Output() update = new EventEmitter(false);
 
   editing: boolean = false;
   title: string = '';
