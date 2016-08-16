@@ -87,4 +87,3 @@ Commands
 |`npm run server`|Start express server @ `localhost:3000` to serve built artifacts from `./target` (must run `npm run build` first)|
 |`npm test`|Run unit tests with Karma and Jasmine|
 |`npm run test:watch`|Run unit tests with Karma and Jasmine; watch for changes to re-run tests|
-|`npm run typings`|Install typings|
