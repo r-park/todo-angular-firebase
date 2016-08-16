@@ -49,7 +49,7 @@ $ npm start
 }
 ```
 ```javascript
-// src/core/firebase/index.ts
+// src/firebase/index.ts
 
 export const firebaseConfig = {
   apiKey: 'your api key',
