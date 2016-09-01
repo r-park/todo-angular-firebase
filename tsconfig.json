@@ -9,7 +9,7 @@
     "module": "commonjs",
     "noEmitHelpers": true,
     "removeComments": true,
-    "sourceMap": true,
+    "inlineSourceMap": true,
     "target": "es5",
     "types": [
       "core-js",
@@ -18,7 +18,8 @@
       "node"
     ]
   },
-
+  "indentSize": 2,
+  "tabSize": 2,
   "exclude": [
     "node_modules",
     "tmp"

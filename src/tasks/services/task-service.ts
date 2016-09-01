@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { Observable } from 'rxjs/Observable';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
-import { AuthService } from 'src/auth';
+import { AuthService } from '../../auth';
 import { ITask, Task } from '../models/task';
 
 

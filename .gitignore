@@ -3,9 +3,10 @@
 #---------------------------------
 **/node_modules/
 target/
+src/**/*.js
 tmp/
 typings/
-
+coverage/
 
 #---------------------------------
 # Extensions
@@ -31,3 +32,4 @@ typings/
 __MACOSX/
 .DS_Store
 Thumbs.db
+
