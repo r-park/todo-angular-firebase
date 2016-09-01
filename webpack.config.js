@@ -25,10 +25,9 @@ const PORT = process.env.PORT || 3000;
 const config = {};
 module.exports = config;
 
-
 config.resolve = {
   extensions: ['', '.ts', '.js'],
-  modulesDirectories: ['node_modules'],
+  modulesDirectories: ['node_modules', 'src'],
   root: path.resolve('.')
 };
 
@@ -159,9 +158,52 @@ if (ENV_PRODUCTION) {
 //  TEST
 //-------------------------------------
 if (ENV_TEST) {
+
   config.devtool = 'inline-source-map';
 
-  config.module.loaders.push(
-    {test: /\.scss$/, loader: 'style!css!postcss!sass', include: path.resolve('src/common/styles')}
-  );
+  config.verbose = true;
+
+  config.resolve = {
+    extensions: ['', '.ts', '.js', '.scss', '.html'],
+    modulesDirectories: ['node_modules', 'src']
+  };
+
+  config.module = {
+    loaders: [
+      /**
+       * Enable inline source maps for code coverage report.
+       *
+       * See project repository for details / configuration reference:
+       * https://github.com/s-panferov/awesome-typescript-loader
+       */
+      {
+        test: /\.ts$/,
+        loader: 'awesome-typescript-loader',
+        query: {
+          sourceMap: false,
+          inlineSourceMap: true
+        }
+      },
+      /**
+       * These loaders are used in other environments as well.
+       */
+      {test: /\.json$/, loader: 'json-loader'},
+      {test: /\.html$/, loader: 'html-loader'},
+      {test: /\.scss$/, loaders: ['to-string-loader', 'css-loader', 'sass-loader']}
+    ],
+    postLoaders: [
+      /**
+       * Instruments TS source files for subsequent code coverage.
+       * See https://github.com/deepsweet/istanbul-instrumenter-loader
+       */
+      {
+        test: /\.ts$/,
+        loader: 'istanbul-instrumenter-loader',
+        exclude: [
+          'node_modules',
+          /\.(e2e|spec)\.ts$/
+        ]
+      }
+    ]
+  };
 }
