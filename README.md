@@ -84,5 +84,5 @@ Commands
 |`npm run lint:js`|Lint `.js` files with eslint|
 |`npm run lint:ts`|Lint `.ts` files with tslint|
 |`npm run server`|Start express server @ `localhost:3000` to serve built artifacts from `./target` (must run `npm run build` first)|
-|`npm test`|Run unit tests with Karma and Jasmine|
+|`npm test`|Run unit tests with Karma and Jasmine, and generate coverage report to `./coverage`|
 |`npm run test:watch`|Run unit tests with Karma and Jasmine; watch for changes to re-run tests|

@@ -14,17 +14,21 @@
   },
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --display-chunks --progress",
+    "clean:coverage": "del-cli ./coverage",
     "clean:target": "del-cli ./target",
+    "coverage:html": "remap-istanbul -i ./coverage/json/coverage.json -o ./coverage/html -t html",
+    "coverage:lcov": "remap-istanbul -i ./coverage/json/coverage.json -o ./coverage/lcov/coverage.lcov -t lcovonly",
     "lint": "run-s lint:js lint:ts",
     "lint:js": "eslint -c .eslintrc.yml *.js ./server",
     "lint:ts": "tslint './src/**/*.ts'",
+    "posttest": "run-s coverage:html coverage:lcov",
     "prebuild": "run-s clean:target test",
-    "pretest": "npm run lint",
+    "pretest": "run-s clean:coverage lint",
     "server": "cross-env NODE_ENV=development nodemon -w 'server/**/*.*' ./server/main.js",
     "server:dev": "cross-env NODE_ENV=development webpack-dev-server --progress",
     "start": "npm run server:dev",
-    "test": "cross-env NODE_ENV=test karma start --single-run",
-    "test:watch": "cross-env NODE_ENV=test karma start"
+    "test": "cross-env NODE_ENV=test karma start --single-run --coverage",
+    "test:watch": "cross-env NODE_ENV=test karma start --reporters dots"
   },
   "dependencies": {
     "@angular/common": "2.0.0-rc.5",
@@ -53,9 +57,11 @@
     "extract-text-webpack-plugin": "~1.0.1",
     "firebase-tools": "3.0.7",
     "html-webpack-plugin": "~2.22.0",
+    "istanbul-instrumenter-loader": "~0.2.0",
     "jasmine-core": "~2.5.0",
     "karma": "~1.2.0",
     "karma-chrome-launcher": "~2.0.0",
+    "karma-coverage": "~1.1.1",
     "karma-jasmine": "~1.0.2",
     "karma-mocha-reporter": "~2.1.0",
     "karma-sourcemap-loader": "~0.3.7",
@@ -67,6 +73,7 @@
     "npm-run-all": "~3.1.0",
     "postcss-loader": "~0.11.1",
     "raw-loader": "~0.5.1",
+    "remap-istanbul": "~0.6.4",
     "sass-loader": "~4.0.1",
     "style-loader": "~0.13.1",
     "ts-helpers": "~1.1.1",
@@ -77,7 +84,8 @@
     "webpack": "~1.13.2",
     "webpack-dev-server": "~1.15.1",
     "webpack-md5-hash": "~0.0.5",
-    "winston": "~2.2.0"
+    "winston": "~2.2.0",
+    "yargs": "~5.0.0"
   },
   "author": {
     "name": "Richard Park",
