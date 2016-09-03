@@ -20,10 +20,35 @@ const PORT = process.env.PORT || 3000;
 
 
 //=========================================================
+//  LOADERS
+//---------------------------------------------------------
+const loaders = {
+  componentStyles: {
+    test: /\.scss$/,
+    loader: 'raw!postcss!sass',
+    exclude: path.resolve('src/common/styles')
+  },
+  sharedStyles: {
+    test: /\.scss$/,
+    loader: 'style!css!postcss!sass',
+    include: path.resolve('src/common/styles')
+  },
+  html: {
+    test: /\.html$/,
+    loader: 'raw'
+  },
+  typescript: {
+    test: /\.ts$/,
+    loader: 'ts',
+    exclude: /node_modules/
+  }
+};
+
+
+//=========================================================
 //  CONFIG
 //---------------------------------------------------------
-const config = {};
-module.exports = config;
+const config = module.exports = {};
 
 
 config.resolve = {
@@ -34,9 +59,9 @@ config.resolve = {
 
 config.module = {
   loaders: [
-    {test: /\.ts$/, loader: 'ts', exclude: /node_modules/},
-    {test: /\.html$/, loader: 'raw'},
-    {test: /\.scss$/, loader: 'raw!postcss!sass', exclude: path.resolve('src/common/styles'), include: path.resolve('src')}
+    loaders.typescript,
+    loaders.html,
+    loaders.componentStyles
   ]
 };
 
@@ -97,17 +122,13 @@ if (ENV_DEVELOPMENT) {
 
   config.entry.main.unshift(`webpack-dev-server/client?http://${HOST}:${PORT}`);
 
-  config.module.loaders.push(
-    {test: /\.scss$/, loader: 'style!css!postcss!sass', include: path.resolve('src/common/styles')}
-  );
+  config.module.loaders.push(loaders.sharedStyles);
 
   config.devServer = {
     contentBase: './src',
     historyApiFallback: true,
     host: HOST,
-    outputPath: config.output.path,
     port: PORT,
-    publicPath: config.output.publicPath,
     stats: {
       cached: true,
       cachedAssets: true,
@@ -131,9 +152,11 @@ if (ENV_PRODUCTION) {
 
   config.output.filename = '[name].[chunkhash].js';
 
-  config.module.loaders.push(
-    {test: /\.scss$/, loader: ExtractTextPlugin.extract('css?-autoprefixer!postcss!sass'), include: path.resolve('src/common/styles')}
-  );
+  config.module.loaders.push({
+    test: /\.scss$/,
+    loader: ExtractTextPlugin.extract('css?-autoprefixer!postcss!sass'),
+    include: path.resolve('src/common/styles')
+  });
 
   config.plugins.push(
     new WebpackMd5Hash(),
@@ -161,7 +184,5 @@ if (ENV_PRODUCTION) {
 if (ENV_TEST) {
   config.devtool = 'inline-source-map';
 
-  config.module.loaders.push(
-    {test: /\.scss$/, loader: 'style!css!postcss!sass', include: path.resolve('src/common/styles')}
-  );
+  config.module.loaders.push(loaders.sharedStyles);
 }
