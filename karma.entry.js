@@ -5,25 +5,42 @@ require('core-js/es6/string');
 require('core-js/es6/symbol');
 require('core-js/fn/object/assign');
 require('core-js/es7/reflect');
-require('zone.js');
+
+require('zone.js/dist/zone');
+require('zone.js/dist/long-stack-trace-zone');
+require('zone.js/dist/proxy');
+require('zone.js/dist/sync-test');
+require('zone.js/dist/jasmine-patch');
+require('zone.js/dist/async-test');
+require('zone.js/dist/fake-async-test');
+
 require('ts-helpers');
+
 require('firebase/firebase-browser');
 
 
-// Specify platform and application providers
+Error.stackTraceLimit = Infinity;
+jasmine.DEFAULT_TIMEOUT_INTERVAL = 2000;
+
+
 var browser = require('@angular/platform-browser-dynamic/testing');
 var testing = require('@angular/core/testing');
 
-testing.setBaseTestProviders(
-  browser.TEST_BROWSER_DYNAMIC_PLATFORM_PROVIDERS,
-  browser.TEST_BROWSER_DYNAMIC_APPLICATION_PROVIDERS
+testing.TestBed.initTestEnvironment(
+  browser.BrowserDynamicTestingModule,
+  browser.platformBrowserDynamicTesting()
 );
 
-// Recursively discover and load all spec files
-var context = require.context('./src', true, /\.spec\.ts/);
-context.keys().forEach(context);
 
-// Turn on full stack traces in errors to help debugging
-Error.stackTraceLimit = Infinity;
+// Load source files
+var context = require.context('./src', true, /\.ts/);
 
-jasmine.DEFAULT_TIMEOUT_INTERVAL = 2000;
+var exclude = [
+  './main.ts',
+  './polyfills.ts',
+  './vendor.ts'
+];
+
+context.keys().forEach(function(key) {
+  if (exclude.indexOf(key) === -1) context(key);
+});
