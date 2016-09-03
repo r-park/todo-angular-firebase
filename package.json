@@ -2,10 +2,6 @@
   "name": "todo-angular2-firebase",
   "version": "0.8.0",
   "description": "Todo app with Angular2, AngularFire2, and Firebase",
-  "author": {
-    "name": "Richard Park",
-    "email": "objectiv@gmail.com"
-  },
   "homepage": "https://github.com/r-park/todo-angular2-firebase",
   "repository": {
     "type": "git",
@@ -81,5 +77,14 @@
     "webpack-dev-server": "~1.15.1",
     "webpack-md5-hash": "~0.0.5",
     "winston": "~2.2.0"
-  }
+  },
+  "author": {
+    "name": "Richard Park",
+    "email": "objectiv@gmail.com"
+  },
+  "contributors": [
+    {"name": "Cody Lundquist", "email": "cody.lundquist@gmail.com"},
+    {"name": "Jason Shultz", "email": ""},
+    {"name": "Sinan Bolel", "email": "sinanbolel@gmail.com"}
+  ]
 }
