@@ -3,50 +3,20 @@ import 'rxjs/add/operator/switchMap';
 
 import { Injectable } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
-import { Observable } from 'rxjs/Observable';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { AuthService } from 'src/auth';
 import { ITask, Task } from '../models/task';
 
 
 @Injectable()
 export class TaskService {
-  visibleTasks$: Observable<ITask[]>;
-
-  private filter$: ReplaySubject<any> = new ReplaySubject(1);
-  private filteredTasks$: FirebaseListObservable<ITask[]>;
+  taskStore$: BehaviorSubject<ITask[]> = new BehaviorSubject([]);
   private tasks$: FirebaseListObservable<ITask[]>;
 
 
   constructor(af: AngularFire, auth: AuthService) {
-    const path = `/tasks/${auth.id}`;
-
-    this.tasks$ = af.database.list(path);
-
-    this.filteredTasks$ = af.database.list(path, {query: {
-      orderByChild: 'completed',
-      equalTo: this.filter$
-    }});
-
-    this.visibleTasks$ = this.filter$
-      .switchMap(filter => filter === null ? this.tasks$ : this.filteredTasks$);
-  }
-
-
-  filterTasks(filter: string): void {
-    switch (filter) {
-      case 'false':
-        this.filter$.next(false);
-        break;
-
-      case 'true':
-        this.filter$.next(true);
-        break;
-
-      default:
-        this.filter$.next(null);
-        break;
-    }
+    this.tasks$ = af.database.list(`/tasks/${auth.id}`);
+    this.tasks$.subscribe(tasks => this.taskStore$.next(tasks));
   }
 
   createTask(title: string): firebase.Promise<any> {
@@ -59,5 +29,29 @@ export class TaskService {
 
   updateTask(task: ITask, changes: any): firebase.Promise<any> {
     return this.tasks$.update(task.$key, changes);
+  }
+
+  markAllActive(): void {
+    this.taskStore$
+      .take(1)
+      .subscribe(tasks => {
+        tasks.forEach(task => {
+          if (task.completed) {
+            this.updateTask(task, {completed: false});
+          }
+        });
+      });
+  }
+
+  markAllCompleted(): void {
+    this.taskStore$
+      .take(1)
+      .subscribe(tasks => {
+        tasks.forEach(task => {
+          if (!task.completed) {
+            this.updateTask(task, {completed: true});
+          }
+        });
+      });
   }
 }

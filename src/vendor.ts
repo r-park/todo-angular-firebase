@@ -6,6 +6,7 @@ import '@angular/platform-browser-dynamic';
 import '@angular/router';
 
 // RxJS
+import 'rxjs/BehaviorSubject';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';

@@ -17,7 +17,9 @@ import { TaskService } from '../services/task-service';
       <div class="g-col">
         <task-list
           [filter]="filter | async"
-          [tasks]="taskService.visibleTasks$"
+          [tasks]="taskService.taskStore$"
+          (markAllActive)="taskService.markAllActive()"
+          (markAllCompleted)="taskService.markAllCompleted()"
           (remove)="taskService.removeTask($event)"
           (update)="taskService.updateTask($event.task, $event.changes)"></task-list>
       </div>
@@ -30,7 +32,6 @@ export class TasksComponent {
 
   constructor(public route: ActivatedRoute, public taskService: TaskService) {
     this.filter = route.params
-      .pluck('completed')
-      .do((value: string) => taskService.filterTasks(value));
+      .pluck('completed');
   }
 }

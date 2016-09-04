@@ -10,6 +10,7 @@ import { TaskItemComponent } from './components/task-item';
 import { TaskListComponent } from './components/task-list';
 import { TasksComponent } from './components/tasks';
 import { AutoFocusDirective } from './directives/autofocus-directive';
+import { TaskListFilterPipe } from './pipes/task-list-filter-pipe';
 import { TaskService } from './services/task-service';
 
 
@@ -24,6 +25,7 @@ const routes: Routes = [
     TaskFormComponent,
     TaskItemComponent,
     TaskListComponent,
+    TaskListFilterPipe,
     TasksComponent
   ],
   imports: [
