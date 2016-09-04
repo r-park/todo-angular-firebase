@@ -10,6 +10,7 @@ test:
   override:
     - npm run build
   post:
+    - npm run coveralls
     - mv ./coverage ${CIRCLE_ARTIFACTS}
 
 deployment:
