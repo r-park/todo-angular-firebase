@@ -10,7 +10,7 @@ test:
   override:
     - npm run build
   post:
-    - npm run coveralls
+    - if [[ -z $CIRCLE_PR_USERNAME ]] ; then npm run coveralls ; fi
     - mv ./coverage ${CIRCLE_ARTIFACTS}
 
 deployment:
