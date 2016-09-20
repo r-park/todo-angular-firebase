@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from 'src/auth';
+import { AuthService } from '../../auth';
 
 
 @Component({
@@ -11,7 +11,7 @@ import { AuthService } from 'src/auth';
     <app-header
       [authenticated]="auth.authenticated"
       (signOut)="signOut()"></app-header>
-    
+
     <main class="main">
       <router-outlet></router-outlet>
     </main>
