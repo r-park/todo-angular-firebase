@@ -162,7 +162,8 @@ if (ENV_PRODUCTION) {
   config.plugins.push(
     new WebpackMd5Hash(),
     new ExtractTextPlugin('styles.[contenthash].css'),
-    new webpack.optimize.DedupePlugin(),
+    // TODO: DedupePlugin is broken on webpack2-beta22
+    // new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       mangle: {
         keep_fnames: true, // eslint-disable-line camelcase
