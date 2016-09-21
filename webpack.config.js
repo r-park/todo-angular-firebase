@@ -19,8 +19,6 @@ const ENV_TEST = NODE_ENV === 'test';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3000;
 
-// ROOT HELPER
-const getRoot = __path => path.join(__dirname, __path);
 
 //=========================================================
 //  LOADERS
@@ -79,7 +77,7 @@ config.plugins = [
   new webpack.ContextReplacementPlugin(
     // The (\\|\/) piece accounts for path separators in *nix and Windows
     /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-    getRoot('./src') // location of your src
+    path.resolve('src')
   )
 ];
 
@@ -177,7 +175,6 @@ if (ENV_PRODUCTION) {
     // new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       mangle: {
-        keep_fnames: true, // eslint-disable-line camelcase
         screw_ie8: true    // eslint-disable-line camelcase
       },
       compress: {

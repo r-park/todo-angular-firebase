@@ -13,7 +13,7 @@
     "node": ">=5.11"
   },
   "scripts": {
-    "build": "cross-env NODE_ENV=production ./node_modules/.bin/webpack --display-chunks --progress",
+    "build": "cross-env NODE_ENV=production webpack --display-chunks --progress",
     "clean:coverage": "del-cli ./coverage",
     "clean:target": "del-cli ./target",
     "coverage:html": "remap-istanbul -i ./coverage/json/coverage.json -o ./coverage/html -t html",
@@ -26,10 +26,10 @@
     "prebuild": "run-s clean:target test",
     "pretest": "run-s clean:coverage lint",
     "server": "cross-env NODE_ENV=development nodemon -w 'server/**/*.*' ./server/main.js",
-    "server:dev": "cross-env NODE_ENV=development ./node_modules/.bin/webpack-dev-server --progress",
+    "server:dev": "cross-env NODE_ENV=development webpack-dev-server --progress",
     "start": "npm run server:dev",
-    "test": "cross-env NODE_ENV=test ./node_modules/.bin/karma start --single-run --coverage",
-    "test:watch": "cross-env NODE_ENV=test ./node_modules/.bin/karma start --reporters dots"
+    "test": "cross-env NODE_ENV=test karma start --single-run --coverage",
+    "test:watch": "cross-env NODE_ENV=test karma start --reporters dots"
   },
   "dependencies": {
     "@angular/common": "2.0.0",
