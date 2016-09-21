@@ -1,4 +1,4 @@
-import { addProviders, inject } from '@angular/core/testing';
+import { inject, TestBed } from '@angular/core/testing';
 import { Subject } from 'rxjs/Subject';
 import { AuthProviders, FirebaseAuth, FirebaseAuthState } from 'angularfire2';
 import { AuthService } from './auth-service';
@@ -24,10 +24,12 @@ describe('auth/', () => {
         authSubject.subscribe(callback);
       });
 
-      addProviders([
-        {provide: FirebaseAuth, useValue: mockFirebaseAuth},
-        AuthService
-      ]);
+      TestBed.configureTestingModule({
+        providers: [
+          {provide: FirebaseAuth, useValue: mockFirebaseAuth},
+          AuthService
+        ]
+      });
 
       inject([AuthService], (service: AuthService) => {
         authService = service;

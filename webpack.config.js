@@ -69,7 +69,16 @@ config.module = {
 config.plugins = [
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify(NODE_ENV)
-  })
+  }),
+
+  /** Fix for angular2 critical dependency warning
+   *  https://github.com/r-park/todo-angular2-firebase/issues/96
+   */
+  new webpack.ContextReplacementPlugin(
+    // The (\\|\/) piece accounts for path separators in *nix and Windows
+    /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+    path.resolve('src')
+  )
 ];
 
 config.postcss = [
@@ -162,10 +171,10 @@ if (ENV_PRODUCTION) {
   config.plugins.push(
     new WebpackMd5Hash(),
     new ExtractTextPlugin('styles.[contenthash].css'),
-    new webpack.optimize.DedupePlugin(),
+    // TODO: DedupePlugin is broken on webpack2-beta22
+    // new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       mangle: {
-        keep_fnames: true, // eslint-disable-line camelcase
         screw_ie8: true    // eslint-disable-line camelcase
       },
       compress: {
