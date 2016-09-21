@@ -19,6 +19,8 @@ const ENV_TEST = NODE_ENV === 'test';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3000;
 
+// ROOT HELPER
+const getRoot = __path => path.join(__dirname, __path);
 
 //=========================================================
 //  LOADERS
@@ -69,7 +71,16 @@ config.module = {
 config.plugins = [
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify(NODE_ENV)
-  })
+  }),
+
+  /** Fix for angular2 critical dependency warning
+   *  https://github.com/r-park/todo-angular2-firebase/issues/96
+   */
+  new webpack.ContextReplacementPlugin(
+    // The (\\|\/) piece accounts for path separators in *nix and Windows
+    /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+    getRoot('./src') // location of your src
+  )
 ];
 
 config.postcss = [
