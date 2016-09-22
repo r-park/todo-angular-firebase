@@ -1,9 +1,15 @@
 const argv = require('yargs').argv;
+const path = require('path');
+
 const autoprefixer = require('autoprefixer');
+const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
+const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
+const DefinePlugin = require('webpack/lib/DefinePlugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require('path');
-const webpack = require('webpack');
+const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
+const ProgressPlugin = require('webpack/lib/ProgressPlugin');
+const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
 
 
@@ -16,8 +22,8 @@ const ENV_DEVELOPMENT = NODE_ENV === 'development';
 const ENV_PRODUCTION = NODE_ENV === 'production';
 const ENV_TEST = NODE_ENV === 'test';
 
-const HOST = process.env.HOST || 'localhost';
-const PORT = process.env.PORT || 3000;
+const HOST = '0.0.0.0';
+const PORT = 3000;
 
 
 //=========================================================
@@ -53,9 +59,11 @@ const config = module.exports = {};
 
 
 config.resolve = {
-  extensions: ['', '.ts', '.js'],
-  modulesDirectories: ['node_modules'],
-  root: path.resolve('.')
+  extensions: ['.ts', '.js'],
+  modules: [
+    path.resolve('.'),
+    'node_modules'
+  ]
 };
 
 config.module = {
@@ -67,14 +75,17 @@ config.module = {
 };
 
 config.plugins = [
-  new webpack.DefinePlugin({
+  new DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify(NODE_ENV)
   }),
+  new LoaderOptionsPlugin({
+    debug: false,
+    minimize: ENV_PRODUCTION
+  }),
 
-  /** Fix for angular2 critical dependency warning
-   *  https://github.com/r-park/todo-angular2-firebase/issues/96
-   */
-  new webpack.ContextReplacementPlugin(
+  // Fix for angular2 critical dependency warning
+  // https://github.com/r-park/todo-angular2-firebase/issues/96
+  new ContextReplacementPlugin(
     // The (\\|\/) piece accounts for path separators in *nix and Windows
     /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
     path.resolve('src')
@@ -109,7 +120,7 @@ if (ENV_DEVELOPMENT || ENV_PRODUCTION) {
   };
 
   config.plugins.push(
-    new webpack.optimize.CommonsChunkPlugin({
+    new CommonsChunkPlugin({
       name: ['vendor', 'polyfills'],
       minChunks: Infinity
     }),
@@ -130,9 +141,9 @@ if (ENV_DEVELOPMENT || ENV_PRODUCTION) {
 if (ENV_DEVELOPMENT) {
   config.devtool = 'cheap-module-source-map';
 
-  config.entry.main.unshift(`webpack-dev-server/client?http://${HOST}:${PORT}`);
-
   config.module.loaders.push(loaders.sharedStyles);
+
+  config.plugins.push(new ProgressPlugin());
 
   config.devServer = {
     contentBase: './src',
@@ -173,15 +184,16 @@ if (ENV_PRODUCTION) {
     new ExtractTextPlugin('styles.[contenthash].css'),
     // TODO: DedupePlugin is broken on webpack2-beta22
     // new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      mangle: {
-        screw_ie8: true    // eslint-disable-line camelcase
-      },
+    new UglifyJsPlugin({
+      comments: false,
       compress: {
         dead_code: true, // eslint-disable-line camelcase
         screw_ie8: true, // eslint-disable-line camelcase
         unused: true,
         warnings: false
+      },
+      mangle: {
+        screw_ie8: true  // eslint-disable-line camelcase
       }
     })
   );

@@ -26,7 +26,7 @@
     "prebuild": "run-s clean:target test",
     "pretest": "run-s clean:coverage lint",
     "server": "cross-env NODE_ENV=development nodemon -w 'server/**/*.*' ./server/main.js",
-    "server:dev": "cross-env NODE_ENV=development webpack-dev-server --progress",
+    "server:dev": "cross-env NODE_ENV=development webpack-dev-server",
     "start": "npm run server:dev",
     "test": "cross-env NODE_ENV=test karma start --single-run --coverage",
     "test:watch": "cross-env NODE_ENV=test karma start --reporters dots"

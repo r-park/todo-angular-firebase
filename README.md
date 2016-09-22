@@ -5,9 +5,9 @@
 # Todo app with Angular2, AngularFire2, and Firebase SDK 3
 A simple Todo app example built with **Angular2** and **AngularFire2**. The app features a **Firebase** backend with **OAuth** authentication. Try the demo at <a href="https://ng2-todo-app.firebaseapp.com" target="_blank">ng2-todo-app.firebaseapp.com</a>.
 
-- Angular2 `2.0.0-rc.5`
-- Angular2 Router `3.0.0-rc.1`
-- AngularFire2 `2.0.0-beta.4`
+- Angular2 `2.0.0`
+- Angular2 Router `3.0.0`
+- AngularFire2 `2.0.0-beta.5`
 - Firebase SDK 3
   - JSON Datastore
   - OAuth authentication with GitHub, Google, and Twitter
