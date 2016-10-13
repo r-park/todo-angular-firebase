@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AuthProviders, FirebaseAuth, FirebaseAuthState } from 'angularfire2';
+import { AuthProviders, AuthMethods, FirebaseAuth, FirebaseAuthState } from 'angularfire2';
 
 
 @Injectable()
@@ -23,6 +23,14 @@ export class AuthService {
   signIn(provider: number): firebase.Promise<FirebaseAuthState> {
     return this.auth$.login({provider})
       .catch(error => console.log('ERROR @ AuthService#signIn() :', error));
+  }
+
+  signInAnonymously(): firebase.Promise<FirebaseAuthState> {
+    return this.auth$.login({
+      provider: AuthProviders.Anonymous, 
+      method: AuthMethods.Anonymous
+      })
+      .catch(error => console.log('ERROR @ AuthService#signInAnonymously() :', error));
   }
 
   signInWithGithub(): firebase.Promise<FirebaseAuthState> {
