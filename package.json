@@ -22,6 +22,7 @@
     "lint": "run-s lint:js lint:ts",
     "lint:js": "eslint -c .eslintrc.yml *.js ./server",
     "lint:ts": "tslint './src/**/*.ts'",
+    "postbuild": "./bin/postbuild.copy-assets.sh",
     "posttest": "run-s coverage:html coverage:lcov",
     "prebuild": "run-s clean:target test",
     "pretest": "run-s clean:coverage lint",
