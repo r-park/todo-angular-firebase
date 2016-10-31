@@ -27,7 +27,7 @@ export class AuthService {
 
   signInAnonymously(): firebase.Promise<FirebaseAuthState> {
     return this.auth$.login({
-      provider: AuthProviders.Anonymous, 
+      provider: AuthProviders.Anonymous,
       method: AuthMethods.Anonymous
     })
       .catch(error => console.log('ERROR @ AuthService#signInAnonymously() :', error));
