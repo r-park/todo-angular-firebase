@@ -29,7 +29,7 @@ export class AuthService {
     return this.auth$.login({
       provider: AuthProviders.Anonymous, 
       method: AuthMethods.Anonymous
-      })
+    })
       .catch(error => console.log('ERROR @ AuthService#signInAnonymously() :', error));
   }
 
