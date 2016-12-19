@@ -45,6 +45,10 @@ export class AuthService {
     return this.signIn(AuthProviders.Twitter);
   }
 
+  signInWithFacebook(): firebase.Promise<FirebaseAuthState> {
+    return this.signIn(AuthProviders.Facebook);
+  }
+
   signOut(): void {
     this.auth$.logout();
   }
