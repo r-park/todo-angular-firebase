@@ -2,10 +2,8 @@
 # Directories
 #---------------------------------
 **/node_modules/
-coverage/
 target/
 tmp/
-typings/
 
 
 #---------------------------------

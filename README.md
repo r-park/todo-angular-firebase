@@ -1,5 +1,4 @@
 [![CircleCI](https://circleci.com/gh/r-park/todo-angular2-firebase.svg?style=shield&circle-token=7f6c19e82f8464c0dc18797b6146767f66d49f90)](https://circleci.com/gh/r-park/todo-angular2-firebase)
-[![Coverage Status](https://coveralls.io/repos/github/r-park/todo-angular2-firebase/badge.svg)](https://coveralls.io/github/r-park/todo-angular2-firebase)
 
 
 # Todo app with Angular2, AngularFire2, and Firebase SDK 3
@@ -85,5 +84,5 @@ Commands
 |`npm run lint:js`|Lint `.js` files with eslint|
 |`npm run lint:ts`|Lint `.ts` files with tslint|
 |`npm run server`|Start express server @ `localhost:3001` to serve built artifacts from `./target` (must run `npm run build` first)|
-|`npm test`|Run unit tests with Karma and Jasmine, and generate coverage report to `./coverage`|
+|`npm test`|Run unit tests with Karma and Jasmine|
 |`npm run test:watch`|Run unit tests with Karma and Jasmine; watch for changes to re-run tests|

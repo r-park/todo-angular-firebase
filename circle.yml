@@ -9,9 +9,6 @@ dependencies:
 test:
   override:
     - npm run build
-  post:
-    - if [[ -z $CIRCLE_PR_USERNAME ]] ; then npm run coveralls ; fi
-    - mv ./coverage ${CIRCLE_ARTIFACTS}
 
 deployment:
   production:

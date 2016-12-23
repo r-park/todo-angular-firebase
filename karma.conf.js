@@ -1,7 +1,5 @@
-const argv = require('yargs').argv;
-
 module.exports = config => {
-  const options = {
+  config.set({
     frameworks: ['jasmine'],
 
     files: ['karma.entry.js'],
@@ -25,18 +23,5 @@ module.exports = config => {
     singleRun: false,
 
     browsers: ['Chrome']
-  };
-
-  if (argv.coverage) {
-    options.reporters.push('coverage');
-
-    options.coverageReporter = {
-      dir: 'coverage',
-      file: 'coverage.json',
-      subdir: 'json',
-      type: 'json'
-    };
-  }
-
-  config.set(options);
+  });
 };
