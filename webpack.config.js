@@ -4,6 +4,7 @@ const path = require('path');
 const autoprefixer = require('autoprefixer');
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -124,6 +125,9 @@ if (ENV_DEVELOPMENT || ENV_PRODUCTION) {
       name: ['vendor', 'polyfills'],
       minChunks: Infinity
     }),
+    new CopyWebpackPlugin([
+      {from: './assets/favicons', to: '.'}
+    ]),
     new HtmlWebpackPlugin({
       chunkSortMode: 'dependency',
       filename: 'index.html',
