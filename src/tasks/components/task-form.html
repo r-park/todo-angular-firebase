@@ -1,0 +1,12 @@
+<form class="task-form" (ngSubmit)="submit()" novalidate>
+    <input
+    [(ngModel)]="title"
+    (keyup.escape)="clear()"
+    autocomplete="off"
+    autofocus
+    class="task-form__input"
+    name="title"
+    placeholder="What needs to be done?"
+    required
+    type="text">
+</form>

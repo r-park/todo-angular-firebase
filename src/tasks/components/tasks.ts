@@ -8,21 +8,7 @@ import { TaskService } from '../services/task-service';
 
 
 @Component({
-  template: `
-    <div class="g-row">
-      <div class="g-col">
-        <task-form (createTask)="taskService.createTask($event)"></task-form>
-      </div>
-
-      <div class="g-col">
-        <task-list
-          [filter]="filter | async"
-          [tasks]="taskService.visibleTasks$"
-          (remove)="taskService.removeTask($event)"
-          (update)="taskService.updateTask($event.task, $event.changes)"></task-list>
-      </div>
-    </div>
-  `
+  template: require('./tasks.html')
 })
 
 export class TasksComponent {
