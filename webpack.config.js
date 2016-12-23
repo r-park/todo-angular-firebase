@@ -1,4 +1,3 @@
-const argv = require('yargs').argv;
 const path = require('path');
 
 const autoprefixer = require('autoprefixer');
@@ -211,24 +210,4 @@ if (ENV_TEST) {
   config.devtool = 'inline-source-map';
 
   config.module.loaders.push(loaders.sharedStyles);
-
-  if (argv.coverage) {
-    config.module.postLoaders = [{
-      test: /\.ts$/,
-      loader: 'istanbul-instrumenter-loader',
-      include: path.resolve('src'),
-      exclude: [
-        /\.spec\.ts$/,
-        /node_modules/
-      ]
-    }];
-
-    // override tsconfig.json
-    config.ts = {
-      compilerOptions: {
-        inlineSourceMap: true,
-        sourceMap: false
-      }
-    };
-  }
 }
