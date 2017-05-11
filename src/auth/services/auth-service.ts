@@ -1,55 +1,46 @@
 import { Injectable } from '@angular/core';
-import { AuthProviders, AuthMethods, FirebaseAuth, FirebaseAuthState } from 'angularfire2';
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
+import { Observable } from 'rxjs/Observable';
 
 
 @Injectable()
 export class AuthService {
-  private authState: FirebaseAuthState = null;
+  authenticated$: Observable<boolean>;
+  uid$: Observable<string>;
 
-  constructor(public auth$: FirebaseAuth) {
-    auth$.subscribe((state: FirebaseAuthState) => {
-      this.authState = state;
-    });
+  constructor(public afAuth: AngularFireAuth) {
+    this.authenticated$ = afAuth.authState.map(user => !!user);
+    this.uid$ = afAuth.authState.map(user => user.uid);
   }
 
-  get authenticated(): boolean {
-    return this.authState !== null;
-  }
-
-  get id(): string {
-    return this.authenticated ? this.authState.uid : '';
-  }
-
-  signIn(provider: number): firebase.Promise<FirebaseAuthState> {
-    return this.auth$.login({provider})
+  signIn(provider: firebase.auth.AuthProvider): firebase.Promise<any> {
+    return this.afAuth.auth.signInWithPopup(provider)
       .catch(error => console.log('ERROR @ AuthService#signIn() :', error));
   }
 
-  signInAnonymously(): firebase.Promise<FirebaseAuthState> {
-    return this.auth$.login({
-      provider: AuthProviders.Anonymous,
-      method: AuthMethods.Anonymous
-    })
+  signInAnonymously(): firebase.Promise<any> {
+    return this.afAuth.auth.signInAnonymously()
       .catch(error => console.log('ERROR @ AuthService#signInAnonymously() :', error));
   }
 
-  signInWithGithub(): firebase.Promise<FirebaseAuthState> {
-    return this.signIn(AuthProviders.Github);
+  signInWithGithub(): firebase.Promise<any> {
+    return this.signIn(new firebase.auth.GithubAuthProvider());
   }
 
-  signInWithGoogle(): firebase.Promise<FirebaseAuthState> {
-    return this.signIn(AuthProviders.Google);
+  signInWithGoogle(): firebase.Promise<any> {
+    return this.signIn(new firebase.auth.GoogleAuthProvider());
   }
 
-  signInWithTwitter(): firebase.Promise<FirebaseAuthState> {
-    return this.signIn(AuthProviders.Twitter);
+  signInWithTwitter(): firebase.Promise<any> {
+    return this.signIn(new firebase.auth.TwitterAuthProvider());
   }
 
-  signInWithFacebook(): firebase.Promise<FirebaseAuthState> {
-    return this.signIn(AuthProviders.Facebook);
+  signInWithFacebook(): firebase.Promise<any> {
+    return this.signIn(new firebase.auth.FacebookAuthProvider());
   }
 
   signOut(): void {
-    this.auth$.logout();
+    this.afAuth.auth.signOut();
   }
 }
