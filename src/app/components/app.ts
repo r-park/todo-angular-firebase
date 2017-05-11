@@ -9,7 +9,7 @@ import { AuthService } from '../../auth';
   ],
   template: `
     <app-header
-      [authenticated]="auth.authenticated"
+      [authenticated]="auth.authenticated$ | async"
       (signOut)="signOut()"></app-header>
 
     <main class="main">

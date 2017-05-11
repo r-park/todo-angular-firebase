@@ -1,4 +1,7 @@
-import { AngularFireModule, AuthMethods } from 'angularfire2';
+import { NgModule } from '@angular/core';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 
 const firebaseConfig = {
@@ -8,10 +11,12 @@ const firebaseConfig = {
   storageBucket: 'ng2-todo-app.appspot.com'
 };
 
-const firebaseAuthConfig = {
-  method: AuthMethods.Popup,
-  remember: 'default'
-};
 
-
-export const FirebaseModule = AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig);
+@NgModule({
+  imports: [
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(firebaseConfig, 'ng2-todo-app')
+  ]
+})
+export class FirebaseModule {}

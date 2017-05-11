@@ -2,7 +2,7 @@ import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/switchMap';
 
 import { Injectable } from '@angular/core';
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { AuthService } from '../../auth';
@@ -18,18 +18,22 @@ export class TaskService {
   private tasks$: FirebaseListObservable<ITask[]>;
 
 
-  constructor(af: AngularFire, auth: AuthService) {
-    const path = `/tasks/${auth.id}`;
+  constructor(afDb: AngularFireDatabase, auth: AuthService) {
+    auth.uid$
+      .take(1)
+      .subscribe(uid => {
+        const path = `/tasks/${uid}`;
 
-    this.tasks$ = af.database.list(path);
+        this.tasks$ = afDb.list(path);
 
-    this.filteredTasks$ = af.database.list(path, {query: {
-      orderByChild: 'completed',
-      equalTo: this.filter$
-    }});
+        this.filteredTasks$ = afDb.list(path, {query: {
+          orderByChild: 'completed',
+          equalTo: this.filter$
+        }});
 
-    this.visibleTasks$ = this.filter$
-      .switchMap(filter => filter === null ? this.tasks$ : this.filteredTasks$);
+        this.visibleTasks$ = this.filter$
+          .switchMap(filter => filter === null ? this.tasks$ : this.filteredTasks$);
+      });
   }
 
 

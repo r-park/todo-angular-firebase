@@ -27,7 +27,6 @@ const routes: Routes = [
     UnauthGuard
   ]
 })
-
 export class AuthModule {}
 
 

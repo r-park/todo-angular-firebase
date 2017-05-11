@@ -12,13 +12,13 @@ export class UnauthGuard implements CanActivate {
   constructor(private auth: AuthService, private router: Router) {}
 
   canActivate(): Observable<boolean> {
-    return this.auth.auth$
+    return this.auth.authenticated$
       .take(1)
-      .map(authState => !authState)
-      .do(unauthenticated => {
-        if (!unauthenticated) {
+      .do(authenticated => {
+        if (authenticated) {
           this.router.navigate(['/tasks']);
         }
-      });
+      })
+      .map(authenticated => !authenticated);
   }
 }
