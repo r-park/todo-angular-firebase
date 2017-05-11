@@ -10,7 +10,7 @@ module.exports = config => {
 
     webpack: require('./webpack.config'),
 
-    webpackServer: {
+    webpackMiddleware: {
       noInfo: true
     },
 

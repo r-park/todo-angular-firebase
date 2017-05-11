@@ -27,26 +27,26 @@ const PORT = 3000;
 
 
 //=========================================================
-//  LOADERS
+//  RULES
 //---------------------------------------------------------
-const loaders = {
+const rules = {
   componentStyles: {
     test: /\.scss$/,
-    loader: 'raw!postcss!sass',
+    use: ['raw-loader', 'postcss-loader', 'sass-loader'],
     exclude: path.resolve('src/common/styles')
   },
   sharedStyles: {
     test: /\.scss$/,
-    loader: 'style!css!postcss!sass',
+    use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
     include: path.resolve('src/common/styles')
   },
   html: {
     test: /\.html$/,
-    loader: 'raw'
+    use: ['raw-loader']
   },
   typescript: {
     test: /\.ts$/,
-    loader: 'ts',
+    use: ['ts-loader'],
     exclude: /node_modules/
   }
 };
@@ -58,6 +58,10 @@ const loaders = {
 const config = module.exports = {};
 
 
+config.entry = {
+  main: './src/main.ts'
+};
+
 config.resolve = {
   extensions: ['.ts', '.js'],
   modules: [
@@ -67,10 +71,10 @@ config.resolve = {
 };
 
 config.module = {
-  loaders: [
-    loaders.typescript,
-    loaders.html,
-    loaders.componentStyles
+  rules: [
+    rules.typescript,
+    rules.html,
+    rules.componentStyles
   ]
 };
 
@@ -80,38 +84,35 @@ config.plugins = [
   }),
   new LoaderOptionsPlugin({
     debug: false,
-    minimize: ENV_PRODUCTION
+    minimize: ENV_PRODUCTION,
+    options: {
+      postcss: [
+        autoprefixer({browsers: ['last 3 versions']})
+      ],
+      resolve: {
+        extensions: ['.ts']
+      },
+      sassLoader: {
+        outputStyle: 'compressed',
+        precision: 10,
+        sourceComments: false
+      }
+    }
   }),
 
-  // Fix for angular2 critical dependency warning
-  // https://github.com/r-park/todo-angular2-firebase/issues/96
   new ContextReplacementPlugin(
-    // The (\\|\/) piece accounts for path separators in *nix and Windows
-    /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+    /angular(\\|\/)core(\\|\/)@angular/,
     path.resolve('src')
   )
 ];
-
-config.postcss = [
-  autoprefixer({ browsers: ['last 3 versions'] })
-];
-
-config.sassLoader = {
-  outputStyle: 'compressed',
-  precision: 10,
-  sourceComments: false
-};
 
 
 //=====================================
 //  DEVELOPMENT or PRODUCTION
 //-------------------------------------
 if (ENV_DEVELOPMENT || ENV_PRODUCTION) {
-  config.entry = {
-    main: ['./src/main.ts'],
-    polyfills: './src/polyfills.ts',
-    vendor: './src/vendor.ts'
-  };
+  config.entry.polyfills = './src/polyfills.ts';
+  config.entry.vendor = './src/vendor.ts';
 
   config.output = {
     filename: '[name].js',
@@ -144,7 +145,7 @@ if (ENV_DEVELOPMENT || ENV_PRODUCTION) {
 if (ENV_DEVELOPMENT) {
   config.devtool = 'cheap-module-source-map';
 
-  config.module.loaders.push(loaders.sharedStyles);
+  config.module.rules.push(rules.sharedStyles);
 
   config.plugins.push(new ProgressPlugin());
 
@@ -176,9 +177,9 @@ if (ENV_PRODUCTION) {
 
   config.output.filename = '[name].[chunkhash].js';
 
-  config.module.loaders.push({
+  config.module.rules.push({
     test: /\.scss$/,
-    loader: ExtractTextPlugin.extract('css?-autoprefixer!postcss!sass'),
+    loader: ExtractTextPlugin.extract('css-loader?-autoprefixer!postcss-loader!sass-loader'),
     include: path.resolve('src/common/styles')
   });
 
@@ -209,5 +210,5 @@ if (ENV_PRODUCTION) {
 if (ENV_TEST) {
   config.devtool = 'inline-source-map';
 
-  config.module.loaders.push(loaders.sharedStyles);
+  config.module.rules.push(rules.sharedStyles);
 }
