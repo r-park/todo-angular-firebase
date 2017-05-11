@@ -1,6 +1,7 @@
 const path = require('path');
 
 const autoprefixer = require('autoprefixer');
+const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -46,7 +47,7 @@ const rules = {
   },
   typescript: {
     test: /\.ts$/,
-    use: ['ts-loader'],
+    use: ['awesome-typescript-loader'],
     exclude: /node_modules/
   }
 };
@@ -89,9 +90,6 @@ config.plugins = [
       postcss: [
         autoprefixer({browsers: ['last 3 versions']})
       ],
-      resolve: {
-        extensions: ['.ts']
-      },
       sassLoader: {
         outputStyle: 'compressed',
         precision: 10,
@@ -103,7 +101,9 @@ config.plugins = [
   new ContextReplacementPlugin(
     /angular(\\|\/)core(\\|\/)@angular/,
     path.resolve('src')
-  )
+  ),
+
+  new CheckerPlugin()
 ];
 
 
