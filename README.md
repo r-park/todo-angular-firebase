@@ -1,12 +1,11 @@
 [![CircleCI](https://circleci.com/gh/r-park/todo-angular2-firebase.svg?style=shield&circle-token=7f6c19e82f8464c0dc18797b6146767f66d49f90)](https://circleci.com/gh/r-park/todo-angular2-firebase)
 
 
-# Todo app with Angular2, AngularFire2, and Firebase SDK 3
-A simple Todo app example built with **Angular2** and **AngularFire2**. The app features a **Firebase** backend with **OAuth** authentication. Try the demo at <a href="https://ng2-todo-app.firebaseapp.com" target="_blank">ng2-todo-app.firebaseapp.com</a>.
+# Todo app with Angular 4, AngularFire2, and Firebase SDK 3
+A simple Todo app example built with **Angular 4** and **AngularFire2**. The app features a **Firebase** backend with **OAuth** authentication. Try the demo at <a href="https://ng2-todo-app.firebaseapp.com" target="_blank">ng2-todo-app.firebaseapp.com</a>.
 
-- Angular2 `2.2.0`
-- Angular2 Router `3.2.0`
-- AngularFire2 `2.0.0-beta.5`
+- Angular `4.1.2`
+- AngularFire2 `4.0.0-rc.0`
 - Firebase SDK 3
   - JSON Datastore
   - OAuth authentication with GitHub, Google, and Twitter
@@ -16,7 +15,6 @@ A simple Todo app example built with **Angular2** and **AngularFire2**. The app 
 - Typescript
 - Webpack
   - Inlines external SCSS files
-  - Inlines external HTML templates
   - Bundles and minifies release builds
   - Injects style and script tags into index.html
 
