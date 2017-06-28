@@ -4,9 +4,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angul
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'task-form',
-  styles: [
-    require('./task-form.scss')
-  ],
+  styleUrls: ['./task-form.scss'],
   template: `
     <form class="task-form" (ngSubmit)="submit()" novalidate>
       <input

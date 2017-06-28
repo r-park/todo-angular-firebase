@@ -4,9 +4,7 @@ import { AuthService } from '../../auth';
 
 @Component({
   selector: 'app',
-  styles: [
-    require('./app.scss')
-  ],
+  styleUrls: ['./app.scss'],
   template: `
     <app-header
       [authenticated]="auth.authenticated$ | async"

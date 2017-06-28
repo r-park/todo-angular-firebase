@@ -4,9 +4,7 @@ import { AuthService } from '../services/auth-service';
 
 
 @Component({
-  styles: [
-    require('./sign-in.scss')
-  ],
+  styleUrls: ['./sign-in.scss'],
   template: `
     <div class="g-row sign-in">
       <div class="g-col">
