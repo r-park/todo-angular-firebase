@@ -1,7 +1,14 @@
 {
-  "name": "clitemp",
-  "version": "0.0.0",
+  "name": "todo-angular2-firebase",
+  "version": "0.9.0",
+  "description": "Todo app with Angular2, AngularFire2, and Firebase",
+  "homepage": "https://github.com/r-park/todo-angular2-firebase",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/r-park/todo-angular2-firebase.git"
+  },
   "license": "MIT",
+  "private": true,
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -12,20 +19,20 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^4.1.2",
+    "@angular/animations": "4.1.2",
     "@angular/common": "4.1.2",
     "@angular/compiler": "4.1.2",
-    "@angular/core": "4.1.2\n\n",
+    "@angular/core": "4.1.2",
     "@angular/forms": "4.1.2",
-    "@angular/http": "^4.0.0",
+    "@angular/http": "4.1.2",
     "@angular/platform-browser": "4.1.2",
-    "@angular/platform-browser-dynamic": "^4.0.0",
-    "@angular/router": "^4.0.0",
+    "@angular/platform-browser-dynamic": "4.1.2",
+    "@angular/router": "4.1.2",
     "angularfire2": "4.0.0-rc.0",
-    "core-js": "^2.4.1",
+    "core-js": "~2.4.1",
     "firebase": "3.9.0",
     "rxjs": "5.4.0",
-    "zone.js": "^0.8.4"
+    "zone.js": "^0.8.10"
   },
   "devDependencies": {
     "@angular/cli": "1.1.2",
