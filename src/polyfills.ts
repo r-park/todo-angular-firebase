@@ -46,14 +46,13 @@ import 'core-js/fn/object/assign';
 import 'core-js/es6/reflect';
 import 'core-js/es7/reflect';
 
-// Typescript helpers
-import 'ts-helpers';
-
 
 /** ALL Firefox browsers require the following to support `@angular/animation`. **/
 // import 'web-animations-js';  // Run `npm install --save web-animations-js`.
 
 
+// Typescript helpers
+// import 'ts-helpers';
 
 /***************************************************************************************************
  * Zone JS is required by Angular itself.
@@ -75,11 +74,3 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
  * Need to import at least one locale-data with intl.
  */
 // import 'intl/locale-data/jsonp/en';
-
-
-
-if (process.env.NODE_ENV === 'development') {
-  Error.stackTraceLimit = Infinity;
-  require('zone.js/dist/long-stack-trace-zone');
-}
-

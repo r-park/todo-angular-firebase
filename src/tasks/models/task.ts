@@ -1,12 +1,6 @@
 import * as firebase from 'firebase/app';
+import { ITask } from './interfaces';
 
-
-export interface ITask {
-  $key?: string;
-  completed: boolean;
-  createdAt: Object;
-  title: string;
-}
 
 export class Task implements ITask {
   completed = false;

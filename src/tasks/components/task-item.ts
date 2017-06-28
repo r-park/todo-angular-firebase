@@ -1,14 +1,12 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { ITask } from '../models/task';
+import { ITask } from '../models/interfaces';
 
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'task-item',
-  styles: [
-    require('./task-item.scss')
-  ],
-  template: require('./task-item.html')
+  styleUrls: ['./task-item.scss'],
+  templateUrl: './task-item.html'
 })
 
 export class TaskItemComponent {

@@ -1,14 +1,12 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { FirebaseListObservable } from 'angularfire2/database';
-import { ITask } from '../models/task';
+import { ITask } from '../models/interfaces';
 
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'task-list',
-  styles: [
-    require('./task-list.scss')
-  ],
+  styleUrls: ['./task-list.scss'],
   template: `
     <ul class="task-filters">
       <li><a [class.active]="!filter" [routerLink]="['/tasks']">View All</a></li>
