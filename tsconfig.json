@@ -1,33 +1,20 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "src",
+    "declaration": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "lib": [
-      "dom",
-      "es6"
+      "es2016",
+      "dom"
     ],
-    "module": "commonjs",
-    "noEmitHelpers": true,
-    "removeComments": true,
+    "moduleResolution": "node",
+    "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "target": "es5",
-    "types": [
-      "core-js",
-      "firebase",
-      "jasmine",
-      "node"
+    "typeRoots": [
+      "node_modules/@types"
     ]
-  },
-
-  "exclude": [
-    "node_modules",
-    "target",
-    "tmp"
-  ],
-
-  "awesomeTypescriptLoaderOptions": {
-    "forkChecker": true,
-    "useWebpackText": true
   }
 }
