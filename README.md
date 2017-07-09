@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/r-park/todo-angular2-firebase.svg?style=shield&circle-token=7f6c19e82f8464c0dc18797b6146767f66d49f90)](https://circleci.com/gh/r-park/todo-angular2-firebase)
+[![CircleCI](https://circleci.com/gh/r-park/todo-angular-firebase.svg?style=shield&circle-token=d1a31de32e5baabbf59aa8f78ba251254261fb3a)](https://circleci.com/gh/r-park/todo-angular-firebase)
 
 
 # Todo app with Angular, AngularFire2, and Firebase
@@ -29,8 +29,8 @@ $ npm install -g @angular/cli
 #### Clone the app, install package dependencies, and start the dev server @ `localhost:4200`
 
 ```shell
-$ git clone https://github.com/r-park/todo-angular2-firebase.git
-$ cd todo-angular2-firebase
+$ git clone https://github.com/r-park/todo-angular-firebase.git
+$ cd todo-angular-firebase
 $ npm install
 $ npm start
 ```

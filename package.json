@@ -1,11 +1,11 @@
 {
-  "name": "todo-angular2-firebase",
+  "name": "todo-angular-firebase",
   "version": "0.8.0",
-  "description": "Todo app with Angular2, AngularFire2, and Firebase",
-  "homepage": "https://github.com/r-park/todo-angular2-firebase",
+  "description": "Todo app with Angular, AngularFire2, and Firebase",
+  "homepage": "https://github.com/r-park/todo-angular-firebase",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/r-park/todo-angular2-firebase.git"
+    "url": "git+https://github.com/r-park/todo-angular-firebase.git"
   },
   "license": "MIT",
   "private": true,
