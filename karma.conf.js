@@ -1,27 +1,36 @@
-module.exports = config => {
+module.exports = function (config) {
   config.set({
-    frameworks: ['jasmine'],
+    basePath: '',
 
-    files: ['karma.entry.js'],
+    frameworks: ['jasmine', '@angular/cli'],
 
-    preprocessors: {
-      'karma.entry.js': ['webpack', 'sourcemap']
+    plugins: [
+      require('karma-jasmine'),
+      require('karma-chrome-launcher'),
+      require('karma-jasmine-html-reporter'),
+      require('karma-coverage-istanbul-reporter'),
+      require('@angular/cli/plugins/karma')
+    ],
+
+    client:{
+      clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
 
-    webpack: require('./webpack.config'),
-
-    webpackMiddleware: {
-      noInfo: true
+    coverageIstanbulReporter: {
+      reports: [ 'html', 'lcovonly' ],
+      fixWebpackSourcePaths: true
     },
 
-    reporters: ['mocha'],
+    angularCli: {
+      environment: 'dev'
+    },
 
+    reporters: ['progress', 'kjhtml'],
+    port: 9876,
+    colors: true,
     logLevel: config.LOG_INFO,
-
     autoWatch: true,
-
-    singleRun: false,
-
-    browsers: ['Chrome']
+    browsers: ['Chrome'],
+    singleRun: false
   });
 };
