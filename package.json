@@ -13,12 +13,18 @@
     "node": ">=8.1",
     "npm": ">= 5"
   },
+  "browserslist": [
+    "last 2 versions",
+    "not ie <= 10",
+    "not ie_mob <= 10"
+  ],
   "scripts": {
     "build": "ng build --prod",
     "e2e": "ng e2e",
     "lint": "ng lint",
     "ng": "ng",
-    "prebuild": "ng lint",
+    "postbuild": "npm run precache",
+    "precache": "sw-precache --config=sw-precache.config.js --verbose",
     "start": "ng serve",
     "test": "ng test"
   },
@@ -57,8 +63,35 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "minx": "r-park/minx.git",
     "protractor": "^5.1.2",
+    "sw-precache": "^5.2.0",
     "ts-node": "^3.2.0",
     "tslint": "^5.5.0",
     "typescript": "^2.4.1"
-  }
+  },
+  "author": {
+    "name": "Richard Park",
+    "email": "objectiv@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "Cody Lundquist",
+      "email": "cody.lundquist@gmail.com"
+    },
+    {
+      "name": "Jason Shultz",
+      "email": ""
+    },
+    {
+      "name": "Luke Schlangen",
+      "email": "luke@lukeschlangen.com"
+    },
+    {
+      "name": "Sinan Bolel",
+      "email": "sinanbolel@gmail.com"
+    },
+    {
+      "name": "Yannick Koehler",
+      "email": "yannick@koehler.name"
+    }
+  ]
 }
