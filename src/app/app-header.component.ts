@@ -13,7 +13,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 
           <ul class="header__links">
             <li *ngIf="authenticated"><a class="header__link" (click)="signOut.emit()" href="#">Sign out</a></li>
-            <li><a class="header__link header__link--github" href="https://github.com/r-park/todo-angular2-firebase"></a></li>
+            <li><a class="header__link header__link--github" href="https://github.com/r-park/todo-angular-firebase"></a></li>
           </ul>
         </div>
       </div>
